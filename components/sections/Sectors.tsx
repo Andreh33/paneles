@@ -7,28 +7,28 @@ const SECTORS = [
     label: "Industrial",
     description: "Naves, talleres, polígonos.",
     Icon: Factory,
-    image: "/sectors/industrial.jpg",
+    image: "/sectors/industrial.webp",
   },
   {
     id: "agricola",
     label: "Agrícola",
     description: "Granjas, secaderos, almacenes (variante Agropanel).",
     Icon: Tractor,
-    image: "/sectors/agricola.jpg",
+    image: "/sectors/agricola.webp",
   },
   {
     id: "residencial",
     label: "Residencial",
     description: "Vivienda unifamiliar y rehabilitación.",
     Icon: Home,
-    image: "/sectors/residencial.jpg",
+    image: "/sectors/residencial.webp",
   },
   {
     id: "logistica",
     label: "Logística",
     description: "Centros logísticos, almacenes de gran luz.",
     Icon: Boxes,
-    image: "/sectors/logistica.jpg",
+    image: "/sectors/logistica.webp",
   },
 ];
 

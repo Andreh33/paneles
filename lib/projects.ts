@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     sector: "logistica",
     year: 2024,
     productSlugs: ["fp-pc-5-1000", "fp-pf-nerv-fn-1000"],
-    image: "/projects/nave-logistica-merida.jpg",
+    image: "/projects/nave-logistica-merida.webp",
     gradient: "from-[#2D2C66] via-[#4D4C92] to-[#A85608]",
   },
   {
@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
     sector: "agricola",
     year: 2024,
     productSlugs: ["fp-pc-3-1000"],
-    image: "/projects/cubierta-agricola-olivenza.jpg",
+    image: "/projects/cubierta-agricola-olivenza.webp",
     gradient: "from-[#A85608] to-[#5E3104]",
   },
   {
@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
     sector: "agricola",
     year: 2024,
     productSlugs: ["fp-pc-5-1000", "fp-pf-microp-fn-1000"],
-    image: "/projects/centro-carnico-don-benito.jpg",
+    image: "/projects/centro-carnico-don-benito.webp",
     gradient: "from-[#252620] to-[#0F100B]",
   },
   {
@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     sector: "industrial",
     year: 2023,
     productSlugs: ["fp-pc-tj-1000", "fp-pf-nerv-fn-1000"],
-    image: "/projects/pabellon-industrial-almendralejo.jpg",
+    image: "/projects/pabellon-industrial-almendralejo.webp",
     gradient: "from-[#4D4C92] to-[#2D2C66]",
   },
   {
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     sector: "logistica",
     year: 2023,
     productSlugs: ["fp-pc-5-1000"],
-    image: "/projects/almacen-vinicola-merida.jpg",
+    image: "/projects/almacen-vinicola-merida.webp",
     gradient: "from-[#0F100B] to-[#252620]",
   },
   {
@@ -94,7 +94,7 @@ export const PROJECTS: Project[] = [
     sector: "residencial",
     year: 2023,
     productSlugs: ["fp-fertelha", "acc-cumbrera-fertelha"],
-    image: "/projects/vivienda-evora.jpg",
+    image: "/projects/vivienda-evora.webp",
     gradient: "from-[#7D7CC4] to-[#4D4C92]",
   },
   {
@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
     sector: "agricola",
     year: 2023,
     productSlugs: ["fp-pc-5-1000"],
-    image: "/projects/granja-caceres.jpg",
+    image: "/projects/granja-caceres.webp",
     gradient: "from-[#A85608] via-[#5E3104] to-[#252620]",
   },
   {
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
     sector: "industrial",
     year: 2022,
     productSlugs: ["fp-pf-microp-fo-1000"],
-    image: "/projects/nave-taller-badajoz.jpg",
+    image: "/projects/nave-taller-badajoz.webp",
     gradient: "from-[#2D2C66] to-[#0F100B]",
   },
 ];

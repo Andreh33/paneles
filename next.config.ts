@@ -3,7 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Servimos directamente los WebP pre-optimizados desde /public.
+    // Evita el optimizador de Vercel (HTTP 402 al superar cuota Hobby).
+    unoptimized: true,
   },
 };
 

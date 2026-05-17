@@ -22,7 +22,7 @@ function makeItem(overrides: Partial<CartItem> = {}): CartItem {
     cantidad: 200,
     unit: "m2",
     pesoUnitario: 11.77,
-    image: "/products/fp-pc-5-1000.png",
+    image: "/products/fp-pc-5-1000.webp",
     createdAt: 1700000000000,
     ...overrides,
   };
