@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===========================================================
+     PANELEX — Tokens de marca (extraídos del logo real, PDF p1)
+     =========================================================== */
+  --color-primary: #4d4c92;
+  --color-primary-deep: #2d2c66;
+  --color-primary-soft: #7d7cc4;
+
+  --color-accent: #e37c17;
+  --color-accent-deep: #a85608;
+  --color-accent-soft: #f4a04e;
+
+  --color-bg: #1a1a1f;
+  --color-bg-warm: #252620;
+  --color-bg-alt: #ffffff;
+  --color-surface: #f7f5fa;
+  --color-text: #0f0b26;
+  --color-text-inverse: #f5f3ff;
+  --color-muted: #6b6584;
+  --color-border: #e4e1ee;
+
+  --font-display: "Space Grotesk", "Inter Display", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg-alt);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+
+  /* Foco accesible global */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

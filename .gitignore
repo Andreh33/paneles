@@ -1,0 +1,21 @@
+node_modules
+.next
+.vercel
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+
+# Assets fuente del cliente (no van al deploy)
+source/extracted/
+
+# Lighthouse reports locales
+lighthouse-*.html
+lighthouse-*.report.json
+lighthouse-*.report.html
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
