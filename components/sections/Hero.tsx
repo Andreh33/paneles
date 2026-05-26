@@ -1,23 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Factory, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { StatsStrip } from "./StatsStrip";
+import { HeroMedia } from "./HeroMedia";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
-      {/* Foto de fondo: operario colocando cubierta de teja (obra real Panelex) */}
-      <Image
-        src="/hero/operario-cubierta.webp"
-        alt=""
-        aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        className="absolute inset-0 object-cover object-[center_28%]"
-      />
+      {/* Fondo: vídeo en bucle de obra real (con foto del operario como póster) */}
+      <HeroMedia />
       {/* Oscurecido cálido para legibilidad del texto (más denso a la izquierda) */}
       <div
         aria-hidden
