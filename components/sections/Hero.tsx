@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Factory, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
@@ -7,7 +8,27 @@ import { StatsStrip } from "./StatsStrip";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
-      {/* Capa decorativa: malla de líneas + glow */}
+      {/* Foto de fondo: operario colocando cubierta de teja (obra real Panelex) */}
+      <Image
+        src="/hero/operario-cubierta.webp"
+        alt=""
+        aria-hidden
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 object-cover object-[center_28%]"
+      />
+      {/* Oscurecido cálido para legibilidad del texto (más denso a la izquierda) */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-r from-[var(--color-bg-warm)] via-[var(--color-bg-warm)]/80 to-[var(--color-bg-warm)]/35"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-warm)] via-transparent to-[var(--color-bg-warm)]/40"
+      />
+
+      {/* Capa decorativa: glow de marca (morado/naranja) + malla de líneas */}
       <div aria-hidden className="absolute inset-0 opacity-40">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--color-accent-deep)]/30 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[var(--color-primary-deep)]/40 via-transparent to-transparent" />
