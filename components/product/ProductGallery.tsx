@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Product } from "@/lib/products";
 import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
 
@@ -9,21 +9,63 @@ interface Props {
   product: Product;
 }
 
+type SlideKind = "color" | "real" | "interior";
+
+interface Slide {
+  key: string;
+  kind: SlideKind;
+  image: string;
+  label: string;
+  caption?: string;
+}
+
 /**
- * Galería de la ficha de producto.
- * - Si el producto tiene `colors`, muestra el selector de colores y la imagen
- *   activa cambia al pulsar cada chip.
- * - Si no, muestra la imagen principal sin selector.
+ * Galería de la ficha de producto:
+ * - Si hay `colors`, el primer bloque son los 6 colores con selector.
+ * - Si hay `realPhotos`, debajo aparecen fotos reales de obra.
+ * - Si hay `interiorFinishes` (madera), se ven como acabados del intradós.
  */
 export function ProductGallery({ product }: Props) {
-  const [activeColor, setActiveColor] = useState(
-    product.colors?.[0]?.slug ?? null
-  );
+  const slides = useMemo<Slide[]>(() => {
+    const out: Slide[] = [];
+    for (const c of product.colors ?? []) {
+      out.push({
+        key: `color:${c.slug}`,
+        kind: "color",
+        image: c.image,
+        label: c.label,
+        caption: `Color ${c.label}`,
+      });
+    }
+    for (const f of product.interiorFinishes ?? []) {
+      if (f.realPhoto) {
+        out.push({
+          key: `interior:${f.slug}`,
+          kind: "interior",
+          image: f.realPhoto,
+          label: f.label,
+          caption: `Acabado interior — ${f.label}`,
+        });
+      }
+    }
+    for (const img of product.realPhotos ?? []) {
+      out.push({
+        key: `real:${img}`,
+        kind: "real",
+        image: img,
+        label: "Obra real",
+        caption: "Foto en obra",
+      });
+    }
+    return out;
+  }, [product]);
 
-  const colors = product.colors;
-  const activeImage =
-    colors?.find((c) => c.slug === activeColor)?.image ?? product.image;
-  const activeColorLabel = colors?.find((c) => c.slug === activeColor)?.label;
+  const [activeKey, setActiveKey] = useState<string | null>(
+    slides[0]?.key ?? null
+  );
+  const activeSlide = slides.find((s) => s.key === activeKey);
+  const activeImage = activeSlide?.image ?? product.image;
+  const activeCaption = activeSlide?.caption;
 
   return (
     <div className="space-y-4">
@@ -33,9 +75,9 @@ export function ProductGallery({ product }: Props) {
             key={activeImage}
             src={activeImage}
             alt={
-              activeColorLabel
-                ? `${product.name} — color ${activeColorLabel}`
-                : `Render 3D de ${product.name} (${product.code})`
+              activeSlide
+                ? `${product.name} — ${activeSlide.label}`
+                : `${product.name} (${product.code})`
             }
             fill
             priority
@@ -50,44 +92,118 @@ export function ProductGallery({ product }: Props) {
             Agropanel disponible
           </span>
         )}
+        {activeCaption && (
+          <span className="absolute bottom-4 left-4 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+            {activeCaption}
+          </span>
+        )}
       </div>
 
-      {colors && colors.length > 0 && (
-        <div>
-          <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-muted)]">
-            Color · {activeColorLabel}
-          </p>
-          <div className="grid grid-cols-6 gap-2 sm:gap-3">
-            {colors.map((c) => {
-              const isActive = c.slug === activeColor;
-              return (
-                <button
-                  key={c.slug}
-                  type="button"
-                  aria-pressed={isActive}
-                  aria-label={`Ver color ${c.label}`}
-                  onClick={() => setActiveColor(c.slug)}
-                  className={[
-                    "group relative aspect-square overflow-hidden rounded-xl border transition",
-                    isActive
-                      ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/30"
-                      : "border-[var(--color-border)] hover:border-[var(--color-primary)]",
-                  ].join(" ")}
-                  title={c.label}
-                >
-                  <Image
-                    src={c.image}
-                    alt={c.label}
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                  />
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      {product.colors && product.colors.length > 0 && (
+        <GalleryRow
+          title="Color exterior"
+          items={product.colors.map((c) => ({
+            key: `color:${c.slug}`,
+            label: c.label,
+            image: c.image,
+          }))}
+          activeKey={activeKey}
+          onSelect={setActiveKey}
+        />
       )}
+
+      {product.interiorFinishes && product.interiorFinishes.length > 0 && (
+        <GalleryRow
+          title="Acabado interior (intradós)"
+          subtitle="Vista del panel desde abajo"
+          items={product.interiorFinishes.map((f) => ({
+            key: `interior:${f.slug}`,
+            label: f.label,
+            image: f.realPhoto ?? f.swatch,
+            disabled: !f.realPhoto,
+          }))}
+          activeKey={activeKey}
+          onSelect={setActiveKey}
+        />
+      )}
+
+      {product.realPhotos && product.realPhotos.length > 0 && (
+        <GalleryRow
+          title="Obras reales"
+          items={product.realPhotos.map((img, i) => ({
+            key: `real:${img}`,
+            label: `Obra ${i + 1}`,
+            image: img,
+          }))}
+          activeKey={activeKey}
+          onSelect={setActiveKey}
+        />
+      )}
+    </div>
+  );
+}
+
+interface RowItem {
+  key: string;
+  label: string;
+  image: string;
+  disabled?: boolean;
+}
+
+function GalleryRow({
+  title,
+  subtitle,
+  items,
+  activeKey,
+  onSelect,
+}: {
+  title: string;
+  subtitle?: string;
+  items: RowItem[];
+  activeKey: string | null;
+  onSelect: (key: string) => void;
+}) {
+  return (
+    <div>
+      <div className="mb-2 flex items-baseline justify-between">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-muted)]">
+          {title}
+        </p>
+        {subtitle && (
+          <p className="text-[10px] text-[var(--color-muted)]">{subtitle}</p>
+        )}
+      </div>
+      <div className="grid grid-cols-6 gap-2 sm:gap-3">
+        {items.map((it) => {
+          const active = it.key === activeKey;
+          return (
+            <button
+              key={it.key}
+              type="button"
+              aria-pressed={active}
+              aria-label={it.label}
+              onClick={() => !it.disabled && onSelect(it.key)}
+              disabled={it.disabled}
+              title={it.label}
+              className={[
+                "relative aspect-square overflow-hidden rounded-xl border transition",
+                active
+                  ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/30"
+                  : "border-[var(--color-border)] hover:border-[var(--color-primary)]",
+                it.disabled ? "cursor-not-allowed opacity-50" : "",
+              ].join(" ")}
+            >
+              <Image
+                src={it.image}
+                alt={it.label}
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

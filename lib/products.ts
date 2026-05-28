@@ -26,6 +26,20 @@ export interface ColorVariant {
   image: string;
 }
 
+/**
+ * Acabado de la cara INTERIOR del panel sándwich (intradós).
+ * Lo que se ve al mirar desde abajo. Por defecto es lacado liso;
+ * opcionalmente puede tener impresión imitación madera.
+ */
+export interface InteriorFinish {
+  slug: string;
+  label: string;
+  /** Imagen del acabado (muestra de color/textura) */
+  swatch: string;
+  /** Foto opcional del acabado en obra real */
+  realPhoto?: string;
+}
+
 export type Unit = "m2" | "ml" | "u";
 
 /**
@@ -89,6 +103,10 @@ export interface Product {
   fixedLength?: { total: number; useful: number };
   /** Variantes de color disponibles (solo Fertelha y similares de teja) */
   colors?: ColorVariant[];
+  /** Acabados de la cara interior (intradós), p.ej. imitación madera */
+  interiorFinishes?: InteriorFinish[];
+  /** Galería extra: fotos reales de obra para la ficha del producto */
+  realPhotos?: string[];
   specs: SpecRow[];
 }
 
@@ -134,6 +152,36 @@ export const FERTELHA_COLORS: ColorVariant[] = [
   { slug: "gris", label: "Gris", image: "/products/colores/gris.webp" },
   { slug: "granate", label: "Granate", image: "/products/colores/granate.webp" },
   { slug: "negro", label: "Negro", image: "/products/colores/negro.webp" },
+];
+
+/**
+ * Acabados imitación madera para la cara INTERIOR (intradós) del panel.
+ * Pensados para porches, vivienda y zonas donde la cara interior queda vista.
+ */
+export const INTERIOR_MADERA_FINISHES: InteriorFinish[] = [
+  {
+    slug: "madera-clara",
+    label: "Madera clara",
+    swatch: "/products/interior-madera/muestrario-acabados.webp",
+    realPhoto: "/products/interior-madera/porche-madera-clara.webp",
+  },
+  {
+    slug: "madera-intermedia",
+    label: "Madera intermedia",
+    swatch: "/products/interior-madera/muestrario-acabados.webp",
+    realPhoto: "/products/interior-madera/porche-madera-intermedia.webp",
+  },
+  {
+    slug: "madera-nvi100",
+    label: "Madera NVI 100",
+    swatch: "/products/interior-madera/muestrario-acabados.webp",
+    realPhoto: "/products/interior-madera/porche-madera-nvi100.webp",
+  },
+  {
+    slug: "madera-pbt",
+    label: "Madera PBT",
+    swatch: "/products/interior-madera/muestrario-acabados.webp",
+  },
 ];
 
 // ----------------------------------------------------------------------------
@@ -208,6 +256,11 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     cutLengths: [...FERTELHA_CUT_LENGTHS],
     colors: FERTELHA_COLORS,
+    interiorFinishes: INTERIOR_MADERA_FINISHES,
+    realPhotos: [
+      "/products/real/fertelha-cotas-40-80.webp",
+      "/products/real/remates-munditelha-diagrama.webp",
+    ],
     specs: [
       { espesorNominal: 40, chapa: "0.3/0.45", peso: 9.94, uWmK: 0.358, uKcal: 0.307522 },
       { espesorNominal: 80, chapa: "0.3/0.45", peso: 11.7, uWmK: 0.27, uKcal: 0.23193 },
@@ -239,6 +292,12 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     isAgropanel: true,
     cutLengths: [...CUBIERTA_CUT_LENGTHS],
+    interiorFinishes: INTERIOR_MADERA_FINISHES,
+    realPhotos: [
+      "/projects/nave-industrial-cubierta-roja.webp",
+      "/projects/nave-industrial-cubierta-gris.webp",
+      "/projects/paneles-en-obra-izado.webp",
+    ],
     specs: expandSpecs([
       { espesor: 30, pesos: [7.22, 9.07, 10.89], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53, kcalExplicit: 0.45527 },
       { espesor: 100, pesos: [10.3, 12.15, 13.97], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
@@ -270,6 +329,7 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     isAgropanel: true,
     cutLengths: [...CUBIERTA_CUT_LENGTHS],
+    interiorFinishes: INTERIOR_MADERA_FINISHES,
     specs: expandSpecs([
       { espesor: 30, pesos: [7.47, 9.39, 11.28], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.51, kcalExplicit: 0.43809 },
       { espesor: 100, pesos: [10.55, 12.47, 14.36], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
@@ -300,6 +360,11 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     isAgropanel: true,
     cutLengths: [...CUBIERTA_CUT_LENGTHS],
+    interiorFinishes: INTERIOR_MADERA_FINISHES,
+    realPhotos: [
+      "/projects/cubierta-plana-residencial-rojo.webp",
+      "/projects/rehabilitacion-cubierta-aluminio.webp",
+    ],
     specs: expandSpecs([
       { espesor: 30, pesos: [6.86, 8.63, 10.38], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53 },
       { espesor: 100, pesos: [9.94, 11.71, 13.46], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25 },
@@ -640,6 +705,7 @@ export const PRODUCTS: Product[] = [
     widthTotal: 0,
     unit: "ml",
     fixedLength: { total: 3.2, useful: 3.0 },
+    realPhotos: ["/products/real/remates-munditelha-diagrama.webp"],
     specs: [{ espesorNominal: 0.45, chapa: "0.45", peso: 0 }],
   },
   {

@@ -43,9 +43,9 @@ export default async function ProyectosPage({
             nuestros paneles.
           </h1>
           <p className="mt-6 max-w-2xl text-white/70">
-            Una selección de proyectos representativos en Extremadura, Andalucía
-            y Portugal. Las obras reales con fotografía se incorporarán cuando
-            recibamos el material gráfico del cliente.
+            Una selección de obras ejecutadas en Extremadura, Castilla y León y
+            Portugal: naves industriales, viviendas con teja imitación, carports
+            translúcidos y cerramientos.
           </p>
         </div>
       </section>
