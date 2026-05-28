@@ -66,8 +66,8 @@ function paletteFor(category: Product["category"]) {
       return { bgTop: "#2d2c66", bgBottom: "#1e1d4a", label: "#7d7cc4" };
     case "fachada":
       return { bgTop: "#252620", bgBottom: "#16170f", label: "#a8a89c" };
-    case "chapa-perfilada":
-      return { bgTop: "#1a1a1f", bgBottom: "#0a0a0e", label: "#888899" };
+    case "policarbonato":
+      return { bgTop: "#3a4f6e", bgBottom: "#1c2733", label: "#8aa3c4" };
     case "accesorio":
       return { bgTop: "#a85608", bgBottom: "#5e3104", label: "#f4a04e" };
   }

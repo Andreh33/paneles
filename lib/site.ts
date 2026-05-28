@@ -42,7 +42,6 @@ export const NAV_LINKS = [
   { href: "/productos", label: "Productos" },
   { href: "/proyectos", label: "Proyectos" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
-  { href: "/descargas", label: "Descargas" },
   { href: "/contacto", label: "Contacto" },
 ] as const;
 

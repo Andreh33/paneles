@@ -71,9 +71,11 @@ export function CategoryShowcase() {
 
 const DESCRIPTIONS: Record<string, string> = {
   cubierta:
-    "Paneles sándwich de cubierta en 9 espesores, 3 perfiles y opción Agropanel.",
+    "Paneles sándwich de cubierta en 30 y 100 mm. Imitación teja en 6 colores y opción Agropanel.",
   fachada:
-    "Paneles de fachada con fijación vista u oculta, acabado nervado o microperforado.",
-  "chapa-perfilada":
-    "5 perfiles de chapa galvanizada para cubiertas, forrados y cerramientos.",
+    "Paneles sándwich de fachada nervada o microperfilada, en 30 y 100 mm.",
+  policarbonato:
+    "Placas translúcidas celular y compacto para lucernarios, marquesinas y cerramientos.",
+  accesorio:
+    "Remates, cumbreras y piezas de cierre para terminar la obra.",
 };

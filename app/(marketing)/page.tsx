@@ -16,11 +16,11 @@ import { localBusinessLd, organizationLd } from "@/lib/jsonld";
  */
 const FEATURED_SLUGS = [
   "fp-fertelha",
-  "fp-pc-5-1000",
-  "fp-pf-microp-fo-1000",
-  "fa-p273",
-  "fp-pc-tj-1000",
-  "fa-ft200",
+  "panel-cubierta",
+  "panel-fachada-nervada",
+  "panel-fachada-microperfilada",
+  "policarbonato-celular",
+  "policarbonato-compacto",
 ] as const;
 
 export default function HomePage() {

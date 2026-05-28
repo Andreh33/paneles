@@ -132,14 +132,8 @@ export function ProductTabs({ product }: Props) {
                 Ficha técnica y declaraciones CE
               </p>
               <p className="mt-2 text-sm text-[var(--color-muted)]">
-                Documentos disponibles en{" "}
-                <a
-                  href="/descargas"
-                  className="font-semibold text-[var(--color-primary)] underline-offset-4 hover:underline"
-                >
-                  /descargas
-                </a>{" "}
-                o solicítalos directamente al departamento técnico por WhatsApp.
+                Solicita la ficha técnica, declaración CE y planos de instalación
+                directamente al departamento técnico por WhatsApp.
               </p>
             </div>
           </Panel>

@@ -18,7 +18,6 @@ interface Props {
 
 /**
  * Strip de stats con contador animado al entrar en viewport.
- * Si el usuario tiene prefers-reduced-motion, muestra el valor final sin animar.
  */
 export function StatsStrip({
   stats = DEFAULT_STATS,
@@ -49,15 +48,6 @@ function StatCell({ stat }: { stat: Stat }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduceMotion) {
-      setDisplayed(stat.value);
-      setAnimated(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {

@@ -11,7 +11,6 @@ const STATIC_ROUTES: Array<{
   { path: "/productos", changeFrequency: "monthly", priority: 0.9 },
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
   { path: "/sobre-nosotros", changeFrequency: "yearly", priority: 0.5 },
-  { path: "/descargas", changeFrequency: "monthly", priority: 0.6 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.7 },
   { path: "/aviso-legal", changeFrequency: "yearly", priority: 0.2 },
   { path: "/politica-privacidad", changeFrequency: "yearly", priority: 0.2 },

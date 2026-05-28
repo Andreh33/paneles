@@ -7,6 +7,8 @@ next-env.d.ts
 
 # Assets fuente del cliente (no van al deploy)
 source/extracted/
+imagenes/
+.playwright-mcp/
 
 # Lighthouse reports locales
 lighthouse-*.html

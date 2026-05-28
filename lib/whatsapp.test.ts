@@ -13,16 +13,16 @@ import type { CartItem } from "./cart-store";
 
 function makeItem(overrides: Partial<CartItem> = {}): CartItem {
   return {
-    id: "fp-pc-5-1000|50|0.5/0.5|x",
-    productSlug: "fp-pc-5-1000",
-    productName: "Panel sándwich FP-PC-5-1000",
-    productCode: "FP-PC-5-1000",
-    espesorNominal: 50,
+    id: "panel-cubierta|30|0.5/0.5|x|x",
+    productSlug: "panel-cubierta",
+    productName: "Panel sándwich cubierta",
+    productCode: "PC-CUBIERTA",
+    espesorNominal: 30,
     espesorChapa: "0.5/0.5",
     cantidad: 200,
     unit: "m2",
-    pesoUnitario: 11.77,
-    image: "/products/fp-pc-5-1000.webp",
+    pesoUnitario: 10.89,
+    image: "/products/chapas/chapa-rojo.webp",
     createdAt: 1700000000000,
     ...overrides,
   };
@@ -160,22 +160,22 @@ describe("formatCartForWhatsApp", () => {
     expect(msg).toContain("Peso total estimado: 1.250 kg");
   });
 
-  it("formatea ml en chapa perfilada correctamente", () => {
+  it("formatea ml en accesorios correctamente", () => {
     const msg = formatCartForWhatsApp(
       [
         makeItem({
-          productName: "Chapa FA-P273",
-          productCode: "FA-P273",
-          espesorNominal: 0.5,
-          espesorChapa: "0.5",
+          productName: "Cumbrera Fertelha",
+          productCode: "ACC-CUMBRERA-FERTELHA",
+          espesorNominal: 0.45,
+          espesorChapa: "0.45",
           unit: "ml",
-          cantidad: 80,
-          pesoUnitario: 4.95,
+          cantidad: 24,
+          pesoUnitario: 0,
         }),
       ],
       {}
     );
-    expect(msg).toContain("• Cantidad: 80 ml");
-    expect(msg).toContain("• Espesor nominal: 0.5 mm");
+    expect(msg).toContain("• Cantidad: 24 ml");
+    expect(msg).toContain("• Espesor nominal: 0.45 mm");
   });
 });

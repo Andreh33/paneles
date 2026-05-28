@@ -7,7 +7,6 @@ import { WhatsAppGlyph } from "./Header";
 /**
  * Botón flotante de WhatsApp, fijo abajo a la derecha.
  * Aparece tras 400 px de scroll para no competir con el hero.
- * Respeta prefers-reduced-motion.
  */
 export function WhatsAppFloating() {
   const [visible, setVisible] = useState(false);

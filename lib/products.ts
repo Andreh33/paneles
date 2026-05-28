@@ -12,7 +12,6 @@
 export type ProductCategory =
   | "cubierta"
   | "fachada"
-  | "chapa-perfilada"
   | "policarbonato"
   | "accesorio";
 
@@ -268,23 +267,23 @@ export const PRODUCTS: Product[] = [
   },
 
   // ============================================================
-  // 5.2 — FP-PC-5-1000 (cubierta, 5 grecas)
+  // PANEL SÁNDWICH CUBIERTA (5 grecas, estándar)
   // ============================================================
   {
-    slug: "fp-pc-5-1000",
-    code: "FP-PC-5-1000",
-    name: "Panel sándwich FP-PC-5-1000",
+    slug: "panel-cubierta",
+    code: "PC-CUBIERTA",
+    name: "Panel sándwich cubierta",
     category: "cubierta",
     subtype: "cinco-grecas",
     description:
-      "Panel sándwich de cubierta con 5 grecas y ancho útil 1000 mm. Disponible en 9 espesores y variante Agropanel.",
+      "Panel sándwich de cubierta con 5 grecas y ancho útil 1000 mm. Espesores 30 y 100 mm, con opción Agropanel para ambientes corrosivos.",
     longDescription:
-      "Panel de cubierta de referencia para naves industriales, agrícolas y logísticas. Las 5 grecas optimizan la evacuación de agua y la rigidez estructural. Disponible en 9 espesores nominales (de 20 a 150 mm) y con la opción Agropanel (cara interior con fibra de vidrio 0.6 mm) para ambientes corrosivos como granjas, secaderos o industria química ligera.",
+      "Panel de cubierta de referencia para naves industriales, agrícolas y logísticas. Las 5 grecas optimizan la evacuación de agua y la rigidez estructural. Disponible en dos espesores estándar (30 y 100 mm) y con la opción Agropanel (cara interior con fibra de vidrio 0.6 mm) para ambientes corrosivos como granjas, secaderos o industria química ligera. Acabado interior opcional en imitación madera para porches y vivienda.",
     applications: [
       "Naves industriales y logísticas",
       "Explotaciones agrícolas y ganaderas (variante Agropanel)",
       "Cubiertas comerciales de gran luz",
-      "Almacenes de gran superficie",
+      "Vivienda y porches (con acabado interior madera)",
     ],
     image: "/products/chapas/chapa-rojo.webp",
     widthTotal: 1000,
@@ -297,6 +296,8 @@ export const PRODUCTS: Product[] = [
       "/projects/nave-industrial-cubierta-roja.webp",
       "/projects/nave-industrial-cubierta-gris.webp",
       "/projects/paneles-en-obra-izado.webp",
+      "/projects/cubierta-plana-residencial-rojo.webp",
+      "/projects/rehabilitacion-cubierta-aluminio.webp",
     ],
     specs: expandSpecs([
       { espesor: 30, pesos: [7.22, 9.07, 10.89], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53, kcalExplicit: 0.45527 },
@@ -305,94 +306,32 @@ export const PRODUCTS: Product[] = [
   },
 
   // ============================================================
-  // 5.3 — FP-PC-TJ-1000 (cubierta tapajuntas)
+  // PANEL SÁNDWICH FACHADA — NERVADA
   // ============================================================
   {
-    slug: "fp-pc-tj-1000",
-    code: "FP-PC-TJ-1000",
-    name: "Panel sándwich FP-PC-TJ-1000",
-    category: "cubierta",
-    subtype: "tapajuntas",
-    description:
-      "Panel sándwich de cubierta con sistema tapajuntas. Solución técnica para cubiertas con requisitos de estanqueidad reforzada.",
-    longDescription:
-      "Panel de cubierta con perfil tapajuntas que oculta la fijación y refuerza la estanqueidad de las uniones. Indicado en cubiertas con baja pendiente, zonas de pluviometría alta o cuando la estética del intradós es importante. Disponible en 4 espesores y con opción Agropanel.",
-    applications: [
-      "Cubiertas con baja pendiente",
-      "Zonas de alta pluviometría",
-      "Edificación industrial con exigencia estética",
-      "Naves agrícolas (variante Agropanel)",
-    ],
-    image: "/products/chapas/chapa-gris.webp",
-    widthTotal: 1000,
-    widthUseful: 1000,
-    unit: "m2",
-    isAgropanel: true,
-    cutLengths: [...CUBIERTA_CUT_LENGTHS],
-    interiorFinishes: INTERIOR_MADERA_FINISHES,
-    specs: expandSpecs([
-      { espesor: 30, pesos: [7.47, 9.39, 11.28], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.51, kcalExplicit: 0.43809 },
-      { espesor: 100, pesos: [10.55, 12.47, 14.36], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
-    ]),
-  },
-
-  // ============================================================
-  // 5.4 — FP-PC-3-1000 (cubierta 3 grecas)
-  // ============================================================
-  {
-    slug: "fp-pc-3-1000",
-    code: "FP-PC-3-1000",
-    name: "Panel sándwich FP-PC-3-1000",
-    category: "cubierta",
-    subtype: "tres-grecas",
-    description:
-      "Panel sándwich de cubierta con 3 grecas. Geometría más esbelta para cubiertas con cargas moderadas. Disponible en 9 espesores.",
-    longDescription:
-      "Variante de 3 grecas del panel de cubierta estándar de Panelex. Misma fiabilidad estructural y térmica que el FP-PC-5-1000, pero con un perfil más esbelto que reduce sobras de corte en cubiertas con anchos no estándar. Disponible en 9 espesores y con variante Agropanel.",
-    applications: [
-      "Cubiertas de naves de luz pequeña-media",
-      "Anejos agrícolas y ganaderos",
-      "Construcciones auxiliares industriales",
-    ],
-    image: "/products/fp-pc-3-1000.webp",
-    widthTotal: 1000,
-    widthUseful: 1000,
-    unit: "m2",
-    isAgropanel: true,
-    cutLengths: [...CUBIERTA_CUT_LENGTHS],
-    interiorFinishes: INTERIOR_MADERA_FINISHES,
-    realPhotos: [
-      "/projects/cubierta-plana-residencial-rojo.webp",
-      "/projects/rehabilitacion-cubierta-aluminio.webp",
-    ],
-    specs: expandSpecs([
-      { espesor: 30, pesos: [6.86, 8.63, 10.38], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53 },
-      { espesor: 100, pesos: [9.94, 11.71, 13.46], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25 },
-    ]),
-  },
-
-  // ============================================================
-  // 5.5 — FP-PF-NERV-FN-1000 (fachada nervado, fijación vista)
-  // ============================================================
-  {
-    slug: "fp-pf-nerv-fn-1000",
-    code: "FP-PF-NERV-FN-1000",
-    name: "Panel sándwich FP-PF-NERV-FN-1000",
+    slug: "panel-fachada-nervada",
+    code: "PF-NERVADA",
+    name: "Panel sándwich fachada nervada",
     category: "fachada",
-    subtype: "nervado-fijacion-vista",
+    subtype: "nervada",
     description:
-      "Panel sándwich de fachada nervado con fijación vista. Acabado industrial clásico de gran resistencia mecánica.",
+      "Panel sándwich de fachada con superficie nervada. Acabado industrial robusto y rápido de instalar.",
     longDescription:
-      "Panel de fachada con superficie nervada y fijación vista, solución de referencia para fachadas industriales y logísticas. El nervado aporta rigidez y dinamismo visual sin perder la estética sobria propia de la nave industrial. Disponible en 5 espesores.",
+      "Panel de fachada con perfil nervado, la solución de referencia para naves industriales, almacenes y centros logísticos. El nervado aporta rigidez estructural y dinamismo visual. Disponible en dos espesores estándar: 30 mm para cerramientos ligeros y 100 mm para máxima eficiencia térmica.",
     applications: [
       "Fachadas de naves industriales",
       "Centros logísticos",
-      "Edificación industrial estándar",
+      "Almacenes y talleres",
+      "Cerramientos industriales en general",
     ],
     image: "/products/fp-pf-nerv-fn-1000.webp",
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
+    realPhotos: [
+      "/projects/nave-blanca-construccion.webp",
+      "/projects/cerramiento-fachada-blanca.webp",
+    ],
     specs: expandSpecs([
       { espesor: 30, pesos: [6.58, 8.3, 9.98], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.54 },
       { espesor: 100, pesos: [9.66, 11.38, 13.06], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23 },
@@ -400,27 +339,31 @@ export const PRODUCTS: Product[] = [
   },
 
   // ============================================================
-  // 5.6 — FP-PF-MICROP-FN-1000 (fachada microperforado, fij. vista)
+  // PANEL SÁNDWICH FACHADA — MICROPERFILADA
   // ============================================================
   {
-    slug: "fp-pf-microp-fn-1000",
-    code: "FP-PF-MICROP-FN-1000",
-    name: "Panel sándwich FP-PF-MICROP-FN-1000",
+    slug: "panel-fachada-microperfilada",
+    code: "PF-MICROPERFILADA",
+    name: "Panel sándwich fachada microperfilada",
     category: "fachada",
-    subtype: "microperforado-fijacion-vista",
+    subtype: "microperfilada",
     description:
-      "Panel sándwich de fachada microperforado con fijación vista. Acabado liso de líneas limpias para edificios con vocación estética.",
+      "Panel sándwich de fachada con superficie microperfilada, prácticamente lisa. Acabado limpio para fachadas con vocación estética.",
     longDescription:
-      "Panel de fachada con perfil microperforado que ofrece un acabado más liso y contemporáneo que el nervado clásico. Indicado para edificios industriales con presencia urbana, oficinas anexas a naves o reformas con criterio arquitectónico.",
+      "Panel de fachada con perfil microperfilado, que ofrece una apariencia casi lisa y un aspecto contemporáneo. Indicado en edificios industriales con presencia urbana, oficinas anexas a naves o reformas con criterio arquitectónico. Disponible en espesores 30 y 100 mm.",
     applications: [
-      "Fachadas de naves con presencia urbana",
-      "Edificación industrial con criterio arquitectónico",
+      "Fachadas con presencia urbana",
       "Oficinas y showrooms",
+      "Reformas con criterio arquitectónico",
+      "Edificación industrial premium",
     ],
     image: "/products/fp-pf-microp-fn-1000.webp",
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
+    realPhotos: [
+      "/projects/cerramiento-fachada-blanca.webp",
+    ],
     specs: expandSpecs([
       { espesor: 30, pesos: [6.58, 8.3, 9.98], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.54 },
       { espesor: 100, pesos: [9.66, 11.38, 13.06], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23 },
@@ -428,214 +371,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ============================================================
-  // 5.7 — FP-PF-NEVER-FO-1000 (fachada nervado, fijación oculta)
-  // ============================================================
-  {
-    slug: "fp-pf-never-fo-1000",
-    code: "FP-PF-NEVER-FO-1000",
-    name: "Panel sándwich FP-PF-NEVER-FO-1000",
-    category: "fachada",
-    subtype: "nervado-fijacion-oculta",
-    description:
-      "Panel sándwich de fachada nervado con fijación oculta. Acabado limpio sin tornillería visible.",
-    longDescription:
-      "Variante con fijación oculta del panel nervado de fachada. La tornillería queda embebida en la junta, ofreciendo un acabado más limpio y estanco. Solución indicada en fachadas singulares y edificios industriales con alta visibilidad.",
-    applications: [
-      "Fachadas singulares",
-      "Edificación industrial con alta visibilidad",
-      "Reformas con criterio arquitectónico",
-    ],
-    image: "/products/fp-pf-never-fo-1000.webp",
-    widthTotal: 1000,
-    widthUseful: 1000,
-    unit: "m2",
-    specs: expandSpecs([
-      { espesor: 30, pesos: [7.58, 8.44, 10.16], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.54 },
-      { espesor: 100, pesos: [10.66, 11.52, 13.24], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.23 },
-    ]),
-  },
-
-  // ============================================================
-  // 5.8 — FP-PF-MICROP-FO-1000 (fachada microperfilado, fij. oculta)
-  // ============================================================
-  {
-    slug: "fp-pf-microp-fo-1000",
-    code: "FP-PF-MICROP-FO-1000",
-    name: "Panel sándwich FP-PF-MICROP-FO-1000",
-    category: "fachada",
-    subtype: "microperfilado-fijacion-oculta",
-    description:
-      "Panel sándwich de fachada microperfilado con fijación oculta. La opción más limpia y contemporánea del catálogo de fachadas.",
-    longDescription:
-      "Combina las dos características más demandadas en fachada arquitectónica contemporánea: acabado microperfilado (apariencia casi lisa) y fijación oculta. Es la solución estética de gama alta dentro del catálogo de Panelex.",
-    applications: [
-      "Fachadas arquitectónicas contemporáneas",
-      "Edificación industrial premium",
-      "Showrooms y oficinas con fachada visible",
-    ],
-    image: "/products/fp-pf-microp-fo-1000.webp",
-    widthTotal: 1000,
-    widthUseful: 1000,
-    unit: "m2",
-    specs: expandSpecs([
-      { espesor: 30, pesos: [7.58, 8.44, 10.16], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.54 },
-      { espesor: 100, pesos: [10.66, 11.52, 13.24], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.23 },
-    ]),
-  },
-
-  // ============================================================
-  // 5.9 — FA-P273 (chapa perfilada trapezoidal)
-  // ============================================================
-  {
-    slug: "fa-p273",
-    code: "FA-P273",
-    name: "Chapa perfilada FA-P273",
-    category: "chapa-perfilada",
-    subtype: "trapezoidal",
-    description:
-      "Chapa perfilada trapezoidal de 30 mm de altura. Solución económica para cubiertas y forrados sin aislamiento.",
-    longDescription:
-      "Chapa perfilada de geometría trapezoidal con 30 mm de altura de greca y 1092 mm de ancho útil. Indicada para cubiertas de naves auxiliares, almacenes, vallados, cerramientos provisionales y forrados sin requisito térmico. También válida como cubierta exterior en sistemas de cubierta con aislamiento independiente.",
-    applications: [
-      "Cubiertas de almacenes y naves auxiliares",
-      "Vallados industriales",
-      "Forrados sin aislamiento",
-      "Cubiertas con aislamiento independiente",
-    ],
-    image: "/products/fa-p273.webp",
-    widthTotal: 1134,
-    widthUseful: 1092,
-    grecasHeight: 30,
-    unit: "ml",
-    specs: [
-      { espesorNominal: 0.4, chapa: "0.4", peso: 3.95 },
-      { espesorNominal: 0.5, chapa: "0.5", peso: 4.95 },
-      { espesorNominal: 0.6, chapa: "0.6", peso: 5.93 },
-    ],
-  },
-
-  // ============================================================
-  // 5.10 — FA-FT200 (chapa imitación teja)
-  // ============================================================
-  {
-    slug: "fa-ft200",
-    code: "FA-FT200",
-    name: "Chapa perfilada FA-FT200",
-    category: "chapa-perfilada",
-    subtype: "imitacion-teja",
-    description:
-      "Chapa perfilada imitación teja. Estética residencial sin aislamiento, ideal para rehabilitación y cubiertas auxiliares.",
-    longDescription:
-      "Chapa con perfil de imitación teja para cubiertas que requieren estética residencial pero sin necesidad de aislamiento térmico continuo. Habitual en porches, garajes, almacenes rurales y rehabilitación de cubiertas existentes.",
-    applications: [
-      "Porches y pérgolas",
-      "Garajes y trasteros",
-      "Almacenes rurales y agrícolas",
-      "Rehabilitación de cubiertas",
-    ],
-    image: "/products/fa-ft200.webp",
-    widthTotal: 1000,
-    widthUseful: 1000,
-    unit: "ml",
-    specs: [
-      { espesorNominal: 0.45, chapa: "0.45", peso: 4.44 },
-      { espesorNominal: 0.6, chapa: "0.6", peso: 5.93 },
-    ],
-  },
-
-  // ============================================================
-  // 5.11 — FA-C76 (chapa ondulada)
-  // ============================================================
-  {
-    slug: "fa-c76",
-    code: "FA-C76",
-    name: "Chapa perfilada FA-C76",
-    category: "chapa-perfilada",
-    subtype: "ondulada",
-    description:
-      "Chapa ondulada clásica de 19 mm de altura. Solución tradicional para cubiertas y forrados auxiliares.",
-    longDescription:
-      "Perfil de onda continua clásico, con 19 mm de altura y 1065 mm de ancho útil. Por su sencillez geométrica es la opción más fácil de manipular y montar en obras pequeñas y rehabilitaciones.",
-    applications: [
-      "Cubiertas auxiliares y de obra",
-      "Almacenes agrícolas pequeños",
-      "Forrados decorativos",
-      "Rehabilitación rural",
-    ],
-    image: "/products/fa-c76.webp",
-    widthTotal: 1115,
-    widthUseful: 1065,
-    grecasHeight: 19,
-    unit: "ml",
-    specs: [
-      { espesorNominal: 0.4, chapa: "0.4", peso: 3.95 },
-      { espesorNominal: 0.5, chapa: "0.5", peso: 4.95 },
-      { espesorNominal: 0.6, chapa: "0.6", peso: 5.93 },
-    ],
-  },
-
-  // ============================================================
-  // 5.12 — FA-A32 (chapa perfilada A32)
-  // ============================================================
-  {
-    slug: "fa-a32",
-    code: "FA-A32",
-    name: "Chapa perfilada FA-A32",
-    category: "chapa-perfilada",
-    subtype: "trapezoidal",
-    description:
-      "Chapa trapezoidal de 32 mm de altura. Equilibrio entre rigidez y ancho útil para cubiertas industriales de exigencia media.",
-    longDescription:
-      "Perfil trapezoidal de 32 mm que aporta una rigidez intermedia, adecuado para cubiertas de naves industriales y agrícolas con luces medias. Ancho útil 1000 mm, óptimo para planificación modular de obra.",
-    applications: [
-      "Cubiertas de naves industriales y agrícolas",
-      "Cubiertas con luces intermedias",
-      "Forrados estructurales",
-    ],
-    image: "/products/fa-a32.webp",
-    widthTotal: 1077,
-    widthUseful: 1000,
-    grecasHeight: 32,
-    unit: "ml",
-    specs: [
-      { espesorNominal: 0.4, chapa: "0.4", peso: 3.95 },
-      { espesorNominal: 0.5, chapa: "0.5", peso: 4.95 },
-      { espesorNominal: 0.6, chapa: "0.6", peso: 5.93 },
-    ],
-  },
-
-  // ============================================================
-  // 5.13 — FA-R45
-  // ============================================================
-  {
-    slug: "fa-r45",
-    code: "FA-R45",
-    name: "Chapa perfilada FA-R45",
-    category: "chapa-perfilada",
-    subtype: "trapezoidal",
-    description:
-      "Chapa trapezoidal compacta de 14 mm de altura. Perfil ligero para forrados, vallados y cubiertas auxiliares.",
-    longDescription:
-      "Perfil compacto de 14 mm pensado para aplicaciones donde el espacio y el peso son prioritarios sobre la rigidez. Habitual en vallados, cerramientos estéticos y forrados secundarios.",
-    applications: [
-      "Vallados y cerramientos",
-      "Forrados secundarios",
-      "Cubiertas auxiliares ligeras",
-    ],
-    image: "/products/fa-r45.webp",
-    widthTotal: 966,
-    widthUseful: 900,
-    grecasHeight: 14,
-    unit: "ml",
-    specs: [
-      { espesorNominal: 0.4, chapa: "0.4", peso: 3.95 },
-      { espesorNominal: 0.5, chapa: "0.5", peso: 4.95 },
-      { espesorNominal: 0.6, chapa: "0.6", peso: 5.93 },
-    ],
-  },
-
-  // ============================================================
-  // 5.13b — POLICARBONATO (placas translúcidas)
+  // POLICARBONATO (placas translúcidas)
   // ============================================================
   {
     slug: "policarbonato-celular",
@@ -786,7 +522,6 @@ export function calculateWeight(spec: SpecRow, cantidad: number): number {
 export const ALL_CATEGORIES: { value: ProductCategory; label: string }[] = [
   { value: "cubierta", label: "Paneles sándwich cubierta" },
   { value: "fachada", label: "Paneles sándwich fachada" },
-  { value: "chapa-perfilada", label: "Chapa perfilada" },
   { value: "policarbonato", label: "Policarbonato" },
   { value: "accesorio", label: "Remates y accesorios" },
 ];

@@ -137,7 +137,7 @@ export function ProductConfigurator({ product }: Props) {
       <Field
         label="Espesor de chapa"
         hint={
-          product.category === "chapa-perfilada" || product.category === "accesorio"
+          product.category === "accesorio"
             ? "Espesor de la chapa galvanizada"
             : "Cara exterior / interior (mm)"
         }
