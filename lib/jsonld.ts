@@ -59,8 +59,8 @@ export function localBusinessLd() {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00",
+        opens: "09:00",
+        closes: "14:00",
       },
     ],
     areaServed: [

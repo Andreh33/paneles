@@ -30,7 +30,7 @@ export const SITE = {
       name: "Ramón Romero Fernández",
       role: "Atención comercial",
     },
-    hours: "Lunes a viernes · 8:00 – 18:00",
+    hours: "Lunes a viernes · 9:00 – 14:00 · Tardes cerradas",
   },
   social: {
     linkedin: "",

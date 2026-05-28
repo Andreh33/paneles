@@ -21,6 +21,9 @@ export interface CartItem {
   cantidad: number;
   unit: Unit;
   medidaCorte?: number;
+  /** Slug del color elegido (solo Fertelha y similares). */
+  colorSlug?: string;
+  colorLabel?: string;
   notas?: string;
   /** Peso unitario en kg por unidad (m² o ml). 0 si no aplica (accesorios). */
   pesoUnitario: number;
@@ -53,9 +56,10 @@ function makeItemId(
   slug: string,
   espesor: number,
   chapa: string,
-  medida?: number
+  medida?: number,
+  colorSlug?: string
 ): string {
-  return [slug, espesor, chapa, medida ?? "x"].join("|");
+  return [slug, espesor, chapa, medida ?? "x", colorSlug ?? "x"].join("|");
 }
 
 export const useCartStore = create<CartState>()(
@@ -69,7 +73,8 @@ export const useCartStore = create<CartState>()(
           item.productSlug,
           item.espesorNominal,
           item.espesorChapa,
-          item.medidaCorte
+          item.medidaCorte,
+          item.colorSlug
         );
         set((state) => {
           const existing = state.items.find((i) => i.id === id);

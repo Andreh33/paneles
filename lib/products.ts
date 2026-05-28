@@ -13,7 +13,18 @@ export type ProductCategory =
   | "cubierta"
   | "fachada"
   | "chapa-perfilada"
+  | "policarbonato"
   | "accesorio";
+
+/** Variante de color disponible para un producto (Fertelha, etc.) */
+export interface ColorVariant {
+  /** Slug interno, ej. "terracota" */
+  slug: string;
+  /** Etiqueta visible, ej. "Terracota" */
+  label: string;
+  /** Ruta a la imagen del panel en ese color */
+  image: string;
+}
 
 export type Unit = "m2" | "ml" | "u";
 
@@ -27,6 +38,7 @@ export type ChapaThickness =
   | "0.3/0.45"
   | "0.4/0.4"
   | "0.5/0.5"
+  | "0.3"
   | "0.4"
   | "0.45"
   | "0.5"
@@ -75,6 +87,8 @@ export interface Product {
   cutLengths?: number[];
   /** Para accesorios: longitud fija (ml) */
   fixedLength?: { total: number; useful: number };
+  /** Variantes de color disponibles (solo Fertelha y similares de teja) */
+  colors?: ColorVariant[];
   specs: SpecRow[];
 }
 
@@ -88,12 +102,39 @@ export const KCAL_FACTOR = 0.859;
 /** Carga útil aproximada de un camión completo (kg). §6.2 alerta UX. */
 export const TRUCK_MAX_PAYLOAD_KG = 24000;
 
-/** Medidas de corte estándar Fertelha (mm) — §5.1 brief */
+/**
+ * Medidas de corte estándar Fertelha (imitación teja).
+ * Múltiplos de 350 mm, mínimo 1050 mm, máximo 14000 mm.
+ */
 export const FERTELHA_CUT_LENGTHS = [
+  1050, 1400, 1750, 2100, 2450, 2800, 3150, 3500, 3850, 4200, 4550, 4900, 5250,
+  5600, 5950, 6300, 6650, 7000, 7350, 7700, 8050, 8400, 8750, 9100, 9450, 9800,
+  10150, 10500, 10850, 11200, 11550, 11900, 12250, 12600, 12950, 13300, 13650,
+  14000,
+] as const;
+
+/**
+ * Medidas de corte estándar para paneles de cubierta no-teja (PC-5, PC-3, TJ).
+ * Múltiplos de 350 mm desde 2100 mm hasta 14000 mm.
+ */
+export const CUBIERTA_CUT_LENGTHS = [
   2100, 2450, 2800, 3150, 3500, 3850, 4200, 4550, 4900, 5250, 5600, 5950, 6300,
   6650, 7000, 7350, 7700, 8050, 8400, 8750, 9100, 9450, 9800, 10150, 10500,
   10850, 11200, 11550, 11900, 12250, 12600, 12950, 13300, 13650, 14000,
 ] as const;
+
+/**
+ * Colores estándar de la gama imitación teja (Fertelha).
+ * Las imágenes están en /public/products/colores/.
+ */
+export const FERTELHA_COLORS: ColorVariant[] = [
+  { slug: "terracota", label: "Terracota", image: "/products/colores/terracota.webp" },
+  { slug: "chocolate", label: "Chocolate", image: "/products/colores/chocolate.webp" },
+  { slug: "rojo", label: "Rojo", image: "/products/colores/rojo.webp" },
+  { slug: "gris", label: "Gris", image: "/products/colores/gris.webp" },
+  { slug: "granate", label: "Granate", image: "/products/colores/granate.webp" },
+  { slug: "negro", label: "Negro", image: "/products/colores/negro.webp" },
+];
 
 // ----------------------------------------------------------------------------
 // HELPERS DE CONSTRUCCIÓN (uso interno)
@@ -161,15 +202,15 @@ export const PRODUCTS: Product[] = [
       "Rehabilitación de cubiertas existentes",
       "Edificación residencial con normativa estética",
     ],
-    image: "/products/fp-fertelha.webp",
+    image: "/products/colores/terracota.webp",
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
     cutLengths: [...FERTELHA_CUT_LENGTHS],
+    colors: FERTELHA_COLORS,
     specs: [
-      { espesorNominal: 30, chapa: "0.3/0.45", peso: 9.5, uWmK: 0.401, uKcal: 0.344459 },
       { espesorNominal: 40, chapa: "0.3/0.45", peso: 9.94, uWmK: 0.358, uKcal: 0.307522 },
-      { espesorNominal: 50, chapa: "0.3/0.45", peso: 10.38, uWmK: 0.325, uKcal: 0.279175 },
+      { espesorNominal: 80, chapa: "0.3/0.45", peso: 11.7, uWmK: 0.27, uKcal: 0.23193 },
     ],
   },
 
@@ -192,21 +233,15 @@ export const PRODUCTS: Product[] = [
       "Cubiertas comerciales de gran luz",
       "Almacenes de gran superficie",
     ],
-    image: "/products/fp-pc-5-1000.webp",
+    image: "/products/chapas/chapa-rojo.webp",
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
     isAgropanel: true,
+    cutLengths: [...CUBIERTA_CUT_LENGTHS],
     specs: expandSpecs([
-      { espesor: 20, pesos: [6.78, 8.63, 10.45], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.65, kcalExplicit: 0.55835 },
       { espesor: 30, pesos: [7.22, 9.07, 10.89], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53, kcalExplicit: 0.45527 },
-      { espesor: 40, pesos: [7.66, 9.51, 11.33], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.45, kcalExplicit: 0.38655 },
-      { espesor: 50, pesos: [8.1, 9.95, 11.77], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.4, kcalExplicit: 0.3436 },
-      { espesor: 60, pesos: [8.54, 10.39, 12.21], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.35, kcalExplicit: 0.30065 },
-      { espesor: 80, pesos: [9.42, 11.27, 13.09], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.29, kcalExplicit: 0.24911 },
       { espesor: 100, pesos: [10.3, 12.15, 13.97], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
-      { espesor: 120, pesos: [11.18, 13.03, 14.85], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23, kcalExplicit: 0.19757 },
-      { espesor: 150, pesos: [12.5, 14.35, 16.17], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.2, kcalExplicit: 0.1718 },
     ]),
   },
 
@@ -229,16 +264,15 @@ export const PRODUCTS: Product[] = [
       "Edificación industrial con exigencia estética",
       "Naves agrícolas (variante Agropanel)",
     ],
-    image: "/products/fp-pc-tj-1000.webp",
+    image: "/products/chapas/chapa-gris.webp",
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
     isAgropanel: true,
+    cutLengths: [...CUBIERTA_CUT_LENGTHS],
     specs: expandSpecs([
       { espesor: 30, pesos: [7.47, 9.39, 11.28], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.51, kcalExplicit: 0.43809 },
-      { espesor: 40, pesos: [7.91, 9.83, 11.72], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.45, kcalExplicit: 0.38655 },
-      { espesor: 50, pesos: [8.35, 10.27, 12.16], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.4, kcalExplicit: 0.3436 },
-      { espesor: 60, pesos: [8.79, 10.71, 12.6], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.36, kcalExplicit: 0.30924 },
+      { espesor: 100, pesos: [10.55, 12.47, 14.36], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
     ]),
   },
 
@@ -265,16 +299,10 @@ export const PRODUCTS: Product[] = [
     widthUseful: 1000,
     unit: "m2",
     isAgropanel: true,
+    cutLengths: [...CUBIERTA_CUT_LENGTHS],
     specs: expandSpecs([
-      { espesor: 20, pesos: [6.42, 8.19, 9.94], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.65 },
       { espesor: 30, pesos: [6.86, 8.63, 10.38], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53 },
-      { espesor: 40, pesos: [7.3, 9.07, 10.82], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.45 },
-      { espesor: 50, pesos: [7.74, 9.51, 11.26], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.4 },
-      { espesor: 60, pesos: [8.18, 9.95, 11.7], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.35 },
-      { espesor: 80, pesos: [9.06, 10.83, 12.58], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.29 },
       { espesor: 100, pesos: [9.94, 11.71, 13.46], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25 },
-      { espesor: 120, pesos: [10.82, 12.59, 14.34], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23 },
-      { espesor: 150, pesos: [12.14, 13.91, 15.66], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.2 },
     ]),
   },
 
@@ -302,10 +330,7 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     specs: expandSpecs([
       { espesor: 30, pesos: [6.58, 8.3, 9.98], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.54 },
-      { espesor: 40, pesos: [7.02, 8.74, 10.42], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.43 },
-      { espesor: 50, pesos: [7.46, 9.18, 10.82], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.36 },
-      { espesor: 60, pesos: [7.9, 9.62, 11.3], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.32 },
-      { espesor: 80, pesos: [8.78, 10.5, 12.18], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.26 },
+      { espesor: 100, pesos: [9.66, 11.38, 13.06], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23 },
     ]),
   },
 
@@ -332,10 +357,8 @@ export const PRODUCTS: Product[] = [
     widthUseful: 1000,
     unit: "m2",
     specs: expandSpecs([
-      { espesor: 40, pesos: [7.02, 8.74, 10.42], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.43 },
-      { espesor: 50, pesos: [7.46, 9.18, 10.82], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.36 },
-      { espesor: 60, pesos: [7.9, 9.62, 11.3], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.32 },
-      { espesor: 80, pesos: [8.78, 10.5, 12.18], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.26 },
+      { espesor: 30, pesos: [6.58, 8.3, 9.98], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.54 },
+      { espesor: 100, pesos: [9.66, 11.38, 13.06], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.23 },
     ]),
   },
 
@@ -363,9 +386,7 @@ export const PRODUCTS: Product[] = [
     unit: "m2",
     specs: expandSpecs([
       { espesor: 30, pesos: [7.58, 8.44, 10.16], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.54 },
-      { espesor: 40, pesos: [8.02, 8.88, 10.6], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.43 },
-      { espesor: 50, pesos: [8.46, 9.32, 11.04], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.36 },
-      { espesor: 60, pesos: [8.9, 9.76, 11.48], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.32 },
+      { espesor: 100, pesos: [10.66, 11.52, 13.24], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.23 },
     ]),
   },
 
@@ -392,9 +413,8 @@ export const PRODUCTS: Product[] = [
     widthUseful: 1000,
     unit: "m2",
     specs: expandSpecs([
-      { espesor: 40, pesos: [8.02, 8.88, 10.6], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.43 },
-      { espesor: 50, pesos: [8.46, 9.32, 11.04], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.36 },
-      { espesor: 60, pesos: [8.9, 9.76, 11.48], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.32 },
+      { espesor: 30, pesos: [7.58, 8.44, 10.16], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.54 },
+      { espesor: 100, pesos: [10.66, 11.52, 13.24], chapas: ["0.3/0.4", "0.4/0.4", "0.5/0.5"], u: 0.23 },
     ]),
   },
 
@@ -550,6 +570,62 @@ export const PRODUCTS: Product[] = [
   },
 
   // ============================================================
+  // 5.13b — POLICARBONATO (placas translúcidas)
+  // ============================================================
+  {
+    slug: "policarbonato-celular",
+    code: "PC-CELULAR",
+    name: "Placa de policarbonato celular",
+    category: "policarbonato",
+    subtype: "celular",
+    description:
+      "Placa de policarbonato celular translúcido para cubiertas que requieren paso de luz natural. Disponible en varios espesores.",
+    longDescription:
+      "El policarbonato celular es la solución más utilizada cuando se necesita iluminación natural sin renunciar a aislamiento térmico ligero. Se monta combinado con paneles sándwich o con chapa perfilada para crear zonas de luz natural en naves, almacenes, invernaderos, porches y pérgolas. Resistente a impactos, con protección UV en la cara exterior.",
+    applications: [
+      "Lucernarios en cubiertas de nave",
+      "Cubiertas de porches y pérgolas",
+      "Invernaderos y secaderos",
+      "Cerramientos translúcidos",
+    ],
+    image: "/products/policarbonato-celular.webp",
+    widthTotal: 2100,
+    widthUseful: 2100,
+    unit: "m2",
+    specs: [
+      { espesorNominal: 6, chapa: "0.3", peso: 1.3 },
+      { espesorNominal: 10, chapa: "0.4", peso: 1.7 },
+      { espesorNominal: 16, chapa: "0.4", peso: 2.7 },
+    ],
+  },
+  {
+    slug: "policarbonato-compacto",
+    code: "PC-COMPACTO",
+    name: "Placa de policarbonato compacto",
+    category: "policarbonato",
+    subtype: "compacto",
+    description:
+      "Policarbonato compacto translúcido de alta resistencia al impacto. Indicado para marquesinas, claraboyas y cerramientos vidriados.",
+    longDescription:
+      "El policarbonato compacto es prácticamente irrompible y deja pasar la luz como el vidrio, pero con una fracción del peso. Habitual en marquesinas, claraboyas, cerramientos vandálicos y separadores translúcidos.",
+    applications: [
+      "Marquesinas y claraboyas",
+      "Cerramientos antivandálicos",
+      "Separadores translúcidos",
+      "Cubiertas de paso de luz",
+    ],
+    image: "/products/policarbonato-compacto.webp",
+    widthTotal: 2050,
+    widthUseful: 2050,
+    unit: "m2",
+    specs: [
+      { espesorNominal: 3, chapa: "0.3", peso: 3.6 },
+      { espesorNominal: 4, chapa: "0.4", peso: 4.8 },
+      { espesorNominal: 5, chapa: "0.5", peso: 6.0 },
+    ],
+  },
+
+  // ============================================================
   // 5.14 — Accesorios Fertelha (3 SKUs)
   // ============================================================
   {
@@ -645,5 +721,6 @@ export const ALL_CATEGORIES: { value: ProductCategory; label: string }[] = [
   { value: "cubierta", label: "Paneles sándwich cubierta" },
   { value: "fachada", label: "Paneles sándwich fachada" },
   { value: "chapa-perfilada", label: "Chapa perfilada" },
-  { value: "accesorio", label: "Accesorios" },
+  { value: "policarbonato", label: "Policarbonato" },
+  { value: "accesorio", label: "Remates y accesorios" },
 ];

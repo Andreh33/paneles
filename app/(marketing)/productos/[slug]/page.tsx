@@ -8,7 +8,7 @@ import {
   getProductBySlug,
   getProductsByCategory,
 } from "@/lib/products";
-import { ProductImage } from "@/components/product/ProductImage";
+import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductTabs } from "@/components/product/ProductTabs";
 import { ProductConfigurator } from "@/components/product/ProductConfigurator";
 import { ProductCard } from "@/components/product/ProductCard";
@@ -112,32 +112,8 @@ export default async function ProductPage({ params }: RouteParams) {
           <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-14">
             {/* Columna izquierda */}
             <div className="space-y-10">
-              {/* Galería */}
-              <div className="space-y-4">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-white">
-                  <ProductImage
-                    product={product}
-                    priority
-                    sizes="(min-width: 1024px) 60vw, 100vw"
-                  />
-                  {product.isAgropanel && (
-                    <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-deep)] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
-                      Agropanel disponible
-                    </span>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-3 gap-3">
-                  <ThumbPlaceholder label="Render 3D" active />
-                  <ThumbPlaceholder label="Sección" />
-                  <ThumbPlaceholder label="Instalación" />
-                </div>
-                <p className="text-[11px] text-[var(--color-muted)]">
-                  Las imágenes son referenciales. Renders reales del catálogo
-                  se incorporarán al finalizar la extracción de assets (tarea
-                  #4).
-                </p>
-              </div>
+              {/* Galería + selector de colores (si aplica) */}
+              <ProductGallery product={product} />
 
               {/* Encabezado producto (visible solo en mobile, en desktop está a la derecha) */}
               <div className="lg:hidden">
@@ -218,23 +194,3 @@ function ProductHeading({
   );
 }
 
-function ThumbPlaceholder({
-  label,
-  active,
-}: {
-  label: string;
-  active?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        "flex aspect-[4/3] items-center justify-center rounded-2xl border bg-white text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted)]",
-        active
-          ? "border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/20"
-          : "border-[var(--color-border)]",
-      ].join(" ")}
-    >
-      {label}
-    </div>
-  );
-}
