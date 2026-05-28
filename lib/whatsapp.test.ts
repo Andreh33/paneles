@@ -13,10 +13,10 @@ import type { CartItem } from "./cart-store";
 
 function makeItem(overrides: Partial<CartItem> = {}): CartItem {
   return {
-    id: "panel-cubierta|30|0.5/0.5|x|x",
-    productSlug: "panel-cubierta",
-    productName: "Panel sándwich cubierta",
-    productCode: "PC-CUBIERTA",
+    id: "panel-cubierta-rojo|30|0.5/0.5|x",
+    productSlug: "panel-cubierta-rojo",
+    productName: "Panel sándwich cubierta — Rojo",
+    productCode: "PC-CUBIERTA-ROJO",
     espesorNominal: 30,
     espesorChapa: "0.5/0.5",
     cantidad: 200,

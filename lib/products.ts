@@ -15,16 +15,6 @@ export type ProductCategory =
   | "policarbonato"
   | "accesorio";
 
-/** Variante de color disponible para un producto (Fertelha, etc.) */
-export interface ColorVariant {
-  /** Slug interno, ej. "terracota" */
-  slug: string;
-  /** Etiqueta visible, ej. "Terracota" */
-  label: string;
-  /** Ruta a la imagen del panel en ese color */
-  image: string;
-}
-
 /**
  * Acabado de la cara INTERIOR del panel sándwich (intradós).
  * Lo que se ve al mirar desde abajo. Por defecto es lacado liso;
@@ -100,8 +90,6 @@ export interface Product {
   cutLengths?: number[];
   /** Para accesorios: longitud fija (ml) */
   fixedLength?: { total: number; useful: number };
-  /** Variantes de color disponibles (solo Fertelha y similares de teja) */
-  colors?: ColorVariant[];
   /** Acabados de la cara interior (intradós), p.ej. imitación madera */
   interiorFinishes?: InteriorFinish[];
   /** Galería extra: fotos reales de obra para la ficha del producto */
@@ -142,16 +130,18 @@ export const CUBIERTA_CUT_LENGTHS = [
 
 /**
  * Colores estándar de la gama imitación teja (Fertelha).
- * Las imágenes están en /public/products/colores/.
+ * Cada color es un producto independiente: se monta con makeFertelhaProduct.
  */
-export const FERTELHA_COLORS: ColorVariant[] = [
-  { slug: "terracota", label: "Terracota", image: "/products/colores/terracota.webp" },
-  { slug: "chocolate", label: "Chocolate", image: "/products/colores/chocolate.webp" },
-  { slug: "rojo", label: "Rojo", image: "/products/colores/rojo.webp" },
-  { slug: "gris", label: "Gris", image: "/products/colores/gris.webp" },
-  { slug: "granate", label: "Granate", image: "/products/colores/granate.webp" },
-  { slug: "negro", label: "Negro", image: "/products/colores/negro.webp" },
-];
+const FERTELHA_COLORS = [
+  { slug: "terracota", label: "Terracota" },
+  { slug: "chocolate", label: "Chocolate" },
+  { slug: "rojo", label: "Rojo" },
+  { slug: "gris", label: "Gris" },
+  { slug: "granate", label: "Granate" },
+  { slug: "negro", label: "Negro" },
+] as const;
+
+type FertelhaColor = (typeof FERTELHA_COLORS)[number]["slug"];
 
 /**
  * Acabados imitación madera para la cara INTERIOR (intradós) del panel.
@@ -229,32 +219,29 @@ function expandSpecs(
 // CATÁLOGO
 // ----------------------------------------------------------------------------
 
-export const PRODUCTS: Product[] = [
-  // ============================================================
-  // 5.1 — FP FERTELHA (cubierta, imitación teja)
-  // ============================================================
-  {
-    slug: "fp-fertelha",
-    code: "FP-FERTELHA",
-    name: "Panel sándwich FP Fertelha",
+function makeFertelhaProduct(color: {
+  slug: FertelhaColor;
+  label: string;
+}): Product {
+  return {
+    slug: `fertelha-${color.slug}`,
+    code: `FERTELHA-${color.slug.toUpperCase()}`,
+    name: `Panel sándwich Fertelha — ${color.label}`,
     category: "cubierta",
     subtype: "imitacion-teja",
-    description:
-      "Panel sándwich para cubierta con acabado imitación teja. Estética residencial con prestaciones industriales.",
-    longDescription:
-      "El panel FP Fertelha combina la apariencia clásica de cubierta de teja con las ventajas del panel sándwich: aislamiento térmico continuo, ligereza, rapidez de montaje y durabilidad. Disponible en tres espesores y con corte a medida hasta 14 metros, es la solución óptima para vivienda unifamiliar, naves agrícolas con exigencia estética y rehabilitación de cubiertas.",
+    description: `Panel sándwich imitación teja en color ${color.label.toLowerCase()}. Estética residencial con prestaciones industriales, en 40 y 80 mm.`,
+    longDescription: `El panel Fertelha en acabado ${color.label.toLowerCase()} combina la apariencia clásica de cubierta de teja con las ventajas del panel sándwich: aislamiento térmico continuo, ligereza, rapidez de montaje y durabilidad. Disponible en dos espesores (40 y 80 mm) y con corte a medida desde 1,05 m hasta 14 m en múltiplos de 35 cm. Solución óptima para vivienda unifamiliar, naves agrícolas con exigencia estética y rehabilitación de cubiertas.`,
     applications: [
       "Cubierta de vivienda unifamiliar",
       "Naves agrícolas en entornos rurales",
       "Rehabilitación de cubiertas existentes",
       "Edificación residencial con normativa estética",
     ],
-    image: "/products/colores/terracota.webp",
+    image: `/products/colores/${color.slug}.webp`,
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
     cutLengths: [...FERTELHA_CUT_LENGTHS],
-    colors: FERTELHA_COLORS,
     interiorFinishes: INTERIOR_MADERA_FINISHES,
     realPhotos: [
       "/products/real/fertelha-cotas-40-80.webp",
@@ -264,46 +251,64 @@ export const PRODUCTS: Product[] = [
       { espesorNominal: 40, chapa: "0.3/0.45", peso: 9.94, uWmK: 0.358, uKcal: 0.307522 },
       { espesorNominal: 80, chapa: "0.3/0.45", peso: 11.7, uWmK: 0.27, uKcal: 0.23193 },
     ],
-  },
+  };
+}
 
-  // ============================================================
-  // PANEL SÁNDWICH CUBIERTA (5 grecas, estándar)
-  // ============================================================
-  {
-    slug: "panel-cubierta",
-    code: "PC-CUBIERTA",
-    name: "Panel sándwich cubierta",
+function makePanelCubiertaProduct(color: {
+  slug: "rojo" | "gris";
+  label: string;
+}): Product {
+  return {
+    slug: `panel-cubierta-${color.slug}`,
+    code: `PC-CUBIERTA-${color.slug.toUpperCase()}`,
+    name: `Panel sándwich cubierta — ${color.label}`,
     category: "cubierta",
     subtype: "cinco-grecas",
-    description:
-      "Panel sándwich de cubierta con 5 grecas y ancho útil 1000 mm. Espesores 30 y 100 mm, con opción Agropanel para ambientes corrosivos.",
-    longDescription:
-      "Panel de cubierta de referencia para naves industriales, agrícolas y logísticas. Las 5 grecas optimizan la evacuación de agua y la rigidez estructural. Disponible en dos espesores estándar (30 y 100 mm) y con la opción Agropanel (cara interior con fibra de vidrio 0.6 mm) para ambientes corrosivos como granjas, secaderos o industria química ligera. Acabado interior opcional en imitación madera para porches y vivienda.",
+    description: `Panel sándwich de cubierta con 5 grecas en color ${color.label.toLowerCase()}. Espesores 30 y 100 mm, opción Agropanel.`,
+    longDescription: `Panel de cubierta de referencia para naves industriales, agrícolas y logísticas en acabado ${color.label.toLowerCase()}. Las 5 grecas optimizan la evacuación de agua y la rigidez estructural. Disponible en dos espesores estándar (30 y 100 mm) y con la opción Agropanel (cara interior con fibra de vidrio 0.6 mm) para ambientes corrosivos. Acabado interior opcional en imitación madera para porches y vivienda.`,
     applications: [
       "Naves industriales y logísticas",
       "Explotaciones agrícolas y ganaderas (variante Agropanel)",
       "Cubiertas comerciales de gran luz",
       "Vivienda y porches (con acabado interior madera)",
     ],
-    image: "/products/chapas/chapa-rojo.webp",
+    image: `/products/chapas/chapa-${color.slug}.webp`,
     widthTotal: 1000,
     widthUseful: 1000,
     unit: "m2",
     isAgropanel: true,
     cutLengths: [...CUBIERTA_CUT_LENGTHS],
     interiorFinishes: INTERIOR_MADERA_FINISHES,
-    realPhotos: [
-      "/projects/nave-industrial-cubierta-roja.webp",
-      "/projects/nave-industrial-cubierta-gris.webp",
-      "/projects/paneles-en-obra-izado.webp",
-      "/projects/cubierta-plana-residencial-rojo.webp",
-      "/projects/rehabilitacion-cubierta-aluminio.webp",
-    ],
+    realPhotos:
+      color.slug === "rojo"
+        ? [
+            "/projects/nave-industrial-cubierta-roja.webp",
+            "/projects/cubierta-plana-residencial-rojo.webp",
+            "/projects/nave-cubierta-roja-detalle.webp",
+          ]
+        : [
+            "/projects/nave-industrial-cubierta-gris.webp",
+            "/projects/paneles-en-obra-izado.webp",
+            "/projects/rehabilitacion-cubierta-aluminio.webp",
+          ],
     specs: expandSpecs([
       { espesor: 30, pesos: [7.22, 9.07, 10.89], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.53, kcalExplicit: 0.45527 },
       { espesor: 100, pesos: [10.3, 12.15, 13.97], chapas: ["0.3/0.3", "0.4/0.4", "0.5/0.5"], u: 0.25, kcalExplicit: 0.21475 },
     ]),
-  },
+  };
+}
+
+export const PRODUCTS: Product[] = [
+  // ============================================================
+  // FERTELHA (imitación teja) — 6 colores como 6 productos
+  // ============================================================
+  ...FERTELHA_COLORS.map(makeFertelhaProduct),
+
+  // ============================================================
+  // PANEL SÁNDWICH CUBIERTA (5 grecas) — 2 colores como 2 productos
+  // ============================================================
+  makePanelCubiertaProduct({ slug: "rojo", label: "Rojo" }),
+  makePanelCubiertaProduct({ slug: "gris", label: "Gris" }),
 
   // ============================================================
   // PANEL SÁNDWICH FACHADA — NERVADA

@@ -15,12 +15,14 @@ import { localBusinessLd, organizationLd } from "@/lib/jsonld";
  * principales con un ejemplo característico de cada subtipo.
  */
 const FEATURED_SLUGS = [
-  "fp-fertelha",
-  "panel-cubierta",
+  "fertelha-terracota",
+  "fertelha-chocolate",
+  "fertelha-gris",
+  "panel-cubierta-rojo",
+  "panel-cubierta-gris",
   "panel-fachada-nervada",
   "panel-fachada-microperfilada",
   "policarbonato-celular",
-  "policarbonato-compacto",
 ] as const;
 
 export default function HomePage() {

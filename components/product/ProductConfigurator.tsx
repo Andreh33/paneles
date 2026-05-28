@@ -38,10 +38,6 @@ export function ProductConfigurator({ product }: Props) {
   const [medidaCorte, setMedidaCorte] = useState<number | undefined>(
     product.cutLengths?.[0]
   );
-  const [colorSlug, setColorSlug] = useState<string | undefined>(
-    product.colors?.[0]?.slug
-  );
-  const colorLabel = product.colors?.find((c) => c.slug === colorSlug)?.label;
   const [notas, setNotas] = useState("");
   const [justAdded, setJustAdded] = useState(false);
 
@@ -57,8 +53,6 @@ export function ProductConfigurator({ product }: Props) {
 
   function handleAddToCart() {
     if (!spec) return;
-    const colorImage =
-      product.colors?.find((c) => c.slug === colorSlug)?.image;
     addItem({
       productSlug: product.slug,
       productName: product.name,
@@ -68,11 +62,9 @@ export function ProductConfigurator({ product }: Props) {
       cantidad,
       unit: product.unit,
       medidaCorte,
-      colorSlug,
-      colorLabel,
       notas: notas.trim() || undefined,
       pesoUnitario: spec.peso,
-      image: colorImage ?? product.image,
+      image: product.image,
     });
     setJustAdded(true);
     setTimeout(() => {
@@ -91,7 +83,6 @@ export function ProductConfigurator({ product }: Props) {
       `• Cantidad: ${cantidad} ${unidadLabel}`,
     ];
     if (medidaCorte) lines.push(`• Medida de corte: ${medidaCorte} mm`);
-    if (colorLabel) lines.push(`• Color: ${colorLabel}`);
     if (spec) lines.push(`• Peso estimado: ${pesoTotal} kg`);
     if (notas.trim()) {
       lines.push("", `Notas: ${notas.trim()}`);
@@ -222,35 +213,6 @@ export function ProductConfigurator({ product }: Props) {
         </Field>
       )}
 
-      {/* Color (solo si aplica) */}
-      {product.colors && product.colors.length > 0 && (
-        <Field
-          label="Color"
-          hint={`${product.colors.length} acabados disponibles`}
-        >
-          <div className="flex flex-wrap gap-2">
-            {product.colors.map((c) => {
-              const active = c.slug === colorSlug;
-              return (
-                <button
-                  key={c.slug}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => setColorSlug(c.slug)}
-                  className={[
-                    "rounded-xl border px-3 py-2 text-sm font-semibold transition",
-                    active
-                      ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
-                      : "border-[var(--color-border)] bg-white text-[var(--color-text)] hover:border-[var(--color-primary)]",
-                  ].join(" ")}
-                >
-                  {c.label}
-                </button>
-              );
-            })}
-          </div>
-        </Field>
-      )}
 
       {/* Notas */}
       <Field label="Notas / requisitos especiales" hint="Opcional">

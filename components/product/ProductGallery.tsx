@@ -9,11 +9,8 @@ interface Props {
   product: Product;
 }
 
-type SlideKind = "color" | "real" | "interior";
-
 interface Slide {
   key: string;
-  kind: SlideKind;
   image: string;
   label: string;
   caption?: string;
@@ -21,27 +18,23 @@ interface Slide {
 
 /**
  * Galería de la ficha de producto:
- * - Si hay `colors`, el primer bloque son los 6 colores con selector.
- * - Si hay `realPhotos`, debajo aparecen fotos reales de obra.
- * - Si hay `interiorFinishes` (madera), se ven como acabados del intradós.
+ * - Render principal arriba
+ * - Tira de acabados interiores (imitación madera) si aplica
+ * - Tira de obras reales si aplica
  */
 export function ProductGallery({ product }: Props) {
   const slides = useMemo<Slide[]>(() => {
-    const out: Slide[] = [];
-    for (const c of product.colors ?? []) {
-      out.push({
-        key: `color:${c.slug}`,
-        kind: "color",
-        image: c.image,
-        label: c.label,
-        caption: `Color ${c.label}`,
-      });
-    }
+    const out: Slide[] = [
+      {
+        key: "main",
+        image: product.image,
+        label: product.name,
+      },
+    ];
     for (const f of product.interiorFinishes ?? []) {
       if (f.realPhoto) {
         out.push({
           key: `interior:${f.slug}`,
-          kind: "interior",
           image: f.realPhoto,
           label: f.label,
           caption: `Acabado interior — ${f.label}`,
@@ -51,7 +44,6 @@ export function ProductGallery({ product }: Props) {
     for (const img of product.realPhotos ?? []) {
       out.push({
         key: `real:${img}`,
-        kind: "real",
         image: img,
         label: "Obra real",
         caption: "Foto en obra",
@@ -60,10 +52,8 @@ export function ProductGallery({ product }: Props) {
     return out;
   }, [product]);
 
-  const [activeKey, setActiveKey] = useState<string | null>(
-    slides[0]?.key ?? null
-  );
-  const activeSlide = slides.find((s) => s.key === activeKey);
+  const [activeKey, setActiveKey] = useState<string>(slides[0]?.key ?? "main");
+  const activeSlide = slides.find((s) => s.key === activeKey) ?? slides[0];
   const activeImage = activeSlide?.image ?? product.image;
   const activeCaption = activeSlide?.caption;
 
@@ -98,19 +88,6 @@ export function ProductGallery({ product }: Props) {
           </span>
         )}
       </div>
-
-      {product.colors && product.colors.length > 0 && (
-        <GalleryRow
-          title="Color exterior"
-          items={product.colors.map((c) => ({
-            key: `color:${c.slug}`,
-            label: c.label,
-            image: c.image,
-          }))}
-          activeKey={activeKey}
-          onSelect={setActiveKey}
-        />
-      )}
 
       {product.interiorFinishes && product.interiorFinishes.length > 0 && (
         <GalleryRow
