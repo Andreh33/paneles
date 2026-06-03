@@ -40,6 +40,14 @@ export function Footer() {
                 <span className="font-mono">{SITE.contact.phone}</span>
               </a>
               <a
+                href={`tel:${SITE.contact.phoneOffice.replace(/\s/g, "")}`}
+                className="flex items-center gap-2 transition hover:text-white"
+              >
+                <Phone className="h-4 w-4 text-[var(--color-accent-soft)]" />
+                <span className="font-mono">{SITE.contact.phoneOffice}</span>
+                <span className="text-white/40">· Oficina</span>
+              </a>
+              <a
                 href={`mailto:${SITE.contact.email}`}
                 className="flex items-center gap-2 transition hover:text-white"
               >
@@ -130,12 +138,10 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/70 md:flex-row md:items-center">
           <p>
-            © {year} {SITE.legalName} · CIF{" "}
-            <span className="font-mono">{SITE.cif}</span> · Todos los derechos
-            reservados.
+            © {year} {SITE.legalName} · Todos los derechos reservados.
           </p>
           <p className="font-mono">
-            Hecho en Extremadura ·{" "}
+            Creado a medida ·{" "}
             <span className="text-[var(--color-accent-soft)]">●</span> Made for
             steel.
           </p>

@@ -42,7 +42,7 @@ export function Hero() {
         <h1 className="mt-8 max-w-5xl font-display text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl lg:text-[6.5rem]">
           Panel sándwich
           <br />
-          <span className="text-[var(--color-primary-soft)]">hecho en Extremadura,</span>
+          <span className="text-[var(--color-primary-soft)]">creado a medida,</span>
           <br />
           montado en toda Iberia.
         </h1>

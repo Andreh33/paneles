@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 interface Stat {
   /** Valor numérico final */
   value: number;
+  /** Texto fijo (sin contador animado), ej. "Toda España". Tiene prioridad sobre value. */
+  text?: string;
   /** Sufijo a mostrar tras el número (ej. "+", "k+", " km") */
   suffix?: string;
   /** Prefijo opcional */
@@ -37,7 +39,7 @@ const DEFAULT_STATS: Stat[] = [
   { value: 15, suffix: "+", label: "Años fabricando" },
   { value: 500, suffix: "k m²", label: "Fabricados" },
   { value: 800, suffix: "+", label: "Proyectos entregados" },
-  { value: 600, suffix: " km", label: "Radio de entrega" },
+  { value: 0, text: "Toda España", label: "Radio de entrega" },
 ];
 
 function StatCell({ stat }: { stat: Stat }) {
@@ -47,7 +49,7 @@ function StatCell({ stat }: { stat: Stat }) {
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || stat.text) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -60,15 +62,21 @@ function StatCell({ stat }: { stat: Stat }) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [stat.value, animated]);
+  }, [stat.value, stat.text, animated]);
 
   return (
     <div ref={ref} className="px-4 py-6 md:px-8 md:py-10">
-      <p className="font-display text-3xl font-semibold tabular-nums md:text-5xl">
-        {stat.prefix}
-        {displayed}
-        {stat.suffix}
-      </p>
+      {stat.text ? (
+        <p className="font-display text-2xl font-semibold leading-tight md:text-4xl">
+          {stat.text}
+        </p>
+      ) : (
+        <p className="font-display text-3xl font-semibold tabular-nums md:text-5xl">
+          {stat.prefix}
+          {displayed}
+          {stat.suffix}
+        </p>
+      )}
       <p className="mt-1 text-xs uppercase tracking-wider text-white/50 md:text-sm">
         {stat.label}
       </p>

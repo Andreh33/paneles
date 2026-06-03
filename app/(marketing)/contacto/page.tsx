@@ -58,13 +58,13 @@ export default function ContactoPage() {
               />
               <ContactCard
                 Icon={Phone}
-                title="Teléfono"
+                title="Teléfono oficina"
                 primary={
                   <a
-                    href={`tel:${SITE.contact.phone.replace(/\s/g, "")}`}
+                    href={`tel:${SITE.contact.phoneOffice.replace(/\s/g, "")}`}
                     className="font-mono text-base text-[var(--color-text)] hover:text-[var(--color-primary)]"
                   >
-                    {SITE.contact.phone}
+                    {SITE.contact.phoneOffice}
                   </a>
                 }
                 secondary={SITE.contact.hours}

@@ -137,8 +137,8 @@ const FERTELHA_COLORS = [
   { slug: "chocolate", label: "Chocolate" },
   { slug: "rojo", label: "Rojo" },
   { slug: "gris", label: "Gris" },
-  { slug: "granate", label: "Granate" },
-  { slug: "negro", label: "Negro" },
+  { slug: "granate", label: "Albero envejecido oscuro" },
+  { slug: "negro", label: "Albero envejecido claro" },
 ] as const;
 
 type FertelhaColor = (typeof FERTELHA_COLORS)[number]["slug"];
@@ -257,11 +257,13 @@ function makeFertelhaProduct(color: {
 function makePanelCubiertaProduct(color: {
   slug: "rojo" | "gris";
   label: string;
+  /** Nombre comercial a mostrar (si se omite, se compone con el color) */
+  name?: string;
 }): Product {
   return {
     slug: `panel-cubierta-${color.slug}`,
     code: `PC-CUBIERTA-${color.slug.toUpperCase()}`,
-    name: `Panel sándwich cubierta — ${color.label}`,
+    name: color.name ?? `Panel sándwich cubierta — ${color.label}`,
     category: "cubierta",
     subtype: "cinco-grecas",
     description: `Panel sándwich de cubierta con 5 grecas en color ${color.label.toLowerCase()}. Espesores 30 y 100 mm, opción Agropanel.`,
@@ -308,7 +310,7 @@ export const PRODUCTS: Product[] = [
   // PANEL SÁNDWICH CUBIERTA (5 grecas) — 2 colores como 2 productos
   // ============================================================
   makePanelCubiertaProduct({ slug: "rojo", label: "Rojo" }),
-  makePanelCubiertaProduct({ slug: "gris", label: "Gris" }),
+  makePanelCubiertaProduct({ slug: "gris", label: "Gris", name: "Panel fachada" }),
 
   // ============================================================
   // PANEL SÁNDWICH FACHADA — NERVADA

@@ -10,8 +10,6 @@ export const SITE = {
     "Fabricantes de panel sándwich y chapa perfilada en Extremadura.",
   url: "https://panelex.es",
   defaultLocale: "es-ES",
-  /** CIF placeholder — pendiente de validar con cliente (TODO_CLIENTE.md) */
-  cif: "B-XXXXXXXXX",
   address: {
     street: "Avenida Carmen Amigo, 62",
     postalCode: "06490",
@@ -25,6 +23,8 @@ export const SITE = {
     phone: "+34 678 978 111",
     /** Mismo número en formato wa.me (sin +, sin espacios) */
     whatsapp: "34678978111",
+    /** Teléfono fijo de oficina */
+    phoneOffice: "+34 602 460 202",
     email: "info@panelex.es",
     salesContact: {
       name: "Ramón Romero Fernández",

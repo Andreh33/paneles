@@ -30,9 +30,6 @@ export default function PoliticaPrivacidadPage() {
           <strong>Identidad:</strong> {SITE.legalName}
         </li>
         <li>
-          <strong>CIF:</strong> <code>{SITE.cif}</code>
-        </li>
-        <li>
           <strong>Domicilio:</strong> {SITE.address.street},{" "}
           {SITE.address.postalCode} {SITE.address.city}, {SITE.address.country}.
         </li>

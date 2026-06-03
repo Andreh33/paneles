@@ -29,10 +29,6 @@ export default function AvisoLegalPage() {
           <strong>Titular:</strong> {SITE.legalName}
         </li>
         <li>
-          <strong>CIF:</strong> <code>{SITE.cif}</code>{" "}
-          <em>(pendiente de validar — TODO_CLIENTE.md)</em>
-        </li>
-        <li>
           <strong>Domicilio social:</strong> {SITE.address.street},{" "}
           {SITE.address.postalCode} {SITE.address.city} ({SITE.address.province}),
           {" "}{SITE.address.country}.
