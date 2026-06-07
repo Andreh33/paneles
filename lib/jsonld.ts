@@ -15,7 +15,7 @@ export function organizationLd() {
     name: SITE.legalName,
     alternateName: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/logo/panelex.svg`,
+    logo: `${SITE.url}/logo.png`,
     description: SITE.tagline,
     telephone: SITE.contact.phone,
     email: SITE.contact.email,
