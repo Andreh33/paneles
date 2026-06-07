@@ -45,8 +45,8 @@ export function Header() {
         className={[
           "sticky top-0 z-40 border-b border-white/10 transition-all duration-300",
           scrolled
-            ? "h-16 bg-[var(--color-bg-warm)]/90 backdrop-blur-md"
-            : "h-[88px] bg-[var(--color-bg-warm)]",
+            ? "h-20 bg-[var(--color-bg-warm)]/90 backdrop-blur-md"
+            : "h-24 bg-[var(--color-bg-warm)]",
         ].join(" ")}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 md:px-8">

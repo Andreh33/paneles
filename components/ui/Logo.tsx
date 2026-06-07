@@ -24,7 +24,7 @@ export function Logo({ className = "" }: LogoProps) {
         width={644}
         height={409}
         priority
-        className="h-12 w-auto transition-transform group-hover:-translate-y-0.5"
+        className="h-16 w-auto transition-transform group-hover:-translate-y-0.5"
       />
     </Link>
   );
