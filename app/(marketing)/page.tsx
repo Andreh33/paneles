@@ -6,6 +6,7 @@ import { WhyPanelex } from "@/components/sections/WhyPanelex";
 import { FeaturedCarousel } from "@/components/sections/FeaturedCarousel";
 import { Sectors } from "@/components/sections/Sectors";
 import { RecentProjects } from "@/components/sections/RecentProjects";
+import { SeoContent } from "@/components/sections/SeoContent";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessLd, organizationLd } from "@/lib/jsonld";
@@ -16,6 +17,9 @@ import { localBusinessLd, organizationLd } from "@/lib/jsonld";
  * principales con un ejemplo característico de cada subtipo.
  */
 export const metadata: Metadata = {
+  title: "Panelex — Panel sándwich directo de fábrica en Badajoz | Toda España",
+  description:
+    "Fábrica de panel sándwich en Badajoz: panel de cubierta, fachada, imitación teja y chapa perfilada. Venta directa sin intermediarios, corte a medida y envío a toda España y Portugal. Presupuesto por WhatsApp en horas.",
   alternates: { canonical: "/" },
 };
 
@@ -50,6 +54,7 @@ export default function HomePage() {
 
       <Sectors />
       <RecentProjects />
+      <SeoContent />
       <FinalCTA />
     </>
   );
