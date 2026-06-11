@@ -29,12 +29,46 @@ export const metadata: Metadata = {
   },
   description:
     "Fabricación propia de paneles sándwich y chapa perfilada para cubiertas y fachadas. Servicio en toda España y Portugal desde Puebla de la Calzada (Badajoz).",
+  applicationName: "Panelex",
+  keywords: [
+    "panel sándwich",
+    "panel sándwich precio",
+    "panel sándwich imitación teja",
+    "chapa perfilada",
+    "panel sándwich Badajoz",
+    "panel sándwich Extremadura",
+    "fábrica panel sándwich",
+    "panel cubierta",
+    "panel fachada",
+  ],
+  authors: [{ name: "Panelex S.L.", url: "https://panelex.es" }],
+  creator: "Panelex S.L.",
+  publisher: "Panelex S.L.",
+  category: "construction",
+  formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
     type: "website",
     locale: "es_ES",
     siteName: "Panelex",
+    url: "https://panelex.es",
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: "Panelex — Fabricantes de panel sándwich en Extremadura",
+    description:
+      "Fabricación propia de paneles sándwich y chapa perfilada. Venta directa de fábrica a toda España y Portugal.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({

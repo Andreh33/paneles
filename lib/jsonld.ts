@@ -3,6 +3,7 @@
  * Se serializan dentro de <script type="application/ld+json"> en cada página
  * con el componente <JsonLd> de abajo.
  */
+import type { BlogPost } from "./blog";
 import type { Product as PanelexProduct, ProductCategory } from "./products";
 import { ALL_CATEGORIES } from "./products";
 import { SITE } from "./site";
@@ -103,6 +104,42 @@ export function productLd(product: PanelexProduct) {
         value: "Disponible",
       },
     ].filter(Boolean),
+  };
+}
+
+export function blogPostingLd(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${SITE.url}/sobre-nosotros/${post.slug}#article`,
+    headline: post.title,
+    description: post.metaDescription,
+    inLanguage: "es-ES",
+    datePublished: post.date,
+    dateModified: post.date,
+    keywords: post.keywords.join(", "),
+    articleSection: post.category,
+    author: { "@id": `${SITE.url}#organization` },
+    publisher: { "@id": `${SITE.url}#organization` },
+    mainEntityOfPage: `${SITE.url}/sobre-nosotros/${post.slug}`,
+    url: `${SITE.url}/sobre-nosotros/${post.slug}`,
+  };
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function faqLd(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.question,
+      acceptedAnswer: { "@type": "Answer", text: it.answer },
+    })),
   };
 }
 

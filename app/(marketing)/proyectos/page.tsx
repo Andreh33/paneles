@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Proyectos",
   description:
     "Obras representativas en las que Panelex ha suministrado panel sándwich y chapa perfilada. Naves industriales, agrícolas, logística y residencial.",
+  alternates: { canonical: "/proyectos" },
 };
 
 type SearchParams = Promise<{ sector?: string }>;

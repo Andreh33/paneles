@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { POSTS } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
@@ -10,7 +11,7 @@ const STATIC_ROUTES: Array<{
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
   { path: "/productos", changeFrequency: "monthly", priority: 0.9 },
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/sobre-nosotros", changeFrequency: "yearly", priority: 0.5 },
+  { path: "/sobre-nosotros", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.7 },
   { path: "/aviso-legal", changeFrequency: "yearly", priority: 0.2 },
   { path: "/politica-privacidad", changeFrequency: "yearly", priority: 0.2 },
@@ -34,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...base, ...products];
+  const posts: MetadataRoute.Sitemap = POSTS.map((p) => ({
+    url: `${SITE.url}/sobre-nosotros/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...base, ...products, ...posts];
 }

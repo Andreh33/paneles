@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "Habla con Panelex: WhatsApp, teléfono, email o formulario. Fabricamos panel sándwich y chapa perfilada en Puebla de la Calzada (Badajoz).",
+  alternates: { canonical: "/contacto" },
 };
 
 export default function ContactoPage() {

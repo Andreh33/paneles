@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Catálogo de productos",
   description:
     "Catálogo completo de paneles sándwich Panelex (cubierta y fachada), chapa perfilada y accesorios. Configura tu pedido y pide presupuesto por WhatsApp.",
+  alternates: { canonical: "/productos" },
 };
 
 type SearchParams = Promise<{

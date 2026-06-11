@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { Hero } from "@/components/sections/Hero";
 import { CategoryShowcase } from "@/components/sections/CategoryShowcase";
@@ -14,6 +15,10 @@ import { localBusinessLd, organizationLd } from "@/lib/jsonld";
  * Selección de productos destacados pensada para mostrar las 3 familias
  * principales con un ejemplo característico de cada subtipo.
  */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 const FEATURED_SLUGS = [
   "fertelha-terracota",
   "fertelha-chocolate",
