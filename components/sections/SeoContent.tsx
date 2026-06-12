@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { POSTS } from "@/lib/blog";
+import { SITE } from "@/lib/site";
 
 /**
  * Bloque editorial de la home pensado para posicionamiento orgánico:
@@ -139,6 +140,78 @@ export function SeoContent() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+
+        {/* Aplicaciones y aislamiento — texto largo adicional */}
+        <div className="mt-16 grid gap-10 border-t border-[var(--color-border)] pt-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+              ¿Para qué obras se usa el panel sándwich?
+            </h3>
+            <div className="mt-5 space-y-5 leading-relaxed text-[var(--color-text)]">
+              <p>
+                El panel sándwich es hoy el cerramiento más utilizado en la
+                construcción metálica española. En <strong>naves
+                industriales y logísticas</strong> resuelve cubierta y fachada
+                en una sola pieza, con paneles de hasta 14 metros que cubren el
+                faldón completo sin solapes intermedios. En{" "}
+                <strong>explotaciones agrícolas y ganaderas</strong> —granjas
+                avícolas, porcinas, secaderos, almacenes de grano— aporta el
+                control térmico que exige el bienestar animal, con la variante
+                Agropanel para ambientes corrosivos.
+              </p>
+              <p>
+                En <strong>vivienda y rehabilitación</strong> el protagonista
+                es el panel imitación teja: sustituye tejados envejecidos de
+                teja o fibrocemento sin obra pesada, aligera la estructura y
+                añade aislamiento donde antes no había ninguno. Y para{" "}
+                <strong>garajes, porches, cobertizos y casetas</strong>, el
+                panel de cubierta básico o la chapa perfilada ofrecen la
+                solución más económica del mercado, lista para montar con
+                herramienta común.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+              Aislamiento, espesores y precio
+            </h3>
+            <div className="mt-5 space-y-5 leading-relaxed text-[var(--color-text)]">
+              <p>
+                Fabricamos paneles con núcleo de poliuretano en espesores de{" "}
+                <strong>30 a 100 mm</strong>. Como referencia rápida: 30 mm
+                para espacios sin climatizar, 40-50 mm para naves y almacenes
+                (el estándar del mercado), 60-80 mm para edificios climatizados
+                y vivienda, y 100 mm para industria agroalimentaria. Cada ficha
+                del catálogo publica la transmitancia térmica (U) de cada
+                espesor, en W/m²·K y kcal/m²·h·°C.
+              </p>
+              <p>
+                El <strong>precio del panel sándwich por m²</strong> depende
+                del espesor del núcleo, del grosor de las chapas (0,3 a 0,5
+                mm), del acabado y del transporte. Al comprar directo de
+                fábrica eliminas los márgenes de la distribución: pásanos las
+                medidas de tu cubierta o fachada por{" "}
+                <a
+                  href={`https://wa.me/${SITE.contact.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[var(--color-primary)] underline-offset-2 hover:underline"
+                >
+                  WhatsApp
+                </a>{" "}
+                y te devolvemos un presupuesto cerrado, con corte a medida y
+                porte incluido. Si quieres afinar antes, en la guía{" "}
+                <Link
+                  href="/sobre-nosotros/precio-panel-sandwich-m2"
+                  className="font-semibold text-[var(--color-primary)] underline-offset-2 hover:underline"
+                >
+                  «Precio del panel sándwich por m²»
+                </Link>{" "}
+                explicamos cada factor.
+              </p>
+            </div>
           </div>
         </div>
 

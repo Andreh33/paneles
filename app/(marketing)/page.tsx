@@ -7,6 +7,7 @@ import { FeaturedCarousel } from "@/components/sections/FeaturedCarousel";
 import { Sectors } from "@/components/sections/Sectors";
 import { RecentProjects } from "@/components/sections/RecentProjects";
 import { SeoContent } from "@/components/sections/SeoContent";
+import { HomeFaq } from "@/components/sections/HomeFaq";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessLd, organizationLd } from "@/lib/jsonld";
@@ -58,6 +59,7 @@ export default function HomePage() {
       <Sectors />
       <RecentProjects />
       <SeoContent />
+      <HomeFaq />
       <FinalCTA />
     </>
   );

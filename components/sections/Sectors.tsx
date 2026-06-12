@@ -5,28 +5,32 @@ const SECTORS = [
   {
     id: "industrial",
     label: "Industrial",
-    description: "Naves, talleres, polígonos.",
+    description:
+      "Panel sándwich de cubierta y fachada para naves industriales, talleres y polígonos. Aislamiento continuo, montaje rápido sobre correa y marcado CE en toda la gama.",
     Icon: Factory,
     image: "/sectors/industrial.webp",
   },
   {
     id: "agricola",
     label: "Agrícola",
-    description: "Granjas, secaderos, almacenes (variante Agropanel).",
+    description:
+      "Granjas, secaderos y almacenes agrícolas. Con la variante Agropanel: cara interior de fibra de vidrio resistente al amoniaco y al lavado a presión.",
     Icon: Tractor,
     image: "/sectors/agricola.webp",
   },
   {
     id: "residencial",
     label: "Residencial",
-    description: "Vivienda unifamiliar y rehabilitación.",
+    description:
+      "Vivienda unifamiliar, porches y rehabilitación de tejados con panel imitación teja Fertelha: estética cerámica, peso mínimo y aislamiento desde el primer día.",
     Icon: Home,
     image: "/sectors/residencial.webp",
   },
   {
     id: "logistica",
     label: "Logística",
-    description: "Centros logísticos, almacenes de gran luz.",
+    description:
+      "Centros logísticos y almacenes de gran luz. Paneles de hasta 14 metros cortados a medida en fábrica para cubrir grandes superficies sin solapes.",
     Icon: Boxes,
     image: "/sectors/logistica.webp",
   },
