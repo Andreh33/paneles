@@ -89,6 +89,104 @@ export default async function ProyectosPage({
           )}
         </div>
       </section>
+
+      {/* Texto SEO: tipos de obra, zonas y venta de fábrica */}
+      <section className="bg-[var(--color-surface)]">
+        <div className="mx-auto max-w-7xl px-4 pb-16 md:px-8 md:pb-20">
+          <div className="max-w-3xl">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)]">
+              Experiencia en obra
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
+              Panel sándwich y chapa para cada tipo de proyecto
+            </h2>
+            <p className="mt-6 text-[var(--color-muted)]">
+              A lo largo de los años hemos suministrado material para obras muy
+              distintas, y esa variedad es la mejor garantía de que sabemos qué
+              solución encaja en cada caso. En{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                naves industriales y logísticas
+              </strong>{" "}
+              el panel sándwich de cubierta y fachada resuelve grandes superficies
+              con un aislamiento continuo y un montaje rápido. En el ámbito{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                agrícola y ganadero
+              </strong>{" "}
+              trabajamos a diario con chapa perfilada y paneles para almacenes,
+              cobertizos, granjas y cierres, donde priman la durabilidad y el coste
+              ajustado.
+            </p>
+            <p className="mt-4 text-[var(--color-muted)]">
+              En{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                vivienda
+              </strong>{" "}
+              y obra residencial, el panel imitación teja permite cubiertas que
+              parecen tejado tradicional pero se montan en una pieza y aíslan desde
+              el primer día. Y en{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                rehabilitación
+              </strong>{" "}
+              de cubiertas antiguas, sustituir uralita o fibrocemento por panel
+              sándwich mejora el confort térmico y la estanqueidad sin cargar en
+              exceso la estructura existente.
+            </p>
+            <h3 className="mt-10 font-display text-2xl font-semibold text-[var(--color-text)]">
+              Servimos en Extremadura, Andalucía y Portugal
+            </h3>
+            <p className="mt-4 text-[var(--color-muted)]">
+              Desde nuestra fábrica en Puebla de la Calzada (Badajoz) damos servicio
+              a toda España y Portugal. Tenemos una presencia especialmente fuerte en{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                Extremadura
+              </strong>
+              , en{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                Andalucía
+              </strong>{" "}
+              y en el{" "}
+              <strong className="font-semibold text-[var(--color-text)]">
+                Alentejo portugués
+              </strong>
+              , zonas en las que conocemos bien el clima, el tipo de explotación y las
+              necesidades de cada obra. La cercanía a estas regiones nos permite
+              ajustar plazos de entrega y acompañar mejor cada proyecto, sea una nave
+              de miles de metros o la cubierta de una vivienda unifamiliar.
+            </p>
+            <h3 className="mt-10 font-display text-2xl font-semibold text-[var(--color-text)]">
+              Por qué comprar directamente de fábrica
+            </h3>
+            <p className="mt-4 text-[var(--color-muted)]">
+              Comprar a Panelex significa comprar al fabricante, sin intermediarios.
+              Cortamos cada pieza a medida, ajustamos el material a tu obra y te damos
+              asesoramiento técnico directo, lo que se traduce en un mejor precio,
+              menos residuos y un montaje más sencillo. Si estás planificando un
+              proyecto parecido a los que ves en esta página, revisa toda la gama en{" "}
+              <Link
+                href="/productos"
+                className="font-semibold text-[var(--color-text)] underline-offset-4 hover:underline"
+              >
+                productos
+              </Link>{" "}
+              y pídenos presupuesto sin compromiso desde la página de{" "}
+              <Link
+                href="/contacto"
+                className="font-semibold text-[var(--color-text)] underline-offset-4 hover:underline"
+              >
+                contacto
+              </Link>
+              . También puedes conocer mejor la fábrica y nuestra forma de trabajar en{" "}
+              <Link
+                href="/sobre-nosotros"
+                className="font-semibold text-[var(--color-text)] underline-offset-4 hover:underline"
+              >
+                sobre nosotros
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

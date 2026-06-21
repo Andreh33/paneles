@@ -10,6 +10,11 @@
  * alimentan automáticamente de aquí.
  */
 
+import { posts as px01 } from "@/lib/posts/px-01";
+import { posts as px02 } from "@/lib/posts/px-02";
+import { posts as px03 } from "@/lib/posts/px-03";
+import { posts as px04 } from "@/lib/posts/px-04";
+
 export interface PostSection {
   /** Encabezado H2 de la sección */
   heading: string;
@@ -32,9 +37,11 @@ export interface BlogPost {
   readingMinutes: number;
   keywords: string[];
   sections: PostSection[];
+  /** Enlaces internos hacia páginas de conversión (productos/proyectos/home). */
+  internalLinks?: { label: string; href: string }[];
 }
 
-export const POSTS: BlogPost[] = [
+const BASE_POSTS: BlogPost[] = [
   {
     slug: "que-es-el-panel-sandwich",
     title: "¿Qué es el panel sándwich? Tipos, ventajas y aplicaciones",
@@ -423,6 +430,15 @@ export const POSTS: BlogPost[] = [
       },
     ],
   },
+];
+
+/** Listado completo: los 9 posts base + los lotes SEO añadidos en lib/posts/. */
+export const POSTS: BlogPost[] = [
+  ...BASE_POSTS,
+  ...px01,
+  ...px02,
+  ...px03,
+  ...px04,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

@@ -114,8 +114,30 @@ export default async function BlogPostPage({ params }: RouteParams) {
             </section>
           ))}
 
+          {/* Enlaces internos */}
+          {post.internalLinks && post.internalLinks.length > 0 && (
+            <aside className="mt-14 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-7 md:p-8">
+              <h2 className="font-display text-xl font-semibold tracking-tight">
+                Enlaces útiles
+              </h2>
+              <ul className="mt-4 space-y-2">
+                {post.internalLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex items-center gap-2 text-[var(--color-text)] transition hover:text-[var(--color-primary)]"
+                    >
+                      <ArrowRight className="h-4 w-4 text-[var(--color-primary)]" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
+
           {/* CTA del artículo */}
-          <aside className="mt-16 rounded-3xl bg-[var(--color-primary-deep)] p-8 text-white md:p-10">
+          <aside className="mt-8 rounded-3xl bg-[var(--color-primary-deep)] p-8 text-white md:p-10">
             <h2 className="font-display text-2xl font-semibold">
               ¿Tienes una obra entre manos?
             </h2>

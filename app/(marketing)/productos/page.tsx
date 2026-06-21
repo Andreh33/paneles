@@ -91,6 +91,111 @@ export default async function ProductosPage({
           </div>
         </div>
       </section>
+
+      {/* Texto SEO: gamas y servicio */}
+      <section className="bg-[var(--color-surface)]">
+        <div className="mx-auto max-w-7xl px-4 pb-16 md:px-8 md:pb-20">
+          <div className="grid gap-12 lg:grid-cols-[260px_1fr]">
+            <div aria-hidden className="hidden lg:block" />
+            <div className="max-w-3xl">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)]">
+                Venta directa de fábrica
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
+                Toda nuestra gama de panel sándwich y chapa perfilada
+              </h2>
+              <p className="mt-6 text-[var(--color-muted)]">
+                En Panelex fabricamos en Puebla de la Calzada (Badajoz) y vendemos
+                directamente de fábrica, sin intermediarios. Eso nos permite cortar
+                cada pieza a la medida exacta de tu obra y ofrecerte el material al
+                precio de fabricante. Nuestro catálogo cubre las necesidades más
+                habituales de cubierta y cerramiento, tanto en proyectos
+                industriales como agrícolas o residenciales.
+              </p>
+              <p className="mt-4 text-[var(--color-muted)]">
+                El{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  panel sándwich de cubierta
+                </strong>{" "}
+                es nuestra referencia más demandada: aísla, impermeabiliza y se
+                monta en una sola pieza, con greca vista o tapajuntas oculta. Para
+                quien busca estética sin renunciar a las ventajas del sándwich,
+                disponemos del panel{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  imitación teja Fertelha
+                </strong>
+                , ideal para viviendas, casas rurales y rehabilitaciones donde la
+                cubierta tiene que integrarse en el entorno. En vertical, el{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  panel de fachada
+                </strong>{" "}
+                resuelve cerramientos limpios y bien aislados con juntas machihembradas.
+              </p>
+              <p className="mt-4 text-[var(--color-muted)]">
+                Si tu obra no necesita aislamiento, la{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  chapa perfilada
+                </strong>{" "}
+                galvanizada o lacada es la opción más económica para cubiertas y
+                cierres de naves, almacenes y construcciones agrícolas. Para zonas
+                que requieren luz natural ofrecemos placas de{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  policarbonato
+                </strong>{" "}
+                celular y compacto, y completamos cada pedido con los{" "}
+                <strong className="font-semibold text-[var(--color-text)]">
+                  accesorios
+                </strong>{" "}
+                necesarios: remates, cumbreras, canalones, tornillería y juntas para
+                que el montaje quede acabado y estanco.
+              </p>
+              <h3 className="mt-10 font-display text-2xl font-semibold text-[var(--color-text)]">
+                Corte a medida, espesores y usos
+              </h3>
+              <p className="mt-4 text-[var(--color-muted)]">
+                Cada panel se sirve en el espesor que mejor se ajusta a tu proyecto,
+                desde soluciones ligeras para casetas y cerramientos hasta espesores
+                mayores con un aislamiento térmico y acústico superior para naves,
+                cámaras y viviendas. Te asesoramos sobre el espesor adecuado según la
+                zona climática, el uso del edificio y la separación entre apoyos, de
+                forma que aproveches el material sin sobredimensionar el pedido.
+              </p>
+              <p className="mt-4 text-[var(--color-muted)]">
+                Cortamos a la longitud exacta que necesitas, así reduces despuntes,
+                recortes y residuos en obra, y el montaje es más rápido. Servimos a
+                toda España y Portugal, organizando el transporte hasta el pie de
+                obra o el punto de descarga que nos indiques.
+              </p>
+              <h3 className="mt-10 font-display text-2xl font-semibold text-[var(--color-text)]">
+                Cómo pedir presupuesto
+              </h3>
+              <p className="mt-4 text-[var(--color-muted)]">
+                Configura los productos que te interesan en este catálogo, indícanos
+                medidas y cantidades y nos lo envías por WhatsApp. Te preparamos un
+                presupuesto sin compromiso, con el material a medida y los plazos de
+                fabricación y envío. Si tienes dudas sobre qué solución encaja mejor
+                con tu obra, escríbenos desde la página de{" "}
+                <a
+                  href="/contacto"
+                  className="font-semibold text-[var(--color-text)] underline-offset-4 hover:underline"
+                >
+                  contacto
+                </a>{" "}
+                o conoce más sobre la fábrica en{" "}
+                <a
+                  href="/sobre-nosotros"
+                  className="font-semibold text-[var(--color-text)] underline-offset-4 hover:underline"
+                >
+                  sobre nosotros
+                </a>
+                . Trabajamos con particulares, instaladores, constructoras y
+                explotaciones agrícolas, y damos el mismo trato directo a un pedido
+                pequeño que a una nave completa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
