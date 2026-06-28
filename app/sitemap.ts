@@ -9,6 +9,7 @@ const STATIC_ROUTES: Array<{
   priority: number;
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
+  { path: "/panel-sandwich-extremadura", changeFrequency: "monthly", priority: 0.9 },
   { path: "/productos", changeFrequency: "monthly", priority: 0.9 },
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
   { path: "/sobre-nosotros", changeFrequency: "monthly", priority: 0.7 },

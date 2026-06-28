@@ -20,10 +20,10 @@ import { localBusinessLd, organizationLd } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Panelex — Panel sándwich directo de fábrica en Badajoz | Toda España",
+      "Panelex — Fábrica de panel sándwich en Extremadura (Badajoz) | España",
   },
   description:
-    "Fábrica de panel sándwich en Badajoz: panel de cubierta, fachada, imitación teja y chapa perfilada. Venta directa sin intermediarios, corte a medida y envío a toda España y Portugal. Presupuesto por WhatsApp en horas.",
+    "Fábrica de panel sándwich en Extremadura (Badajoz): panel de cubierta, fachada, imitación teja y chapa perfilada. Venta directa de fábrica, corte a medida y envío a toda España y Portugal. Presupuesto por WhatsApp en horas.",
   alternates: { canonical: "/" },
 };
 

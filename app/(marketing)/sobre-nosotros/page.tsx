@@ -95,6 +95,11 @@ const dateFormatter = new Intl.DateTimeFormat("es-ES", {
 });
 
 export default function SobreNosotrosPage() {
+  /** Blog ordenado por fecha (lo más reciente primero) para mejor UX y SEO. */
+  const sortedPosts = [...POSTS].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <>
       <JsonLd
@@ -399,7 +404,7 @@ export default function SobreNosotrosPage() {
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {POSTS.map((post) => (
+            {sortedPosts.map((post) => (
               <article
                 key={post.slug}
                 className="group flex flex-col rounded-3xl border border-[var(--color-border)] bg-white p-7 transition hover:border-[var(--color-primary)]"

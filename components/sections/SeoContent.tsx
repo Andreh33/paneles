@@ -94,11 +94,18 @@ export function SeoContent() {
               EN 13501-1.
             </p>
             <p>
-              Trabajamos a diario en Extremadura —Badajoz, Cáceres, Mérida— y
-              en Andalucía occidental, y organizamos transporte a cualquier
-              punto de España y Portugal con el porte cerrado en el
-              presupuesto. Nuestra cercanía a la frontera nos ha convertido en
-              proveedor habitual de obras en el Alentejo portugués.
+              Somos{" "}
+              <Link
+                href="/panel-sandwich-extremadura"
+                className="font-semibold text-[var(--color-primary)] underline-offset-2 hover:underline"
+              >
+                fabricantes de panel sándwich en Extremadura
+              </Link>{" "}
+              y trabajamos a diario en Badajoz, Cáceres y Mérida, además de en
+              Andalucía occidental. Organizamos transporte a cualquier punto de
+              España y Portugal con el porte cerrado en el presupuesto, y nuestra
+              cercanía a la frontera nos ha convertido en proveedor habitual de
+              obras en el Alentejo portugués.
             </p>
             <p>
               ¿Cómo se pide? Eliges el panel en el{" "}

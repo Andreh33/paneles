@@ -14,6 +14,16 @@ import { posts as px01 } from "@/lib/posts/px-01";
 import { posts as px02 } from "@/lib/posts/px-02";
 import { posts as px03 } from "@/lib/posts/px-03";
 import { posts as px04 } from "@/lib/posts/px-04";
+import { posts as px05 } from "@/lib/posts/px-05";
+import { posts as px06 } from "@/lib/posts/px-06";
+import { posts as px07 } from "@/lib/posts/px-07";
+import { posts as px08 } from "@/lib/posts/px-08";
+import { posts as px09 } from "@/lib/posts/px-09";
+import { posts as px10 } from "@/lib/posts/px-10";
+import { posts as px11 } from "@/lib/posts/px-11";
+import { posts as px12 } from "@/lib/posts/px-12";
+import { posts as px13 } from "@/lib/posts/px-13";
+import { posts as px14 } from "@/lib/posts/px-14";
 
 export interface PostSection {
   /** Encabezado H2 de la sección */
@@ -439,6 +449,16 @@ export const POSTS: BlogPost[] = [
   ...px02,
   ...px03,
   ...px04,
+  ...px05,
+  ...px06,
+  ...px07,
+  ...px08,
+  ...px09,
+  ...px10,
+  ...px11,
+  ...px12,
+  ...px13,
+  ...px14,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

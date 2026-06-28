@@ -110,6 +110,14 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/panel-sandwich-extremadura"
+                className="text-sm text-white/70 transition hover:text-white"
+              >
+                Panel sándwich en Extremadura
+              </Link>
+            </li>
           </FooterCol>
 
           {/* Col 4: legal */}
