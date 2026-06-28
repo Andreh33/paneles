@@ -40,6 +40,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "/productos", label: "Productos" },
+  { href: "/panel-sandwich-extremadura", label: "Extremadura" },
   { href: "/proyectos", label: "Proyectos" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },

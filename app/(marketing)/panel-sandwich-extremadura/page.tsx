@@ -79,12 +79,22 @@ const FAQS: FaqItem[] = [
     answer:
       "Panel sándwich de cubierta, panel imitación teja (Fertelha), panel de fachada con fijación vista u oculta, chapa perfilada galvanizada y prelacada, policarbonato para lucernarios y todos los remates a juego. También la variante Agropanel para granjas y ambientes corrosivos.",
   },
+  {
+    question: "¿Hacéis envíos al resto de España y a Portugal desde Extremadura?",
+    answer:
+      "Sí. Aunque nuestra zona principal es Extremadura, organizamos transporte a cualquier punto de España y al Alentejo y la región de Lisboa en Portugal, con el porte cerrado en el presupuesto.",
+  },
+  {
+    question: "¿Qué espesor de panel necesito para una obra en Extremadura?",
+    answer:
+      "Depende del uso: 30 mm para cobertizos y porches, 40-50 mm para naves y almacenes, y 60-100 mm para edificios climatizados, granjas con control ambiental, secaderos o cámaras frigoríficas. Te orientamos según tu caso al pedir presupuesto.",
+  },
 ];
 
 /** Comarcas / ciudades cubiertas, con enlace a la guía local cuando existe. */
 const ZONES: { label: string; href?: string }[] = [
-  { label: "Badajoz", href: "/sobre-nosotros/panel-sandwich-extremadura-badajoz" },
-  { label: "Cáceres", href: "/sobre-nosotros/panel-sandwich-en-caceres" },
+  { label: "Badajoz", href: "/panel-sandwich-badajoz" },
+  { label: "Cáceres", href: "/panel-sandwich-caceres" },
   { label: "Mérida", href: "/sobre-nosotros/panel-sandwich-en-merida" },
   { label: "Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
   { label: "Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },

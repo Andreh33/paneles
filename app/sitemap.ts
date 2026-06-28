@@ -10,6 +10,8 @@ const STATIC_ROUTES: Array<{
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
   { path: "/panel-sandwich-extremadura", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/panel-sandwich-badajoz", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/panel-sandwich-caceres", changeFrequency: "monthly", priority: 0.85 },
   { path: "/productos", changeFrequency: "monthly", priority: 0.9 },
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
   { path: "/sobre-nosotros", changeFrequency: "monthly", priority: 0.7 },
