@@ -71,7 +71,7 @@ export default function OgDefault() {
             letterSpacing: "0.1em",
           }}
         >
-          panelex.es
+          panelexpanelsandwich.com
         </span>
       </div>
     ),

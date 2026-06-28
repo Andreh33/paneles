@@ -22,7 +22,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://panelex.es"),
+  metadataBase: new URL("https://panelexpanelsandwich.com"),
   title: {
     default: "Panelex — Fabricantes de panel sándwich en Extremadura",
     template: "%s · Panelex",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "panel cubierta",
     "panel fachada",
   ],
-  authors: [{ name: "Panelex S.L.", url: "https://panelex.es" }],
+  authors: [{ name: "Panelex S.L.", url: "https://panelexpanelsandwich.com" }],
   creator: "Panelex S.L.",
   publisher: "Panelex S.L.",
   category: "construction",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     siteName: "Panelex",
-    url: "https://panelex.es",
+    url: "https://panelexpanelsandwich.com",
   },
   twitter: {
     card: "summary_large_image",

@@ -128,7 +128,7 @@ export default async function OgImage({
           }}
         >
           <span>Fabricantes de panel sándwich · Puebla de la Calzada</span>
-          <span style={{ color: "#F4A04E", fontWeight: 600 }}>panelex.es</span>
+          <span style={{ color: "#F4A04E", fontWeight: 600 }}>panelexpanelsandwich.com</span>
         </div>
       </div>
     ),

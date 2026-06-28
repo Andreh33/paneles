@@ -8,7 +8,7 @@ export const SITE = {
   legalName: "Panelex S.L.",
   tagline:
     "Fabricantes de panel sándwich y chapa perfilada en Extremadura.",
-  url: "https://panelex.es",
+  url: "https://panelexpanelsandwich.com",
   defaultLocale: "es-ES",
   address: {
     street: "Avenida Carmen Amigo, 62",
