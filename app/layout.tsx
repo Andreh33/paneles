@@ -45,6 +45,7 @@ export const metadata: Metadata = {
   creator: "Panelex S.L.",
   publisher: "Panelex S.L.",
   category: "construction",
+  verification: { google: "MYnkIh7oPIaKaseBCNUH8-A0nIUX_7qxsapyGS7dhdI" },
   formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
     type: "website",
