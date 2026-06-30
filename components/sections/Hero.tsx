@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { preload } from "react-dom";
 import { ArrowRight, Factory, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
@@ -6,6 +7,10 @@ import { StatsStrip } from "./StatsStrip";
 import { HeroMedia } from "./HeroMedia";
 
 export function Hero() {
+  // Precarga prioritaria del póster del hero, que es el elemento LCP en móvil
+  // (allí el vídeo de fondo no se descarga). Con el póster ya optimizado a
+  // ~105 KB, esto adelanta su pintado y reduce el LCP.
+  preload("/hero/operario-cubierta.webp", { as: "image", fetchPriority: "high" });
   return (
     <section className="relative overflow-hidden bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
       {/* Fondo: vídeo en bucle de obra real (con foto del operario como póster) */}
