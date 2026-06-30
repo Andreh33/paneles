@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     absolute: "Panel sándwich en Cáceres | Fábrica directa — Panelex",
   },
   description:
-    "Panel sándwich en la provincia de Cáceres: fábrica extremeña con corte a medida y entrega en Plasencia, Navalmoral, Trujillo, Coria y toda la provincia. Venta directa, pide presupuesto.",
+    "Panel sándwich en la provincia de Cáceres: fábrica extremeña, corte a medida y entrega en Plasencia, Navalmoral, Trujillo y Coria. Pide presupuesto.",
   keywords: [
     "panel sándwich Cáceres",
     "paneles sándwich Cáceres",

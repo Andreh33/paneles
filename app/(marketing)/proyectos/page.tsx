@@ -8,6 +8,8 @@ import {
   type ProjectSector,
 } from "@/lib/projects";
 import { getProductBySlug } from "@/lib/products";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Proyectos",
@@ -33,6 +35,14 @@ export default async function ProyectosPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbLd([
+            { label: "Inicio", path: "/" },
+            { label: "Proyectos", path: "/proyectos" },
+          ]),
+        ]}
+      />
       <section className="bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-accent-soft)]">

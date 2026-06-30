@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Política de cookies",
   description:
-    "Qué cookies utiliza panelex.es, con qué finalidad, durante cuánto tiempo y cómo puedes desactivarlas en cualquier momento.",
+    "Qué cookies utiliza la web de Panelex, con qué finalidad, durante cuánto tiempo y cómo puedes desactivarlas en cualquier momento.",
   alternates: { canonical: "/politica-cookies" },
 };
 

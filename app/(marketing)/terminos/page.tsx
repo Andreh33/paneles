@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Términos y condiciones",
   description:
-    "Términos de uso de panelex.es: web informativa sin venta en línea, solicitud de presupuesto vía WhatsApp y exclusión de responsabilidad sobre los presupuestos enviados.",
+    "Términos de uso de la web de Panelex: web informativa sin venta en línea, solicitud de presupuesto por WhatsApp y exclusión de responsabilidad sobre los presupuestos.",
   alternates: { canonical: "/terminos" },
 };
 

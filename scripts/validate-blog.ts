@@ -26,6 +26,8 @@ import { posts as px11 } from "../lib/posts/px-11";
 import { posts as px12 } from "../lib/posts/px-12";
 import { posts as px13 } from "../lib/posts/px-13";
 import { posts as px14 } from "../lib/posts/px-14";
+import { posts as px15 } from "../lib/posts/px-15";
+import { posts as px16 } from "../lib/posts/px-16";
 import { PRODUCTS } from "../lib/products";
 
 const BASE_SLUGS = [
@@ -43,13 +45,14 @@ const BASE_SLUGS = [
 const OLD = [...px01, ...px02, ...px03, ...px04];
 const NEW = [
   ...px05, ...px06, ...px07, ...px08, ...px09, ...px10,
-  ...px11, ...px12, ...px13, ...px14,
+  ...px11, ...px12, ...px13, ...px14, ...px15, ...px16,
 ];
 const ALL_SLUGS = [...BASE_SLUGS, ...OLD.map((p) => p.slug), ...NEW.map((p) => p.slug)];
 
 const STATIC_ROUTES = new Set([
   "/", "/productos", "/proyectos", "/contacto", "/sobre-nosotros",
-  "/panel-sandwich-extremadura", "/aviso-legal", "/politica-privacidad",
+  "/panel-sandwich-extremadura", "/panel-sandwich-badajoz", "/panel-sandwich-caceres",
+  "/aviso-legal", "/politica-privacidad",
   "/politica-cookies", "/terminos",
 ]);
 const PRODUCT_ROUTES = new Set(PRODUCTS.map((p) => `/productos/${p.slug}`));
@@ -124,5 +127,5 @@ if (errors.length) {
   for (const e of errors) console.log(`  · ${e}`);
   process.exit(1);
 } else {
-  console.log("\n✓ Blog válido: 40 posts nuevos, todos > 2.000 palabras, enlaces correctos.");
+  console.log(`\n✓ Blog válido: ${NEW.length} posts nuevos, todos > 2.000 palabras, enlaces correctos.`);
 }

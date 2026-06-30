@@ -17,12 +17,18 @@ export function HeroMedia() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    // En móvil no descargamos el vídeo de fondo: nos quedamos con el póster.
+    // Así el vídeo no compite por ancho de banda con el LCP en pantallas
+    // pequeñas (Googlebot indexa en mobile-first). En escritorio sí se carga.
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     v.muted = true;
     v.defaultMuted = true;
     const play = () => {
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(() => {});
     };
+    v.preload = "auto";
+    v.load();
     if (v.readyState >= 2) play();
     else v.addEventListener("canplay", play, { once: true });
   }, []);
@@ -35,7 +41,7 @@ export function HeroMedia() {
       muted
       loop
       playsInline
-      preload="auto"
+      preload="none"
       poster={POSTER}
       aria-hidden
     >

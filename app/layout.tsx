@@ -55,9 +55,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Panelex — Fabricantes de panel sándwich en Extremadura",
-    description:
-      "Fabricación propia de paneles sándwich y chapa perfilada. Venta directa de fábrica a toda España y Portugal.",
   },
   robots: {
     index: true,

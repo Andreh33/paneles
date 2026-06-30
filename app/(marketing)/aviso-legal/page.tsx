@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Aviso legal",
   description:
-    "Información legal del titular del sitio web panelex.es: Panelex S.L., datos identificativos, condiciones de uso y exoneración de responsabilidad.",
+    "Información legal del titular de la web de Panelex S.L.: datos identificativos, condiciones de uso y exoneración de responsabilidad.",
   alternates: { canonical: "/aviso-legal" },
 };
 

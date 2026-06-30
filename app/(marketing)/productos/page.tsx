@@ -9,6 +9,8 @@ import {
 } from "@/lib/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ProductFilters } from "@/components/product/ProductFilters";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Catálogo de productos",
@@ -37,6 +39,14 @@ export default async function ProductosPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbLd([
+            { label: "Inicio", path: "/" },
+            { label: "Productos", path: "/productos" },
+          ]),
+        ]}
+      />
       {/* Hero compacto */}
       <section className="bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">

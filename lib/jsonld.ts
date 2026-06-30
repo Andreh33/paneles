@@ -32,6 +32,18 @@ export function organizationLd() {
   };
 }
 
+export function websiteLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}#website`,
+    url: SITE.url,
+    name: SITE.name,
+    inLanguage: "es-ES",
+    publisher: { "@id": `${SITE.url}#organization` },
+  };
+}
+
 export function localBusinessLd() {
   return {
     "@context": "https://schema.org",

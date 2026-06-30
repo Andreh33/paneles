@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "Panel sándwich en Extremadura | Fábrica directa en Badajoz — Panelex",
   },
   description:
-    "Fábrica de panel sándwich en Extremadura: venta directa de fábrica en Badajoz a toda la región (Cáceres, Mérida, Plasencia, Don Benito…). Corte a medida, precio sin intermediarios y transporte a tu obra.",
+    "Fábrica de panel sándwich en Extremadura: venta directa en Badajoz a la región (Cáceres, Mérida, Plasencia, Don Benito). Corte a medida y transporte a obra.",
   keywords: [
     "panel sándwich Extremadura",
     "paneles sándwich Extremadura",
@@ -99,12 +99,12 @@ const ZONES: { label: string; href?: string }[] = [
   { label: "Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
   { label: "Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
   { label: "Almendralejo y Zafra", href: "/sobre-nosotros/panel-sandwich-en-almendralejo-y-zafra" },
-  { label: "Navalmoral de la Mata" },
-  { label: "Trujillo" },
-  { label: "Coria" },
-  { label: "Villafranca de los Barros" },
-  { label: "Jerez de los Caballeros" },
-  { label: "Azuaga" },
+  { label: "Navalmoral de la Mata", href: "/sobre-nosotros/panel-sandwich-en-navalmoral-de-la-mata" },
+  { label: "Trujillo", href: "/sobre-nosotros/panel-sandwich-en-trujillo" },
+  { label: "Coria", href: "/sobre-nosotros/panel-sandwich-en-coria" },
+  { label: "Villafranca de los Barros", href: "/sobre-nosotros/panel-sandwich-en-villafranca-de-los-barros" },
+  { label: "Jerez de los Caballeros", href: "/sobre-nosotros/panel-sandwich-en-jerez-de-los-caballeros" },
+  { label: "Azuaga", href: "/sobre-nosotros/panel-sandwich-en-azuaga" },
 ];
 
 const PRODUCTS: { title: string; href: string; body: string }[] = [

@@ -127,7 +127,7 @@ export default async function ProductPage({ params }: RouteParams) {
             {/* Columna derecha — sticky */}
             <aside className="lg:sticky lg:top-24 lg:self-start">
               <div className="hidden lg:mb-6 lg:block">
-                <ProductHeading product={product} categoryLabel={categoryLabel} />
+                <ProductHeading product={product} categoryLabel={categoryLabel} as="p" />
               </div>
               <ProductConfigurator product={product} />
             </aside>
@@ -170,19 +170,27 @@ export default async function ProductPage({ params }: RouteParams) {
 function ProductHeading({
   product,
   categoryLabel,
+  as = "h1",
 }: {
   product: ReturnType<typeof getProductBySlug>;
   categoryLabel: string;
+  as?: "h1" | "p";
 }) {
   if (!product) return null;
+  const titleClassName =
+    "mt-3 font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl";
   return (
     <header>
       <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
         {categoryLabel}
       </p>
-      <h1 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl">
-        {product.name}
-      </h1>
+      {as === "h1" ? (
+        <h1 className={titleClassName}>{product.name}</h1>
+      ) : (
+        <p role="heading" aria-level={1} className={titleClassName}>
+          {product.name}
+        </p>
+      )}
       <p className="mt-3 font-mono text-sm font-semibold text-[var(--color-primary)]">
         {product.code}
       </p>

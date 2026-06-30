@@ -21,7 +21,7 @@ import type { FaqItem } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Sobre nosotros — Fábrica de panel sándwich en Badajoz",
   description:
-    "Panelex S.L., fabricantes de panel sándwich y chapa perfilada en Puebla de la Calzada (Badajoz). Venta directa de fábrica a toda España y Portugal. Historia, equipo, certificados y blog técnico.",
+    "Panelex S.L., fábrica de panel sándwich y chapa perfilada en Badajoz. Venta directa a toda España y Portugal. Historia, equipo, certificados y blog técnico.",
   keywords: [
     "fábrica panel sándwich",
     "panel sándwich Badajoz",

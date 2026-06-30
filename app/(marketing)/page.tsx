@@ -10,7 +10,7 @@ import { SeoContent } from "@/components/sections/SeoContent";
 import { HomeFaq } from "@/components/sections/HomeFaq";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { localBusinessLd, organizationLd } from "@/lib/jsonld";
+import { localBusinessLd, organizationLd, websiteLd } from "@/lib/jsonld";
 
 /**
  * Home — composición de secciones (§4.1 del brief).
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       "Panelex — Fábrica de panel sándwich en Extremadura (Badajoz) | España",
   },
   description:
-    "Fábrica de panel sándwich en Extremadura (Badajoz): panel de cubierta, fachada, imitación teja y chapa perfilada. Venta directa de fábrica, corte a medida y envío a toda España y Portugal. Presupuesto por WhatsApp en horas.",
+    "Fábrica de panel sándwich en Extremadura (Badajoz): cubierta, fachada, imitación teja y chapa perfilada. Venta directa, corte a medida y envío a toda España.",
   alternates: { canonical: "/" },
 };
 
@@ -45,7 +45,7 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={[organizationLd(), localBusinessLd()]} />
+      <JsonLd data={[organizationLd(), websiteLd(), localBusinessLd()]} />
       <Hero />
       <CategoryShowcase />
       <WhyPanelex />

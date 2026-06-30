@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     absolute: "Panel sándwich en Badajoz | Fábrica directa — Panelex",
   },
   description:
-    "Fábrica de panel sándwich en la provincia de Badajoz: venta directa en Puebla de la Calzada, corte a medida y entrega en Mérida, Don Benito, Almendralejo, Zafra y comarca. Pide presupuesto.",
+    "Fábrica de panel sándwich en la provincia de Badajoz: venta directa, corte a medida y entrega en Mérida, Don Benito, Almendralejo y Zafra. Pide presupuesto.",
   keywords: [
     "panel sándwich Badajoz",
     "paneles sándwich Badajoz",
