@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Phone } from "lucide-react";
-import { POSTS, getPostBySlug, getRelatedPosts } from "@/lib/blog";
+import { POSTS, getPostBySlug, getRelatedPosts, getPostFaqs } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { blogPostingLd, breadcrumbLd } from "@/lib/jsonld";
+import { blogPostingLd, breadcrumbLd, faqLd } from "@/lib/jsonld";
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
@@ -50,6 +50,7 @@ export default async function BlogPostPage({ params }: RouteParams) {
   if (!post) notFound();
 
   const related = getRelatedPosts(post.slug);
+  const faqs = getPostFaqs(post);
 
   return (
     <>
@@ -62,6 +63,7 @@ export default async function BlogPostPage({ params }: RouteParams) {
             { label: "Blog", path: "/sobre-nosotros#blog" },
             { label: post.title, path: `/sobre-nosotros/${post.slug}` },
           ]),
+          ...(faqs.length > 0 ? [faqLd(faqs)] : []),
         ]}
       />
 

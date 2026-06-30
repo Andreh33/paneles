@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Linkedin, Instagram, MapPin, Mail, Phone } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
-import { LEGAL_LINKS, NAV_LINKS, SITE } from "@/lib/site";
+import { LEGAL_LINKS, NAV_LINKS, ZONE_LINKS, SITE } from "@/lib/site";
 import { ALL_CATEGORIES } from "@/lib/products";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="bg-[var(--color-primary-deep)] text-[var(--color-text-inverse)]">
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Col 1: marca + dirección */}
           <div className="space-y-6">
             <Logo variant="light" />
@@ -98,7 +98,21 @@ export function Footer() {
             ))}
           </FooterCol>
 
-          {/* Col 3: empresa */}
+          {/* Col 3: zonas en Extremadura */}
+          <FooterCol title="Extremadura">
+            {ZONE_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="text-sm text-white/70 transition hover:text-white"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </FooterCol>
+
+          {/* Col 4: empresa */}
           <FooterCol title="Empresa">
             {NAV_LINKS.filter((l) => l.href !== "/productos").map((l) => (
               <li key={l.href}>

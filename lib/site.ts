@@ -46,6 +46,14 @@ export const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ] as const;
 
+/** Landings geográficas (clúster provincial). Enlazadas en el footer de todo
+ *  el sitio para dar equidad de enlace a Badajoz y Cáceres. */
+export const ZONE_LINKS = [
+  { href: "/panel-sandwich-extremadura", label: "Extremadura" },
+  { href: "/panel-sandwich-badajoz", label: "Badajoz" },
+  { href: "/panel-sandwich-caceres", label: "Cáceres" },
+] as const;
+
 export const LEGAL_LINKS = [
   { href: "/aviso-legal", label: "Aviso legal" },
   { href: "/politica-privacidad", label: "Política de privacidad" },

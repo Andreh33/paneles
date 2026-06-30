@@ -51,6 +51,34 @@ export interface BlogPost {
   internalLinks?: { label: string; href: string }[];
 }
 
+export interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Extrae las preguntas/respuestas de la sección "Preguntas frecuentes" de un
+ * post. Cada bullet sigue el formato "¿Pregunta? Respuesta." y se parte por el
+ * primer signo de cierre de interrogación. Devuelve [] si el post no tiene FAQ,
+ * de modo que solo se emite FAQPage en los posts que realmente la incluyen.
+ */
+export function getPostFaqs(post: BlogPost): BlogFaq[] {
+  const faqSection = post.sections.find((s) =>
+    /preguntas frecuentes/i.test(s.heading),
+  );
+  if (!faqSection?.bullets) return [];
+  return faqSection.bullets
+    .map((bullet) => {
+      const qEnd = bullet.indexOf("?");
+      if (qEnd === -1) return null;
+      const question = bullet.slice(0, qEnd + 1).trim();
+      const answer = bullet.slice(qEnd + 1).trim();
+      if (!question || !answer) return null;
+      return { question, answer };
+    })
+    .filter((item): item is BlogFaq => item !== null);
+}
+
 const BASE_POSTS: BlogPost[] = [
   {
     slug: "que-es-el-panel-sandwich",
