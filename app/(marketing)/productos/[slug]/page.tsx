@@ -13,7 +13,7 @@ import { ProductTabs } from "@/components/product/ProductTabs";
 import { ProductConfigurator } from "@/components/product/ProductConfigurator";
 import { ProductCard } from "@/components/product/ProductCard";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbLd, productLd } from "@/lib/jsonld";
+import { breadcrumbLd } from "@/lib/jsonld";
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
@@ -63,7 +63,16 @@ export default async function ProductPage({ params }: RouteParams) {
 
   return (
     <>
-      <JsonLd data={[productLd(product), breadcrumbLd(crumbs)]} />
+      {/*
+        SEO — Datos estructurados de producto:
+        Los productos son a presupuesto (precio de fabrica por m2, sin precio
+        fijo publicado), asi que no podemos declarar offers/review/aggregateRating
+        con datos reales. Emitir un Product sin ellos provoca el error critico
+        "Debe especificarse offers, review o aggregateRating" en Search Console.
+        Retiramos el Product hasta tener un precio "desde" real o resenas; entonces
+        se restaura productLd(product) para recuperar el rich result.
+      */}
+      <JsonLd data={[breadcrumbLd(crumbs)]} />
       {/* Breadcrumb */}
       <nav
         aria-label="Migas de pan"
