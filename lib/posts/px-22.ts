@@ -170,7 +170,7 @@ export const posts: BlogPost[] = [
     internalLinks: [
       { label: "Qué espesor de panel elegir", href: "/sobre-nosotros/que-espesor-de-panel-elegir" },
       { label: "Tornillería para panel sándwich", href: "/sobre-nosotros/tornilleria-panel-sandwich" },
-      { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-para-nave-industrial" },
+      { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
       { label: "Pide presupuesto a fábrica", href: "/contacto" }
     ]
   },

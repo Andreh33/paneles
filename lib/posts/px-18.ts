@@ -336,7 +336,7 @@ export const posts: BlogPost[] = [
     internalLinks: [
       { label: "Subvenciones y ayudas para cubrir naves", href: "/sobre-nosotros/subvenciones-para-cubrir-naves" },
       { label: "Cómo medir tu cubierta para pedir panel", href: "/sobre-nosotros/como-medir-tu-cubierta-para-pedir-panel" },
-      { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-para-nave-industrial" },
+      { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
       { label: "Pide presupuesto", href: "/contacto" }
     ]
   }

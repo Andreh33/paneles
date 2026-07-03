@@ -52,6 +52,11 @@ export const ZONE_LINKS = [
   { href: "/panel-sandwich-extremadura", label: "Extremadura" },
   { href: "/panel-sandwich-badajoz", label: "Badajoz" },
   { href: "/panel-sandwich-caceres", label: "Cáceres" },
+  { href: "/panel-sandwich-merida", label: "Mérida" },
+  { href: "/panel-sandwich-don-benito", label: "Don Benito" },
+  { href: "/panel-sandwich-plasencia", label: "Plasencia" },
+  { href: "/panel-sandwich-madrid", label: "Madrid" },
+  { href: "/panel-sandwich-sevilla", label: "Sevilla" },
 ] as const;
 
 export const LEGAL_LINKS = [

@@ -98,8 +98,8 @@ export function Footer() {
             ))}
           </FooterCol>
 
-          {/* Col 3: zonas en Extremadura */}
-          <FooterCol title="Extremadura">
+          {/* Col 3: zonas donde servimos */}
+          <FooterCol title="Zonas">
             {ZONE_LINKS.map((l) => (
               <li key={l.href}>
                 <Link
