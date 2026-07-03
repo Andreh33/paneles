@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { ClickTracker } from "@/components/ClickTracker";
 import "./globals.css";
 
 const sans = Inter({
@@ -78,6 +79,7 @@ export default function RootLayout({
     <html lang="es" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body>
         {children}
+        <ClickTracker />
         <Analytics />
       </body>
     </html>

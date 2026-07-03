@@ -7,6 +7,7 @@ import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { SITE } from "@/lib/site";
+import { track } from "@vercel/analytics";
 
 type Status =
   | { kind: "idle" }
@@ -48,6 +49,7 @@ export function ContactForm() {
         return;
       }
       const json = (await res.json()) as { delivered: boolean };
+      track("lead_submit", { site: "panelex", delivered: json.delivered });
       setStatus({ kind: "ok", delivered: json.delivered });
     } catch {
       setStatus({
