@@ -42,7 +42,7 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos a diario en Mérida y toda su comarca, de las Vegas Bajas a la Tierra de Barros. Estas son algunas de las zonas que atendemos; si tu localidad no aparece, pregúntanos: llegamos a toda la comarca y a la región.",
   zones: [
-    { label: "Mérida", href: "/sobre-nosotros/panel-sandwich-en-merida" },
+    { label: "Mérida" },
     { label: "Calamonte" },
     { label: "Montijo" },
     { label: "Puebla de la Calzada" },
@@ -97,7 +97,7 @@ const data: ZoneLandingData = {
   related: [
     { label: "Panel sándwich en Badajoz", href: "/panel-sandwich-badajoz" },
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
-    { label: "Panel sándwich en Mérida (guía)", href: "/sobre-nosotros/panel-sandwich-en-merida" },
+    { label: "Panel sándwich en Don Benito", href: "/panel-sandwich-don-benito" },
     { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
     { label: "Precio del panel sándwich por m²", href: "/sobre-nosotros/precio-panel-sandwich-m2" },
   ],

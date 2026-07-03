@@ -42,8 +42,8 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos a diario en toda la provincia de Badajoz. Estas son algunas de las zonas que atendemos; si tu localidad no aparece, pregúntanos: llegamos a toda la provincia y a la región.",
   zones: [
-    { label: "Mérida", href: "/sobre-nosotros/panel-sandwich-en-merida" },
-    { label: "Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
+    { label: "Mérida", href: "/panel-sandwich-merida" },
+    { label: "Don Benito y Villanueva", href: "/panel-sandwich-don-benito" },
     { label: "Almendralejo y Zafra", href: "/sobre-nosotros/panel-sandwich-en-almendralejo-y-zafra" },
     { label: "Badajoz capital" },
     { label: "Puebla de la Calzada" },
@@ -96,8 +96,9 @@ const data: ZoneLandingData = {
   ],
   related: [
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
-    { label: "Panel sándwich en Mérida", href: "/sobre-nosotros/panel-sandwich-en-merida" },
-    { label: "Panel sándwich en Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
+    { label: "Panel sándwich en Cáceres", href: "/panel-sandwich-caceres" },
+    { label: "Panel sándwich en Mérida", href: "/panel-sandwich-merida" },
+    { label: "Panel sándwich en Don Benito y Villanueva", href: "/panel-sandwich-don-benito" },
     { label: "Panel sándwich en Almendralejo y Zafra", href: "/sobre-nosotros/panel-sandwich-en-almendralejo-y-zafra" },
     { label: "Panel sándwich para secadero de jamón", href: "/sobre-nosotros/panel-sandwich-para-secadero-de-jamon" },
     { label: "Panel sándwich para bodega", href: "/sobre-nosotros/panel-sandwich-para-bodega" },

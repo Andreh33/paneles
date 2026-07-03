@@ -42,7 +42,7 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos todo el norte de Cáceres desde nuestra fábrica extremeña. Estas son algunas de las zonas que atendemos; si tu localidad no aparece, pregúntanos: llegamos a toda la comarca y a la región.",
   zones: [
-    { label: "Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
+    { label: "Plasencia" },
     { label: "Jaraíz de la Vera" },
     { label: "Navalmoral de la Mata" },
     { label: "Coria" },
@@ -97,7 +97,7 @@ const data: ZoneLandingData = {
   related: [
     { label: "Panel sándwich en Cáceres", href: "/panel-sandwich-caceres" },
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
-    { label: "Panel sándwich en Plasencia (guía)", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
+    { label: "Panel sándwich en Navalmoral de la Mata", href: "/sobre-nosotros/panel-sandwich-en-navalmoral-de-la-mata" },
     { label: "Panel sándwich para granja avícola", href: "/sobre-nosotros/panel-sandwich-para-granja-avicola" },
     { label: "Precio del panel sándwich por m²", href: "/sobre-nosotros/precio-panel-sandwich-m2" },
   ],

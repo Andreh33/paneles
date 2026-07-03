@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Instagram, MapPin, Mail, Phone } from "lucide-react";
+import { Facebook, Linkedin, Instagram, MapPin, Mail, Phone } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { LEGAL_LINKS, NAV_LINKS, ZONE_LINKS, SITE } from "@/lib/site";
 import { ALL_CATEGORIES } from "@/lib/products";
@@ -56,8 +56,19 @@ export function Footer() {
               </a>
             </address>
 
-            {(SITE.social.linkedin || SITE.social.instagram) && (
+            {(SITE.social.facebook || SITE.social.linkedin || SITE.social.instagram) && (
               <div className="flex gap-3">
+                {SITE.social.facebook && (
+                  <a
+                    href={SITE.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook de Panelex"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition hover:border-white hover:bg-white/10"
+                  >
+                    <Facebook className="h-4 w-4" />
+                  </a>
+                )}
                 {SITE.social.linkedin && (
                   <a
                     href={SITE.social.linkedin}

@@ -42,7 +42,7 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos toda la provincia de Sevilla y el resto de Andalucía occidental por la A-66. Estas son algunas de las zonas que atendemos con más frecuencia; si tu localidad no aparece, pregúntanos: llegamos a toda la provincia y su entorno.",
   zones: [
-    { label: "Sevilla capital", href: "/sobre-nosotros/panel-sandwich-en-sevilla" },
+    { label: "Sevilla capital" },
     { label: "Dos Hermanas" },
     { label: "Alcalá de Guadaíra" },
     { label: "Utrera" },
@@ -95,7 +95,7 @@ const data: ZoneLandingData = {
     },
   ],
   related: [
-    { label: "Panel sándwich en Sevilla (guía)", href: "/sobre-nosotros/panel-sandwich-en-sevilla" },
+    { label: "Panel sándwich en Madrid", href: "/panel-sandwich-madrid" },
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
     { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
     { label: "Transporte y descarga del panel", href: "/sobre-nosotros/transporte-y-descarga-de-panel-sandwich" },

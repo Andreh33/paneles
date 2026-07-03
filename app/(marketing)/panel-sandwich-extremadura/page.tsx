@@ -95,9 +95,9 @@ const FAQS: FaqItem[] = [
 const ZONES: { label: string; href?: string }[] = [
   { label: "Badajoz", href: "/panel-sandwich-badajoz" },
   { label: "Cáceres", href: "/panel-sandwich-caceres" },
-  { label: "Mérida", href: "/sobre-nosotros/panel-sandwich-en-merida" },
-  { label: "Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
-  { label: "Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
+  { label: "Mérida", href: "/panel-sandwich-merida" },
+  { label: "Plasencia", href: "/panel-sandwich-plasencia" },
+  { label: "Don Benito y Villanueva", href: "/panel-sandwich-don-benito" },
   { label: "Almendralejo y Zafra", href: "/sobre-nosotros/panel-sandwich-en-almendralejo-y-zafra" },
   { label: "Navalmoral de la Mata", href: "/sobre-nosotros/panel-sandwich-en-navalmoral-de-la-mata" },
   { label: "Trujillo", href: "/sobre-nosotros/panel-sandwich-en-trujillo" },

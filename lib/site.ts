@@ -33,6 +33,8 @@ export const SITE = {
     hours: "Lunes a viernes · 9:00 – 14:00 · Tardes cerradas",
   },
   social: {
+    /** Página histórica de la empresa (misma cuenta que la antigua web Wix). */
+    facebook: "https://www.facebook.com/infopanelex",
     linkedin: "",
     instagram: "",
   },

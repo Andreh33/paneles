@@ -42,7 +42,7 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos en toda la Comunidad de Madrid con envío organizado desde fábrica. Estas son algunas de las zonas donde entregamos; si tu municipio no aparece, pregúntanos: la ruta por la A-5 cubre toda la comunidad.",
   zones: [
-    { label: "Madrid capital", href: "/sobre-nosotros/panel-sandwich-en-madrid" },
+    { label: "Madrid capital" },
     { label: "Getafe" },
     { label: "Alcalá de Henares" },
     { label: "Móstoles" },
@@ -95,7 +95,7 @@ const data: ZoneLandingData = {
     },
   ],
   related: [
-    { label: "Panel sándwich en Madrid (guía)", href: "/sobre-nosotros/panel-sandwich-en-madrid" },
+    { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
     { label: "Panel sándwich vs fibrocemento (adiós uralita)", href: "/sobre-nosotros/panel-sandwich-vs-fibrocemento-adios-uralita" },
     { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
     { label: "Transporte y descarga del panel", href: "/sobre-nosotros/transporte-y-descarga-de-panel-sandwich" },

@@ -42,7 +42,7 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Servimos a diario en las Vegas Altas del Guadiana y su entorno. Estas son algunas de las localidades que atendemos; si la tuya no aparece, pregúntanos: llegamos a toda la comarca y al resto de la provincia de Badajoz.",
   zones: [
-    { label: "Don Benito y Villanueva", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
+    { label: "Don Benito y Villanueva" },
     { label: "Miajadas" },
     { label: "Santa Amalia" },
     { label: "Medellín" },
@@ -96,7 +96,7 @@ const data: ZoneLandingData = {
   related: [
     { label: "Panel sándwich en Badajoz", href: "/panel-sandwich-badajoz" },
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
-    { label: "Panel sándwich en Don Benito y Villanueva (guía)", href: "/sobre-nosotros/panel-sandwich-en-don-benito-y-villanueva" },
+    { label: "Panel sándwich en Mérida", href: "/panel-sandwich-merida" },
     { label: "Panel sándwich para nave industrial", href: "/sobre-nosotros/panel-sandwich-nave-industrial" },
     { label: "Precio del panel sándwich por m²", href: "/sobre-nosotros/precio-panel-sandwich-m2" },
   ],

@@ -28,7 +28,11 @@ export function organizationLd() {
       addressRegion: SITE.address.province,
       addressCountry: "ES",
     },
-    sameAs: [SITE.social.linkedin, SITE.social.instagram].filter(Boolean),
+    sameAs: [
+      SITE.social.facebook,
+      SITE.social.linkedin,
+      SITE.social.instagram,
+    ].filter(Boolean),
   };
 }
 
@@ -50,6 +54,7 @@ export function localBusinessLd() {
     "@type": "LocalBusiness",
     "@id": `${SITE.url}#local-business`,
     name: SITE.legalName,
+    alternateName: SITE.name,
     image: `${SITE.url}/opengraph-image`,
     url: SITE.url,
     telephone: SITE.contact.phone,
@@ -77,9 +82,17 @@ export function localBusinessLd() {
       },
     ],
     areaServed: [
+      { "@type": "AdministrativeArea", name: "Extremadura" },
+      { "@type": "AdministrativeArea", name: "Provincia de Badajoz" },
+      { "@type": "AdministrativeArea", name: "Provincia de Cáceres" },
       { "@type": "Country", name: "España" },
       { "@type": "Country", name: "Portugal" },
     ],
+    sameAs: [
+      SITE.social.facebook,
+      SITE.social.linkedin,
+      SITE.social.instagram,
+    ].filter(Boolean),
   };
 }
 

@@ -42,8 +42,8 @@ const data: ZoneLandingData = {
   zonesIntro:
     "Llegamos a toda la provincia de Cáceres. Estas son algunas de las zonas que atendemos; si tu localidad no aparece, pregúntanos.",
   zones: [
-    { label: "Cáceres capital", href: "/sobre-nosotros/panel-sandwich-en-caceres" },
-    { label: "Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
+    { label: "Cáceres capital" },
+    { label: "Plasencia", href: "/panel-sandwich-plasencia" },
     { label: "Navalmoral de la Mata" },
     { label: "Trujillo" },
     { label: "Coria" },
@@ -96,8 +96,8 @@ const data: ZoneLandingData = {
   ],
   related: [
     { label: "Panel sándwich en Extremadura", href: "/panel-sandwich-extremadura" },
-    { label: "Guía: panel sándwich en Cáceres", href: "/sobre-nosotros/panel-sandwich-en-caceres" },
-    { label: "Panel sándwich en Plasencia", href: "/sobre-nosotros/panel-sandwich-en-plasencia" },
+    { label: "Panel sándwich en Plasencia", href: "/panel-sandwich-plasencia" },
+    { label: "Panel sándwich en Mérida", href: "/panel-sandwich-merida" },
     { label: "Panel sándwich en Badajoz", href: "/panel-sandwich-badajoz" },
     { label: "Panel sándwich para secadero de jamón", href: "/sobre-nosotros/panel-sandwich-para-secadero-de-jamon" },
     { label: "Ver catálogo de productos", href: "/productos" },
