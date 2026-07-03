@@ -36,6 +36,10 @@ import { posts as px23 } from "@/lib/posts/px-23";
 import { posts as px24 } from "@/lib/posts/px-24";
 import { posts as px25 } from "@/lib/posts/px-25";
 import { posts as px26 } from "@/lib/posts/px-26";
+import { posts as px27 } from "@/lib/posts/px-27";
+import { posts as px28 } from "@/lib/posts/px-28";
+import { posts as px29 } from "@/lib/posts/px-29";
+import { posts as px30 } from "@/lib/posts/px-30";
 
 export interface PostSection {
   /** Encabezado H2 de la sección */
@@ -982,6 +986,10 @@ export const POSTS: BlogPost[] = [
   ...px24,
   ...px25,
   ...px26,
+  ...px27,
+  ...px28,
+  ...px29,
+  ...px30,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
