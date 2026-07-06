@@ -17,7 +17,7 @@ export function genericInquiryMessage(): string {
   return [
     "Hola Panelex,",
     "",
-    "Os escribo desde panelex.es y me gustaría recibir información sobre vuestros productos.",
+    "Os escribo desde panelexpanelsandwich.com y me gustaría recibir información sobre vuestros productos.",
   ].join("\n");
 }
 
@@ -29,7 +29,7 @@ export function singleProductInquiryMessage(productName: string, code: string): 
     `Estoy interesado/a en *${productName}* (${code}).`,
     `Me gustaría recibir presupuesto y disponibilidad.`,
     ``,
-    `_Solicitud enviada desde panelex.es_`,
+    `_Solicitud enviada desde panelexpanelsandwich.com_`,
   ].join("\n");
 }
 
@@ -81,7 +81,7 @@ export function formatCartForWhatsApp(
   const lines: string[] = [];
 
   lines.push("*SOLICITUD DE PRESUPUESTO — PANELEX*");
-  lines.push("_Generada desde panelex.es_");
+  lines.push("_Generada desde panelexpanelsandwich.com_");
   lines.push("");
 
   // === DATOS DE CONTACTO ===

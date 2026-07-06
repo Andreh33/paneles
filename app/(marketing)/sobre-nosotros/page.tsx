@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     description:
       "Fabricación propia de panel sándwich y chapa perfilada. Venta directa de fábrica a toda España y Portugal.",
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

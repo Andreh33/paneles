@@ -18,9 +18,9 @@ import { localBusinessLd, organizationLd, websiteLd } from "@/lib/jsonld";
  * principales con un ejemplo característico de cada subtipo.
  */
 export const metadata: Metadata = {
+  // ≤ 61 caracteres para que no se trunque en el SERP; keyword al principio.
   title: {
-    absolute:
-      "Panelex — Fábrica de panel sándwich en Extremadura (Badajoz) | España",
+    absolute: "Fábrica de panel sándwich en Extremadura (Badajoz) | Panelex",
   },
   description:
     "Fábrica de panel sándwich en Extremadura (Badajoz): cubierta, fachada, imitación teja y chapa perfilada. Venta directa, corte a medida y envío a toda España.",

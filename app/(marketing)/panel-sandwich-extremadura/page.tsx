@@ -12,7 +12,7 @@ import {
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbLd, faqLd, localBusinessLd } from "@/lib/jsonld";
+import { breadcrumbLd, faqLd, localBusinessLd, serviceLd } from "@/lib/jsonld";
 import type { FaqItem } from "@/lib/jsonld";
 
 /**
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich y chapa perfilada en Extremadura. Venta directa de fábrica, corte a medida y transporte a toda la región.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 
@@ -136,6 +137,13 @@ export default function PanelSandwichExtremaduraPage() {
       <JsonLd
         data={[
           localBusinessLd(),
+          serviceLd({
+            name: "Panel sándwich en Extremadura",
+            description:
+              "Fabricación y venta directa de panel sándwich y chapa perfilada desde Puebla de la Calzada (Badajoz), con corte a medida y entrega en toda Extremadura.",
+            path: "/panel-sandwich-extremadura",
+            areaName: "Extremadura",
+          }),
           faqLd(FAQS),
           breadcrumbLd([
             { label: "Inicio", path: "/" },

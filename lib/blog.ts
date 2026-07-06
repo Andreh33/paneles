@@ -41,6 +41,17 @@ import { posts as px28 } from "@/lib/posts/px-28";
 import { posts as px29 } from "@/lib/posts/px-29";
 import { posts as px30 } from "@/lib/posts/px-30";
 
+/**
+ * Tabla de datos de una sección. Se renderiza como <table> semántica con
+ * <caption>, pensada para featured snippets (medidas, espesores, usos).
+ * Solo datos reales del catálogo: nada de precios inventados.
+ */
+export interface PostTable {
+  caption: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface PostSection {
   /** Encabezado H2 de la sección */
   heading: string;
@@ -48,6 +59,8 @@ export interface PostSection {
   paragraphs: string[];
   /** Lista opcional de puntos (se renderiza como <ul>) */
   bullets?: string[];
+  /** Tabla opcional de datos (se renderiza tras los párrafos, antes de bullets) */
+  table?: PostTable;
 }
 
 export interface BlogPost {
@@ -59,6 +72,8 @@ export interface BlogPost {
   excerpt: string;
   /** Fecha ISO de publicación (se usa en JSON-LD y <time>) */
   date: string;
+  /** Fecha ISO de última actualización sustancial (JSON-LD dateModified) */
+  dateModified?: string;
   category: string;
   readingMinutes: number;
   keywords: string[];
@@ -200,6 +215,7 @@ const BASE_POSTS: BlogPost[] = [
     excerpt:
       "El precio del panel sándwich depende del espesor del núcleo, el grosor de la chapa, el acabado y el transporte. Te contamos cómo se forma el precio y cómo ahorrar.",
     date: "2026-05-11",
+    dateModified: "2026-07-06",
     category: "Compra y presupuesto",
     readingMinutes: 5,
     keywords: [
@@ -214,12 +230,32 @@ const BASE_POSTS: BlogPost[] = [
         paragraphs: [
           "Cuando pedimos presupuesto de panel sándwich, el precio por metro cuadrado varía en función de cuatro variables principales. Conocerlas ayuda a comparar ofertas con criterio y a no pagar por prestaciones que la obra no necesita.",
         ],
-        bullets: [
-          "Espesor del núcleo aislante: a más espesor (30, 40, 50, 60, 80, 100 mm…), más aislamiento y más precio. Es el factor que más pesa.",
-          "Espesor de la chapa de acero: las combinaciones habituales van de 0,3/0,3 mm a 0,5/0,5 mm. Más chapa significa más resistencia y más coste.",
-          "Acabado y perfil: un panel de cubierta estándar es más económico que un panel teja o una fachada de fijación oculta. Los colores especiales también influyen.",
-          "Transporte: el panel es voluminoso. Comprar a un fabricante con logística propia y optimizar el camión completo reduce el coste por m².",
-        ],
+        table: {
+          caption: "Factores que determinan el precio del panel sándwich por m²",
+          headers: ["Factor", "Efecto en el precio", "Cómo ajustarlo"],
+          rows: [
+            [
+              "Espesor del núcleo (30–100 mm)",
+              "El que más pesa: a más espesor, más aislamiento y más precio",
+              "Dimensiona por uso real: 40–50 mm es el estándar de nave",
+            ],
+            [
+              "Chapa de acero (0,3–0,5 mm por cara)",
+              "Más chapa, más resistencia mecánica y más coste",
+              "Reserva 0,5 mm para zonas de viento o tránsito",
+            ],
+            [
+              "Acabado y perfil",
+              "El panel teja o la fijación oculta cuestan más que la cubierta estándar",
+              "Elige acabado premium solo donde la estética importa",
+            ],
+            [
+              "Transporte",
+              "Material voluminoso: el porte influye en el precio final por m²",
+              "Agrupa el pedido y completa el camión",
+            ],
+          ],
+        },
       },
       {
         heading: "Comprar a fábrica vs. comprar a distribuidor",
@@ -474,6 +510,7 @@ const BASE_POSTS: BlogPost[] = [
     excerpt:
       "Del panel de 30 mm para un cobertizo al de 100 mm para una cámara: criterios claros para elegir espesor sin pagar de más ni quedarse corto.",
     date: "2026-06-01",
+    dateModified: "2026-07-06",
     category: "Guías técnicas",
     readingMinutes: 5,
     keywords: [
@@ -514,14 +551,18 @@ const BASE_POSTS: BlogPost[] = [
         paragraphs: [
           "Para ordenar las ideas, esta es la relación aproximada entre el espesor del núcleo de poliuretano y la transmitancia térmica U (cuanto más baja, mejor aísla). Son valores orientativos: cada fabricante publica los suyos en la ficha de producto, pero el orden de magnitud sirve para decidir.",
         ],
-        bullets: [
-          "30 mm: U en torno a 0,71 W/m²·K. Cerramiento y poco más; cobertizos y porches no climatizados.",
-          "40 mm: U en torno a 0,55 W/m²·K. El estándar de la nave agrícola e industrial.",
-          "50 mm: U en torno a 0,43 W/m²·K. Naves con algo de uso continuado y almacenes.",
-          "60 mm: U en torno a 0,37 W/m²·K. Espacios con cierto control de temperatura.",
-          "80 mm: U en torno a 0,28 W/m²·K. Naves climatizadas, vivienda y oficinas.",
-          "100 mm: U en torno a 0,22 W/m²·K. Cámaras e industria agroalimentaria exigente.",
-        ],
+        table: {
+          caption: "Espesor del panel sándwich y transmitancia térmica orientativa (núcleo PUR)",
+          headers: ["Espesor", "Transmitancia U (W/m²·K)", "Uso recomendado"],
+          rows: [
+            ["30 mm", "≈ 0,71", "Cobertizos y porches no climatizados"],
+            ["40 mm", "≈ 0,55", "El estándar de la nave agrícola e industrial"],
+            ["50 mm", "≈ 0,43", "Naves con uso continuado y almacenes"],
+            ["60 mm", "≈ 0,37", "Espacios con cierto control de temperatura"],
+            ["80 mm", "≈ 0,28", "Naves climatizadas, vivienda y oficinas"],
+            ["100 mm", "≈ 0,22", "Cámaras e industria agroalimentaria exigente"],
+          ],
+        },
       },
       {
         heading: "El espesor no lo es todo",

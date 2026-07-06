@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich y chapa perfilada en Badajoz, a 200 km de Sevilla por la A-66. Venta directa, corte a medida y porte ágil a toda la provincia.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

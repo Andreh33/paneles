@@ -87,7 +87,7 @@ export function ProductConfigurator({ product }: Props) {
     if (notas.trim()) {
       lines.push("", `Notas: ${notas.trim()}`);
     }
-    lines.push("", "_Solicitud enviada desde panelex.es_");
+    lines.push("", "_Solicitud enviada desde panelexpanelsandwich.com_");
     window.open(buildWhatsAppUrl(lines.join("\n")), "_blank");
   }
 

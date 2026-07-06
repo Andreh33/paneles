@@ -73,7 +73,7 @@ describe("computeTotals", () => {
 describe("formatCartForWhatsApp", () => {
   it("respeta la cabecera y el cierre del mensaje", () => {
     const msg = formatCartForWhatsApp([makeItem()], {});
-    expect(msg).toMatch(/^\*SOLICITUD DE PRESUPUESTO — PANELEX\*\n_Generada desde panelex\.es_/);
+    expect(msg).toMatch(/^\*SOLICITUD DE PRESUPUESTO — PANELEX\*\n_Generada desde panelexpanelsandwich\.com_/);
     expect(msg).toMatch(/Quedo a la espera de presupuesto\. Gracias\.$/);
   });
 

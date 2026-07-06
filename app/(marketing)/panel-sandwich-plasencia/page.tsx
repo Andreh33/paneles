@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich y chapa perfilada en Extremadura. Servimos Plasencia y el norte de Cáceres: Valle del Jerte, La Vera, Ambroz y las Vegas del Alagón.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

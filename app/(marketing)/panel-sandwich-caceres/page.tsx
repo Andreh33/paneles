@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fábrica extremeña de panel sándwich y chapa perfilada con servicio en toda la provincia de Cáceres. Corte a medida y transporte a tu obra.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

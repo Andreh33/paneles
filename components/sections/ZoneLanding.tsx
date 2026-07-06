@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ChevronRight,
   Factory,
   MapPin,
   Phone,
@@ -11,7 +12,7 @@ import {
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbLd, faqLd, localBusinessLd } from "@/lib/jsonld";
+import { breadcrumbLd, faqLd, localBusinessLd, serviceLd } from "@/lib/jsonld";
 import type { FaqItem } from "@/lib/jsonld";
 
 /**
@@ -76,7 +77,15 @@ export function ZoneLanding({ data }: { data: ZoneLandingData }) {
     <>
       <JsonLd
         data={[
-          localBusinessLd(),
+          localBusinessLd({
+            extraAreaServed: [`${data.zone} y comarca`],
+          }),
+          serviceLd({
+            name: `Panel sándwich en ${data.zone}`,
+            description: data.heroLead,
+            path: data.canonical,
+            areaName: data.zone,
+          }),
           faqLd(data.faqs),
           breadcrumbLd([
             { label: "Inicio", path: "/" },
@@ -84,6 +93,26 @@ export function ZoneLanding({ data }: { data: ZoneLandingData }) {
           ]),
         ]}
       />
+
+      {/* Breadcrumb visible (coincide con el BreadcrumbList del JSON-LD) */}
+      <nav
+        aria-label="Migas de pan"
+        className="bg-[var(--color-bg-warm)] text-white/60"
+      >
+        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 pt-6 text-xs md:px-8">
+          <li>
+            <Link href="/" className="transition hover:text-white">
+              Inicio
+            </Link>
+          </li>
+          <li aria-hidden>
+            <ChevronRight className="h-3 w-3" />
+          </li>
+          <li aria-current="page" className="font-semibold text-white/90">
+            Panel sándwich en {data.zone}
+          </li>
+        </ol>
+      </nav>
 
       {/* Hero */}
       <section className="bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">

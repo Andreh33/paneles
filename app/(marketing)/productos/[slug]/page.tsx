@@ -8,6 +8,7 @@ import {
   getProductBySlug,
   getProductsByCategory,
 } from "@/lib/products";
+import { ZONE_LINKS } from "@/lib/site";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductTabs } from "@/components/product/ProductTabs";
 import { ProductConfigurator } from "@/components/product/ProductConfigurator";
@@ -31,8 +32,8 @@ export async function generateMetadata({
   if (!product) return { title: "Producto no encontrado" };
 
   return {
-    title: `${product.name} (${product.code})`,
-    description: product.description,
+    title: `${product.name} | Corte a medida`,
+    description: `${product.description} Precio directo de fábrica en Badajoz y envío a toda España.`,
     openGraph: {
       title: `${product.name} · Panelex`,
       description: product.description,
@@ -172,6 +173,32 @@ export default async function ProductPage({ params }: RouteParams) {
           </div>
         </section>
       )}
+
+      {/* Zonas de entrega — enlazado producto → páginas locales */}
+      <section className="bg-[var(--color-surface)]">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8">
+          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+            Entrega de fábrica en Extremadura y toda España
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm text-[var(--color-muted)]">
+            Fabricamos {product.name.toLowerCase()} en Puebla de la Calzada
+            (Badajoz) y organizamos el transporte hasta tu obra. Consulta cómo
+            trabajamos en tu zona:
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {ZONE_LINKS.map((z) => (
+              <li key={z.href}>
+                <Link
+                  href={z.href}
+                  className="inline-block rounded-full border border-[var(--color-border)] bg-white px-4 py-2 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                >
+                  Panel sándwich en {z.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 }

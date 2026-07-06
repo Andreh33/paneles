@@ -33,7 +33,11 @@ export async function generateMetadata({
       description: post.metaDescription,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.dateModified ?? post.date,
       locale: "es_ES",
+      // Al definir openGraph aquí se pierde la imagen OG heredada del layout
+      // raíz, así que la declaramos explícitamente.
+      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
   };
 }
@@ -105,6 +109,44 @@ export default async function BlogPostPage({ params }: RouteParams) {
                 {section.paragraphs.map((p) => (
                   <p key={p.slice(0, 40)}>{p}</p>
                 ))}
+                {section.table && (
+                  <div className="overflow-x-auto rounded-2xl border border-[var(--color-border)]">
+                    <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+                      <caption className="border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left font-display text-sm font-semibold">
+                        {section.table.caption}
+                      </caption>
+                      <thead>
+                        <tr className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+                          {section.table.headers.map((h) => (
+                            <th key={h} scope="col" className="px-4 py-3 font-semibold">
+                              {h}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row) => (
+                          <tr
+                            key={row.join("|").slice(0, 60)}
+                            className="border-b border-[var(--color-border)] last:border-0"
+                          >
+                            {row.map((cell, ci) =>
+                              ci === 0 ? (
+                                <th key={cell.slice(0, 40)} scope="row" className="px-4 py-3 font-semibold">
+                                  {cell}
+                                </th>
+                              ) : (
+                                <td key={cell.slice(0, 40)} className="px-4 py-3">
+                                  {cell}
+                                </td>
+                              )
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 {section.bullets && (
                   <ul className="list-disc space-y-3 pl-6">
                     {section.bullets.map((b) => (

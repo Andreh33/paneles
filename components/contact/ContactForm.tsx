@@ -230,7 +230,7 @@ function SuccessState({
   const fallbackMessage = [
     "Hola Panelex,",
     "",
-    `Os escribo desde panelex.es.`,
+    `Os escribo desde panelexpanelsandwich.com.`,
     `Nombre: ${values.nombre}`,
     `Email: ${values.email}`,
     `Teléfono: ${values.telefono}`,
@@ -240,7 +240,7 @@ function SuccessState({
   ].join("\n");
 
   const mailtoHref = `mailto:${SITE.contact.email}?subject=${encodeURIComponent(
-    `Consulta desde panelex.es — ${values.nombre}`
+    `Consulta desde panelexpanelsandwich.com — ${values.nombre}`
   )}&body=${encodeURIComponent(fallbackMessage)}`;
   const whatsappHref = buildWhatsAppUrl(fallbackMessage);
 

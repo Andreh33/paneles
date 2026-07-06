@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich en Badajoz y lo servimos en toda la Comunidad de Madrid por la A-5. Corte a medida y porte cerrado, a precio de fábrica.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

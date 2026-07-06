@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich y chapa perfilada junto a Mérida, en Puebla de la Calzada (A-5). Venta directa, corte a medida y entrega ágil en Mérida y su comarca.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

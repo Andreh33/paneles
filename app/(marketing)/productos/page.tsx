@@ -10,12 +10,12 @@ import {
 import { ProductCard } from "@/components/product/ProductCard";
 import { ProductFilters } from "@/components/product/ProductFilters";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbLd } from "@/lib/jsonld";
+import { breadcrumbLd, itemListLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Catálogo de productos",
+  title: "Catálogo de panel sándwich: cubierta, fachada y teja",
   description:
-    "Catálogo completo de paneles sándwich Panelex (cubierta y fachada), chapa perfilada y accesorios. Configura tu pedido y pide presupuesto por WhatsApp.",
+    "Catálogo de panel sándwich de cubierta, fachada e imitación teja, policarbonato y remates. Espesores de 30 a 100 mm, corte a medida y precio directo de fábrica.",
   alternates: { canonical: "/productos" },
 };
 
@@ -45,6 +45,9 @@ export default async function ProductosPage({
             { label: "Inicio", path: "/" },
             { label: "Productos", path: "/productos" },
           ]),
+          itemListLd(
+            PRODUCTS.map((p) => ({ name: p.name, slug: p.slug, image: p.image }))
+          ),
         ]}
       />
       {/* Hero compacto */}
@@ -170,6 +173,12 @@ export default async function ProductosPage({
                 zona climática, el uso del edificio y la separación entre apoyos, de
                 forma que aproveches el material sin sobredimensionar el pedido.
               </p>
+              <GamasTable />
+              <p className="mt-4 text-sm text-[var(--color-muted)]">
+                Los valores completos de cada combinación de espesor y chapa (peso y
+                transmitancia en W/m²·K y kcal/m²·h·°C) están en la ficha técnica de
+                cada producto.
+              </p>
               <p className="mt-4 text-[var(--color-muted)]">
                 Cortamos a la longitud exacta que necesitas, así reduces despuntes,
                 recortes y residuos en obra, y el montaje es más rápido. Servimos a
@@ -271,6 +280,94 @@ function uniqueEspesores(products: Product[]): number[] {
 // ----------------------------------------------------------------------------
 // UI auxiliar
 // ----------------------------------------------------------------------------
+
+/** Formatea un número con coma decimal (es-ES) sin depender de ICU. */
+function esNum(n: number): string {
+  return String(n).replace(".", ",");
+}
+
+/**
+ * Tabla comparativa de gamas con datos REALES del catálogo (espesores, U y
+ * peso desde PRODUCTS). Es HTML semántico con <caption>, pensado también para
+ * el featured snippet de búsquedas de espesores/medidas.
+ */
+function GamasTable() {
+  const familias: Array<{ label: string; slug: string }> = [
+    { label: "Panel imitación teja Fertelha", slug: "fertelha-terracota" },
+    { label: "Panel sándwich cubierta (5 grecas)", slug: "panel-cubierta-rojo" },
+    { label: "Panel sándwich fachada nervada", slug: "panel-fachada-nervada" },
+    { label: "Panel sándwich fachada microperfilada", slug: "panel-fachada-microperfilada" },
+    { label: "Policarbonato celular", slug: "policarbonato-celular" },
+    { label: "Policarbonato compacto", slug: "policarbonato-compacto" },
+  ];
+
+  const rows = familias.flatMap(({ label, slug }) => {
+    const p = PRODUCTS.find((x) => x.slug === slug);
+    if (!p) return [];
+    const espesores = [...new Set(p.specs.map((s) => s.espesorNominal))].sort(
+      (a, b) => a - b
+    );
+    const us = p.specs
+      .map((s) => s.uWmK)
+      .filter((u): u is number => u !== undefined);
+    const uText =
+      us.length > 0
+        ? `${esNum(Math.max(...us))} – ${esNum(Math.min(...us))}`
+        : "—";
+    const pesos = p.specs.map((s) => s.peso).filter((x) => x > 0);
+    const pesoText =
+      pesos.length > 0
+        ? `${esNum(Math.min(...pesos))} – ${esNum(Math.max(...pesos))}`
+        : "—";
+    return [
+      {
+        slug: p.slug,
+        label,
+        espesores: espesores.join(" / "),
+        u: uText,
+        peso: pesoText,
+        ancho: p.widthUseful ?? p.widthTotal,
+      },
+    ];
+  });
+
+  return (
+    <div className="mt-6 overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-white">
+      <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+        <caption className="border-b border-[var(--color-border)] bg-white px-4 py-3 text-left font-display text-sm font-semibold text-[var(--color-text)]">
+          Gamas de panel sándwich Panelex: espesores, aislamiento y peso
+        </caption>
+        <thead>
+          <tr className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+            <th scope="col" className="px-4 py-3 font-semibold">Producto</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Espesores (mm)</th>
+            <th scope="col" className="px-4 py-3 font-semibold">U (W/m²·K)</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Peso (kg/m²)</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Ancho útil (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.slug} className="border-b border-[var(--color-border)] last:border-0">
+              <th scope="row" className="px-4 py-3 font-semibold">
+                <a
+                  href={`/productos/${r.slug}`}
+                  className="text-[var(--color-text)] underline-offset-4 hover:text-[var(--color-primary)] hover:underline"
+                >
+                  {r.label}
+                </a>
+              </th>
+              <td className="px-4 py-3">{r.espesores}</td>
+              <td className="px-4 py-3">{r.u}</td>
+              <td className="px-4 py-3">{r.peso}</td>
+              <td className="px-4 py-3">{r.ancho}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 function EmptyState() {
   return (

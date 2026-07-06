@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       from,
       to: destination,
       replyTo: email,
-      subject: `Nueva consulta desde panelex.es — ${nombre}`,
+      subject: `Nueva consulta desde panelexpanelsandwich.com — ${nombre}`,
       text: [
         `Nombre: ${nombre}`,
         `Email: ${email}`,
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
         mensaje,
         ``,
         `—`,
-        `Recibido desde panelex.es`,
+        `Recibido desde panelexpanelsandwich.com`,
       ].join("\n"),
     });
 

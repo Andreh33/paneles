@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Fabricamos panel sándwich y chapa perfilada en la provincia de Badajoz. Venta directa, corte a medida y entrega en toda la provincia.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

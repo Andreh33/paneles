@@ -48,14 +48,29 @@ export function websiteLd() {
   };
 }
 
-export function localBusinessLd() {
+/**
+ * LocalBusiness completo (NAP + geo + horario + zonas + catálogo de servicios).
+ * `extraAreaServed` permite que cada página de zona anteponga su área local
+ * (p.ej. "Mérida y comarca") sin duplicar la entidad: el @id es siempre el mismo.
+ */
+export function localBusinessLd(opts?: { extraAreaServed?: string[] }) {
+  const zoneAreas = (opts?.extraAreaServed ?? []).map((name) => ({
+    "@type": "AdministrativeArea",
+    name,
+  }));
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${SITE.url}#local-business`,
     name: SITE.legalName,
     alternateName: SITE.name,
-    image: `${SITE.url}/opengraph-image`,
+    description:
+      "Fábrica de panel sándwich y chapa perfilada en Puebla de la Calzada (Badajoz). Más de 15 años fabricando, venta directa de fábrica, corte a medida y entrega en Extremadura, toda España y Portugal.",
+    image: [
+      `${SITE.url}/hero/operario-cubierta.webp`,
+      `${SITE.url}/opengraph-image`,
+    ],
+    logo: `${SITE.url}/logo.png`,
     url: SITE.url,
     telephone: SITE.contact.phone,
     email: SITE.contact.email,
@@ -73,6 +88,7 @@ export function localBusinessLd() {
       latitude: SITE.address.geo.lat,
       longitude: SITE.address.geo.lng,
     },
+    hasMap: `https://www.openstreetmap.org/?mlat=${SITE.address.geo.lat}&mlon=${SITE.address.geo.lng}#map=17/${SITE.address.geo.lat}/${SITE.address.geo.lng}`,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -81,18 +97,129 @@ export function localBusinessLd() {
         closes: "14:00",
       },
     ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.contact.phone,
+        contactType: "sales",
+        name: `${SITE.contact.salesContact.name} — ${SITE.contact.salesContact.role}`,
+        availableLanguage: "Spanish",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.contact.phoneOffice,
+        contactType: "customer service",
+        name: "Oficina",
+        availableLanguage: "Spanish",
+      },
+    ],
     areaServed: [
+      ...zoneAreas,
       { "@type": "AdministrativeArea", name: "Extremadura" },
       { "@type": "AdministrativeArea", name: "Provincia de Badajoz" },
       { "@type": "AdministrativeArea", name: "Provincia de Cáceres" },
       { "@type": "Country", name: "España" },
       { "@type": "Country", name: "Portugal" },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Catálogo de panel sándwich y chapa perfilada",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Panel sándwich de cubierta a medida",
+            url: `${SITE.url}/productos?categoria=cubierta`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Panel sándwich imitación teja (Fertelha)",
+            url: `${SITE.url}/productos/fertelha-terracota`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Panel sándwich de fachada",
+            url: `${SITE.url}/productos?categoria=fachada`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Policarbonato celular y compacto",
+            url: `${SITE.url}/productos?categoria=policarbonato`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Remates, cumbreras y accesorios de cubierta",
+            url: `${SITE.url}/productos?categoria=accesorio`,
+          },
+        },
+      ],
+    },
     sameAs: [
       SITE.social.facebook,
       SITE.social.linkedin,
       SITE.social.instagram,
     ].filter(Boolean),
+  };
+}
+
+/**
+ * Service para páginas de zona: "suministro de panel sándwich en X".
+ * Entidad ligera y 100% válida (sin offers) que conecta la página local con
+ * la organización (provider) y su área de servicio.
+ */
+export function serviceLd(opts: {
+  name: string;
+  description: string;
+  path: string;
+  areaName: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE.url}${opts.path}#service`,
+    name: opts.name,
+    description: opts.description,
+    serviceType: "Fabricación, venta y corte a medida de panel sándwich",
+    provider: { "@id": `${SITE.url}#organization` },
+    areaServed: { "@type": "AdministrativeArea", name: opts.areaName },
+    url: `${SITE.url}${opts.path}`,
+  };
+}
+
+/**
+ * ItemList del catálogo (/productos). Sustituye al Product por página
+ * mientras no exista un precio "desde" publicado: es schema válido, sin los
+ * requisitos de offers/review/aggregateRating del rich result de producto.
+ */
+export function itemListLd(
+  items: Array<{ name: string; slug: string; image: string }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE.url}/productos#catalogo`,
+    name: "Catálogo de panel sándwich y chapa perfilada Panelex",
+    numberOfItems: items.length,
+    itemListElement: items.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: p.name,
+      url: `${SITE.url}/productos/${p.slug}`,
+      image: `${SITE.url}${p.image}`,
+    })),
   };
 }
 
@@ -142,7 +269,7 @@ export function blogPostingLd(post: BlogPost) {
     image: [`${SITE.url}/opengraph-image`],
     inLanguage: "es-ES",
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.dateModified ?? post.date,
     keywords: post.keywords.join(", "),
     articleSection: post.category,
     author: { "@id": `${SITE.url}#organization` },

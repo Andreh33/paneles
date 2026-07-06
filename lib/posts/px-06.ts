@@ -247,6 +247,7 @@ export const posts: BlogPost[] = [
     metaDescription: "Guía de medidas del panel sándwich: ancho útil de 1.000 mm, longitudes en múltiplos de 350 mm hasta 14 m y el límite real que pone el transporte.",
     excerpt: "Antes de pedir, conviene conocer las medidas del panel sándwich: cuánto cubre de ancho cada lama, en qué longitudes se corta y hasta dónde se puede llegar. Te explicamos el ancho útil habitual, los saltos de 350 mm, los rangos por producto y cómo todo eso influye en el despiece de tu obra.",
     date: "2025-10-21",
+    dateModified: "2026-07-06",
     category: "Guías técnicas",
     readingMinutes: 11,
     keywords: [
@@ -304,9 +305,15 @@ export const posts: BlogPost[] = [
           "En el panel de cubierta, el rango de longitudes habitual va desde unos 2.100 milímetros hasta esos mismos 14.000 milímetros, también en múltiplos de 350. Son longitudes pensadas para faldones de nave, que suelen ser tiradas largas y continuas. Con catorce metros de longitud máxima, la inmensa mayoría de los faldones de cubierta se resuelven de una sola pieza, sin necesidad de solapar nada en mitad de la pendiente, que es justo lo que conviene para la estanqueidad de la cubierta a largo plazo.",
           "Catorce metros es una longitud enorme para que te hagas una idea: estamos hablando de una lama de la altura de un edificio de cuatro o cinco plantas. En la mayoría de las obras no se llega ni de lejos a ese máximo, y cuando un faldón sí da para tanto, lo que manda no es la fábrica sino el transporte y la manipulación, como veremos enseguida. El mensaje es tranquilizador: salvo casos muy excepcionales, la longitud que necesitas la podemos cortar sin problema dentro de estos rangos."
         ],
+        table: {
+          caption: "Medidas del panel sándwich Panelex: anchos y longitudes de corte",
+          headers: ["Producto", "Ancho útil", "Longitud mínima", "Longitud máxima", "Paso de corte"],
+          rows: [
+            ["Panel imitación teja Fertelha", "1.000 mm", "1.050 mm", "14.000 mm", "múltiplos de 350 mm"],
+            ["Panel sándwich de cubierta", "1.000 mm", "2.100 mm", "14.000 mm", "múltiplos de 350 mm"],
+          ],
+        },
         bullets: [
-          "Fertelha imitación teja: de 1.050 a 14.000 mm, en múltiplos de 350 mm.",
-          "Panel de cubierta: desde unos 2.100 hasta 14.000 mm, también en múltiplos de 350.",
           "El mínimo existe para que el conformado y el dibujo del perfil salgan bien.",
           "El máximo de 14 m es el techo de la línea de fabricación.",
           "La mayoría de faldones se cubren de una sola pieza muy por debajo del máximo."
