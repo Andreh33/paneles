@@ -166,9 +166,15 @@ export function Footer() {
             © {year} {SITE.legalName} · Todos los derechos reservados.
           </p>
           <p className="font-mono">
-            Creado a medida ·{" "}
-            <span className="text-[var(--color-accent-soft)]">●</span> Made for
-            steel.
+            Diseño y desarrollo web por{" "}
+            <a
+              href="https://serviciosonlineweb.com"
+              target="_blank"
+              rel="noopener"
+              className="text-[var(--color-accent-soft)] transition hover:text-white"
+            >
+              Latech
+            </a>
           </p>
         </div>
       </div>
