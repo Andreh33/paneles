@@ -948,13 +948,19 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
 
-/** Posts relacionados: misma categoría primero, luego el resto, sin el actual. */
+/**
+ * Posts relacionados: misma categoría primero, luego el resto; dentro de cada
+ * grupo, los más recientes primero. Ordenar por fecha hace que el contenido
+ * nuevo reciba enlaces internos entrantes automáticamente (antes, al ir por el
+ * orden del archivo, los posts nuevos quedaban huérfanos y tardaban en indexar).
+ */
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const current = getPostBySlug(slug);
   if (!current) return [];
+  const byDateDesc = (a: BlogPost, b: BlogPost) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime();
   const others = POSTS.filter((p) => p.slug !== slug);
-  return [
-    ...others.filter((p) => p.category === current.category),
-    ...others.filter((p) => p.category !== current.category),
-  ].slice(0, limit);
+  const sameCat = others.filter((p) => p.category === current.category).sort(byDateDesc);
+  const otherCat = others.filter((p) => p.category !== current.category).sort(byDateDesc);
+  return [...sameCat, ...otherCat].slice(0, limit);
 }

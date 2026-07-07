@@ -2,11 +2,14 @@
 
 @theme {
   /* ===========================================================
-     PANELEX — Tokens de marca (extraídos del logo real, PDF p1)
+     PANELEX — Tokens de marca (azul y naranja del logo real)
+     El azul del logo es un índigo vivo (#3f47cc); antes el token
+     era una versión apagada/agrisada (#4d4c92) que tiraba a violeta
+     y no casaba con el logo. Ahora coincide con la marca.
      =========================================================== */
-  --color-primary: #4d4c92;
-  --color-primary-deep: #2d2c66;
-  --color-primary-soft: #7d7cc4;
+  --color-primary: #3f47cc;
+  --color-primary-deep: #262a80;
+  --color-primary-soft: #8a91e6;
 
   --color-accent: #e37c17;
   --color-accent-deep: #a85608;
