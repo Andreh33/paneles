@@ -40,6 +40,7 @@ import { posts as px27 } from "@/lib/posts/px-27";
 import { posts as px28 } from "@/lib/posts/px-28";
 import { posts as px29 } from "@/lib/posts/px-29";
 import { posts as px30 } from "@/lib/posts/px-30";
+import { posts as px31 } from "@/lib/posts/px-31";
 
 /**
  * Tabla de datos de una sección. Se renderiza como <table> semántica con
@@ -940,6 +941,7 @@ export const POSTS: BlogPost[] = [
   ...px28,
   ...px29,
   ...px30,
+  ...px31,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

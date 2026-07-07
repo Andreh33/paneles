@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
     // Consolidación SEO: las guías locales del blog duplicaban la intención
     // de búsqueda de las páginas de zona. 301 para traspasar su señal.
     return [
+      // www → apex con 308 permanente (Vercel sirve el subdominio no
+      // configurado con un 307 temporal que no consolida señales SEO).
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.panelexpanelsandwich.com" }],
+        destination: "https://panelexpanelsandwich.com/:path*",
+        permanent: true,
+      },
       { source: "/sobre-nosotros/panel-sandwich-en-caceres", destination: "/panel-sandwich-caceres", permanent: true },
       { source: "/sobre-nosotros/panel-sandwich-en-merida", destination: "/panel-sandwich-merida", permanent: true },
       { source: "/sobre-nosotros/panel-sandwich-en-plasencia", destination: "/panel-sandwich-plasencia", permanent: true },
