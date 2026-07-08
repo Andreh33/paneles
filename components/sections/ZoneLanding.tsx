@@ -12,8 +12,21 @@ import {
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { breadcrumbLd, faqLd, localBusinessLd, serviceLd } from "@/lib/jsonld";
 import type { FaqItem } from "@/lib/jsonld";
+
+/**
+ * Espesor / transmitancia / uso — datos del catálogo (misma referencia que la
+ * home y la guía «Qué espesor de panel elegir»). Tabla de 3 columnas citable
+ * por IA y pensada para el featured snippet, común a todas las zonas.
+ */
+const ESPESOR_ROWS: Array<[string, string, string]> = [
+  ["30 mm", "≈ 0,71", "Cobertizos y porches sin climatizar"],
+  ["40–50 mm", "≈ 0,55–0,43", "El estándar de nave agrícola e industrial"],
+  ["60–80 mm", "≈ 0,37–0,28", "Vivienda y edificios climatizados"],
+  ["100 mm", "≈ 0,22", "Cámaras e industria agroalimentaria"],
+];
 
 /**
  * Landing geográfica reutilizable (provincia/zona). Misma estructura y schema
@@ -30,6 +43,8 @@ export interface ZoneLandingData {
   heroTitleB: string;
   heroLead: string;
   whyHeading: string;
+  /** Respuesta directa 40-60 palabras (answer-first, citable por IA). */
+  quickAnswer?: string;
   intro: string[];
   zonesIntro: string;
   zones: { label: string; href?: string }[];
@@ -157,6 +172,9 @@ export function ZoneLanding({ data }: { data: ZoneLandingData }) {
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-5xl">
               {data.whyHeading}
             </h2>
+            {data.quickAnswer && (
+              <QuickAnswer className="mt-8">{data.quickAnswer}</QuickAnswer>
+            )}
           </div>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -241,6 +259,32 @@ export function ZoneLanding({ data }: { data: ZoneLandingData }) {
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Tabla citable: qué espesor elegir (datos reales del catálogo) */}
+          <div className="mt-12 overflow-x-auto rounded-2xl border border-[var(--color-border)]">
+            <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+              <caption className="border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left font-display text-sm font-semibold">
+                Qué espesor de panel sándwich elegir para tu obra en {data.zone}{" "}
+                (núcleo de poliuretano)
+              </caption>
+              <thead>
+                <tr className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+                  <th scope="col" className="px-4 py-3 font-semibold">Espesor</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Transmitancia U (W/m²·K)</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Uso recomendado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ESPESOR_ROWS.map((r) => (
+                  <tr key={r[0]} className="border-b border-[var(--color-border)] last:border-0">
+                    <th scope="row" className="px-4 py-3 font-semibold">{r[0]}</th>
+                    <td className="px-4 py-3">{r[1]}</td>
+                    <td className="px-4 py-3">{r[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           {/* Qué fabricamos */}

@@ -35,6 +35,8 @@ const data: ZoneLandingData = {
   heroLead:
     "Fabricamos panel sándwich y chapa perfilada en Puebla de la Calzada, en plena provincia de Badajoz. Vendemos directo de fábrica, con corte a medida y entrega ágil en toda la provincia: Mérida, Don Benito, Almendralejo, Zafra y comarca.",
   whyHeading: "La fábrica está en tu provincia.",
+  quickAnswer:
+    "Panelex es la fábrica de panel sándwich de la provincia de Badajoz: produce en Puebla de la Calzada, a pie de la A-5, y vende directo panel de cubierta, fachada e imitación teja de 30 a 100 mm cortado a medida. Entrega en Badajoz capital, Mérida, Don Benito, Almendralejo y Zafra con porte cerrado y presupuesto por WhatsApp el mismo día laborable.",
   intro: [
     "No somos un distribuidor que trae el panel desde el norte de España: somos una fábrica situada en la propia provincia de Badajoz, en Puebla de la Calzada, a pie de la autovía A-5. Para una obra en Badajoz eso significa la máxima cercanía posible, transporte corto y plazos ágiles, sin los portes largos que encarecen el material cuando viene de lejos.",
     "Conocemos el terreno porque trabajamos en él a diario: las Vegas del Guadiana y su agricultura de regadío, la Tierra de Barros y sus bodegas, la dehesa de La Serena y la Sierra Suroeste con su ganadería, y los polígonos industriales de Badajoz capital y Mérida. Eso nos permite recomendarte el panel adecuado para cada tipo de obra de la provincia.",

@@ -10,6 +10,7 @@ import {
 import { ProductCard } from "@/components/product/ProductCard";
 import { ProductFilters } from "@/components/product/ProductFilters";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { breadcrumbLd, itemListLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -117,6 +118,15 @@ export default async function ProductosPage({
               <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
                 Toda nuestra gama de panel sándwich y chapa perfilada
               </h2>
+              <QuickAnswer className="mt-6">
+                Panelex fabrica {PRODUCTS.length} referencias de panel sándwich
+                y chapa perfilada: panel de cubierta (incluida la imitación teja
+                Fertelha en terracota, chocolate y gris), panel de fachada con
+                fijación vista u oculta, chapa perfilada galvanizada y
+                prelacada, policarbonato y remates. Espesores de 30 a 100 mm,
+                cortado a medida hasta 14 metros y servido a toda España y
+                Portugal.
+              </QuickAnswer>
               <p className="mt-6 text-[var(--color-muted)]">
                 En Panelex fabricamos en Puebla de la Calzada (Badajoz) y vendemos
                 directamente de fábrica, sin intermediarios. Eso nos permite cortar

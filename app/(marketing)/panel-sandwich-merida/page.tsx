@@ -35,6 +35,8 @@ const data: ZoneLandingData = {
   heroLead:
     "Fabricamos panel sándwich y chapa perfilada en Puebla de la Calzada, a pie de la autovía A-5 y a apenas media hora de Mérida. Vendemos directo de fábrica, con corte a medida y entrega ágil en la capital extremeña y su comarca: Montijo, Calamonte, Almendralejo, Guareña y las Vegas del Guadiana.",
   whyHeading: "La fábrica está a un paso de Mérida.",
+  quickAnswer:
+    "La fábrica de panel sándwich más cercana a Mérida es Panelex, en Puebla de la Calzada, a pie de la A-5 y a media hora de la ciudad. Fabrica y vende directo panel de cubierta, fachada e imitación teja de 30 a 100 mm, cortado a medida, con entrega ágil en Mérida y su comarca y presupuesto cerrado por WhatsApp el mismo día.",
   intro: [
     "No somos un distribuidor que trae el panel desde el norte de España: fabricamos aquí al lado, en Puebla de la Calzada, a pie de la autovía A-5 y a apenas media hora de Mérida. Para una obra en la capital extremeña eso significa la máxima cercanía posible, transporte corto y plazos ágiles, sin los portes largos que encarecen el material cuando llega de fuera de la región.",
     "Conocemos Mérida y su entorno porque trabajamos aquí a diario. Es el gran cruce de caminos de Extremadura, donde se juntan la A-5 y la A-66 (Ruta de la Plata), y eso la ha convertido en un nudo logístico e industrial con polígonos como El Prado. Alrededor, las Vegas del Guadiana riegan una potente agroindustria, mientras el casco histórico romano convive con barrios donde toca renovar cubiertas antiguas.",
