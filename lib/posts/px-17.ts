@@ -6,7 +6,9 @@ export const posts: BlogPost[] = [
     title: "Cómo retirar uralita con amianto y sustituirla por panel sándwich",
     metaDescription: "El amianto solo lo retira una empresa inscrita en el RERA con plan aprobado. Te explicamos el proceso legal y cómo sustituir la uralita por panel sándwich.",
     excerpt: "La uralita con amianto no se toca por tu cuenta: solo la retira una empresa inscrita en el RERA con plan de trabajo aprobado. Te contamos cómo es el proceso legal y cómo dejamos tu cubierta nueva con panel sándwich a medida.",
+    quickAnswer: "La uralita con amianto solo puede retirarla una empresa inscrita en el RERA, con un plan de trabajo aprobado por la autoridad laboral; hacerlo por cuenta propia es ilegal y peligroso. Está prohibido el «doblaje» (tapar la cubierta perforando la placa, porque libera fibras): la única vía legal es el desmontaje certificado. El coste integral de sustituirla por panel sándwich ronda los 45–85 €/m² en 2026.",
     date: "2026-07-02",
+    dateModified: "2026-07-08",
     category: "Mantenimiento",
     readingMinutes: 15,
     keywords: [
@@ -55,7 +57,8 @@ export const posts: BlogPost[] = [
           "No la limpies con hidrolimpiadora: el agua a presión pulveriza la placa y dispersa el amianto.",
           "No la tires al contenedor ni al punto limpio: es un residuo peligroso con gestión propia.",
           "No camines sobre las placas viejas: además del riesgo de rotura, están frágiles y pueden ceder.",
-          "No la pintes creyendo que así queda «sellada» para siempre: es un parche temporal, no una solución."
+          "No la pintes creyendo que así queda «sellada» para siempre: es un parche temporal, no una solución.",
+          "No «dobles» la cubierta atornillando chapa o panel a través de la uralita: perforar la placa libera fibras y esa práctica está prohibida; la vía legal es el desmontaje certificado o una sobrecubierta sin trocear el fibrocemento."
         ]
       },
       {
@@ -136,10 +139,25 @@ export const posts: BlogPost[] = [
         ]
       },
       {
-        heading: "Costes y ayudas: el marco general, sin cifras inventadas",
+        heading: "Cuánto cuesta cambiar la uralita por panel sándwich",
         paragraphs: [
-          "Cuando se habla de dinero, lo honesto es separar dos presupuestos distintos. Por un lado está la retirada del amianto, que factura la empresa RERA y depende de muchos factores: los metros cuadrados, la accesibilidad de la cubierta, la altura, el estado de las placas y la complejidad del trabajo. No damos cifras cerradas de esa parte porque no es lo nuestro y porque cualquier número suelto sería engañoso. Para eso, pide varios presupuestos a empresas RERA de tu zona.",
-          "Por otro lado hay ayudas y subvenciones que, según el momento y el territorio, pueden ayudar a financiar tanto la retirada del amianto como la mejora energética que supone poner una cubierta aislada. No inventamos importes, porcentajes ni convocatorias, porque cambian y equivocarse aquí genera falsas expectativas. Lo sensato es consultar en tu ayuntamiento y en tu comunidad autónoma qué programas están abiertos y qué requisitos piden en cada convocatoria.",
+          "Cuando se habla de dinero, lo honesto es separar dos presupuestos distintos. Por un lado está la retirada del amianto, que factura la empresa RERA y depende de muchos factores: los metros cuadrados, la accesibilidad de la cubierta, la altura, el estado de las placas y la complejidad del trabajo. No te damos un precio cerrado de esa parte porque no es lo nuestro y varía en cada obra, pero sí ayuda manejar los rangos de mercado de 2026 para orientarte, sabiendo que el número final lo fija la empresa RERA con su presupuesto.",
+          "Como referencia de mercado, el coste integral de sustituir una cubierta de uralita por panel sándwich —es decir, retirada del amianto más cubierta nueva instalada— suele moverse entre 45 y 85 €/m² en 2026, con una nave industrial típica en torno a 52–61 €/m². Ese total se reparte de forma aproximada en un 40 % de retirada y gestión del amianto y un 60 % de panel nuevo e instalación. Son rangos orientativos, no un presupuesto: el precio real depende de tu obra."
+        ],
+        table: {
+          caption: "Coste orientativo de sustituir uralita por panel sándwich (rangos de mercado, 2026)",
+          headers: ["Concepto", "Peso en el total", "Precio orientativo (€/m²)"],
+          rows: [
+            ["Retirada del amianto por empresa RERA", "≈ 40 %", "18–34 €/m²"],
+            ["Cubierta nueva de panel + instalación", "≈ 60 %", "27–51 €/m²"],
+            ["Total integral (nave típica: 52–61 €/m²)", "100 %", "45–85 €/m²"],
+          ],
+        }
+      },
+      {
+        heading: "Ayudas y qué presupuestamos nosotros",
+        paragraphs: [
+          "Hay ayudas y subvenciones que, según el momento y el territorio, pueden financiar tanto la retirada del amianto como la mejora energética que supone poner una cubierta aislada. No inventamos importes, porcentajes ni convocatorias, porque cambian y equivocarse aquí genera falsas expectativas. Lo sensato es consultar en tu ayuntamiento y en tu comunidad autónoma qué programas están abiertos y qué requisitos piden en cada convocatoria.",
           "Lo que sí podemos presupuestar con precisión es la parte que nos toca: el panel nuevo. Con las medidas de tu cubierta, el espesor y el acabado que busques, te preparamos un presupuesto cerrado del material y del transporte, y del montaje si lo instalamos nosotros. Así tienes clara al menos una de las dos partidas, y puedes componer el coste total sumándole la retirada que te den las empresas autorizadas."
         ]
       },
@@ -178,6 +196,7 @@ export const posts: BlogPost[] = [
     title: "Sobrecubierta: tapar uralita con panel sándwich sin retirarla",
     metaDescription: "La sobrecubierta tapa la uralita con panel sándwich sin retirarla, cuando es viable. Te explicamos límites, normativa y cómo la instalamos a medida.",
     excerpt: "Tapar la uralita con una sobrecubierta de panel sándwich evita el desmontaje inmediato, pero no siempre es viable. Te contamos cuándo compensa, qué límites tiene y por qué tocar el amianto es cosa de una empresa autorizada.",
+    quickAnswer: "Una sobrecubierta tapa la uralita con panel sándwich sin retirarla, montando una cubierta nueva sobre la vieja. Solo es viable si la placa está entera y la estructura aguanta el peso extra. No elimina el amianto: lo aplaza, y cualquier perforación del fibrocemento sigue siendo trabajo de una empresa RERA. Ganas aislamiento y estanqueidad, pero la retirada futura será más compleja.",
     date: "2026-07-01",
     category: "Montaje",
     readingMinutes: 15,

@@ -384,6 +384,7 @@ export const posts: BlogPost[] = [
     title: "Policarbonato vs. panel sándwich: cuándo elegir cada uno",
     metaDescription: "Policarbonato o panel sándwich: luz natural frente a aislamiento. Comparamos usos, lucernarios y cómo combinarlos en una misma cubierta. Fábrica en Badajoz.",
     excerpt: "No es una pelea de buenos y malos: el policarbonato deja pasar la luz y el panel sándwich aísla. Cada uno brilla en lo suyo. Te explicamos cuándo elegir cada material, cómo se usan los lucernarios y por qué muchas veces la mejor solución es combinar ambos en la misma cubierta.",
+    quickAnswer: "Panel sándwich y policarbonato no compiten: el panel aísla (núcleo aislante entre dos chapas de acero) y el policarbonato deja pasar la luz (traslúcido, con cámaras de aire). Lo habitual no es elegir uno u otro, sino combinarlos: una cubierta de panel sándwich con lucernarios de policarbonato intercalados da aislamiento donde importa y luz natural donde hace falta.",
     date: "2026-06-16",
     category: "Comparativas",
     readingMinutes: 9,
@@ -402,7 +403,18 @@ export const posts: BlogPost[] = [
           "Lo primero que conviene entender es que el policarbonato y el panel sándwich no compiten por lo mismo. El panel sándwich aísla: te separa del frío, del calor y del ruido. El policarbonato deja pasar la luz: convierte una cubierta opaca en una fuente de claridad natural. Preguntar cuál es mejor es como preguntar si es mejor una pared o una ventana.",
           "El panel sándwich es opaco y aislante porque lleva un núcleo aislante entre dos chapas. Donde lo pones, no entra luz pero tampoco entra calor ni frío. El policarbonato celular es traslúcido y ligero, con cámaras de aire interiores que le dan algo de aislamiento y rigidez, pero su gracia es que ilumina.",
           "Fabricamos panel sándwich en Badajoz y trabajamos también el policarbonato, así que no tenemos que arrimar el ascua a un material concreto. Lo que nos interesa es que tu cubierta funcione, y eso casi siempre pasa por usar cada material donde mejor rinde."
-        ]
+        ],
+        table: {
+          caption: "Panel sándwich frente a policarbonato celular: en qué se diferencian",
+          headers: ["Criterio", "Panel sándwich", "Policarbonato celular"],
+          rows: [
+            ["Función principal", "Aislar del calor, el frío y el ruido", "Dejar pasar la luz natural"],
+            ["Aislamiento térmico", "Alto (núcleo aislante)", "Bajo (cámaras de aire)"],
+            ["Paso de luz", "Opaco", "Traslúcido"],
+            ["Uso típico", "Cubierta y fachada de nave", "Lucernarios y franjas de luz"],
+            ["En una misma cubierta", "El grueso de la superficie", "Tramos intercalados para iluminar"],
+          ],
+        }
       },
       {
         heading: "Cuándo elegir panel sándwich",

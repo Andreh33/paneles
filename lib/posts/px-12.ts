@@ -6,6 +6,7 @@ export const posts: BlogPost[] = [
     title: "Cambiar uralita por panel sándwich: el adiós al amianto",
     metaDescription: "Cambiar uralita por panel sándwich, paso a paso: por qué el amianto se retira por gestor RERA autorizado, las ventajas del panel y cómo es la obra.",
     excerpt: "Si tu nave o tu casa de campo todavía tiene uralita, cambiarla por panel sándwich es la jugada que más se repite en nuestra fábrica. Te contamos por qué el amianto hay que retirarlo siempre por un gestor autorizado, qué ganas con el panel y cómo es el proceso de sustitución de principio a fin.",
+    quickAnswer: "Cambiar uralita por panel sándwich es hoy la reforma de cubierta más habitual en naves y casas de campo. La regla legal es innegociable: el amianto solo lo retira una empresa inscrita en el RERA, con plan de trabajo aprobado, nunca por cuenta propia. Una vez retirada la uralita, se monta el panel nuevo, que aísla y sella donde el fibrocemento fallaba. Panelex fabrica el panel; la retirada la hace el gestor autorizado.",
     date: "2026-04-07",
     category: "Comparativas",
     readingMinutes: 12,
