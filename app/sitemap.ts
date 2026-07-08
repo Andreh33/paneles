@@ -9,6 +9,7 @@ const STATIC_ROUTES: Array<{
   priority: number;
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
+  { path: "/guias", changeFrequency: "weekly", priority: 0.8 },
   { path: "/panel-sandwich-extremadura", changeFrequency: "monthly", priority: 0.9 },
   { path: "/panel-sandwich-badajoz", changeFrequency: "monthly", priority: 0.85 },
   { path: "/panel-sandwich-caceres", changeFrequency: "monthly", priority: 0.85 },
@@ -48,12 +49,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // lastmod honesto por URL: fecha de publicación o de la última edición
+  // REAL del contenido (dateModified). Es el mecanismo que Google usa para
+  // reprogramar recrawls; inflarlo hace que lo ignore.
   const posts: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${SITE.url}/sobre-nosotros/${p.slug}`,
-    lastModified: new Date(p.date),
+    lastModified: new Date(p.dateModified ?? p.date),
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
+  // Nota (segmentación valorada, 2026-07-08): con ~130 URLs un único sitemap
+  // está muy por debajo del límite (50k) y GSC ya desglosa por tipo de página;
+  // `generateSitemaps` de Next produce /sitemap/[id].xml SIN índice raíz, lo
+  // que obligaría a reenviar cada parte en GSC/Bing a mano. Se mantiene un
+  // sitemap único con lastmod honesto por URL (posts) y estable (páginas).
   return [...base, ...products, ...posts];
 }

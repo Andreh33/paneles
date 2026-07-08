@@ -8,13 +8,22 @@ import type { Product as PanelexProduct, ProductCategory } from "./products";
 import { ALL_CATEGORIES } from "./products";
 import { SITE } from "./site";
 
+/** @id estables de las entidades del grafo. Un solo identificador por entidad
+ *  en todo el sitio: es lo que permite a Google/Bing/LLMs consolidar la marca. */
+export const ORG_ID = `${SITE.url}#organization`;
+export const WEBSITE_ID = `${SITE.url}#website`;
+export const LOCAL_BUSINESS_ID = `${SITE.url}#local-business`;
+export const PERSON_ID = `${SITE.url}#ramon-romero-fernandez`;
+
 export function organizationLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${SITE.url}#organization`,
+    "@id": ORG_ID,
     name: SITE.legalName,
-    alternateName: SITE.name,
+    // Variantes reales del nombre con las que la marca aparece citada
+    // (dominio, forma corta). Ayudan a los LLMs a resolver la entidad única.
+    alternateName: [SITE.name, "Panelex Panel Sandwich"],
     url: SITE.url,
     logo: `${SITE.url}/logo.png`,
     description: SITE.tagline,
@@ -28,6 +37,7 @@ export function organizationLd() {
       addressRegion: SITE.address.province,
       addressCountry: "ES",
     },
+    employee: { "@id": PERSON_ID },
     sameAs: [
       SITE.social.facebook,
       SITE.social.linkedin,
@@ -36,15 +46,66 @@ export function organizationLd() {
   };
 }
 
+/**
+ * Person — Ramón Romero Fernández, la cara comercial y técnica de Panelex.
+ * Entidad de autor real para EEAT y atribución en respuestas de IA: los posts
+ * lo referencian como author y la Organization como employee (mismo @id).
+ */
+export function personLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: SITE.contact.salesContact.name,
+    jobTitle: SITE.contact.salesContact.role,
+    telephone: SITE.contact.phone,
+    worksFor: { "@id": ORG_ID },
+    description:
+      "Atención comercial de Panelex: asesora sobre panel sándwich de cubierta y fachada, espesores, aislamiento y presupuestos de fábrica desde Puebla de la Calzada (Badajoz).",
+    knowsAbout: [
+      "Panel sándwich",
+      "Panel sándwich de cubierta",
+      "Panel sándwich imitación teja",
+      "Chapa perfilada",
+      "Aislamiento térmico de naves",
+      "Cubiertas metálicas",
+    ],
+    url: `${SITE.url}/sobre-nosotros`,
+  };
+}
+
+/**
+ * Grafo único de entidad (@graph) que enlaza Organization ↔ WebSite ↔
+ * LocalBusiness ↔ Person con @id estables. Se emite en la home; el resto de
+ * páginas reutilizan los mismos @id (Service, Product, BlogPosting), de modo
+ * que todo el schema del sitio forma un solo grafo consolidado.
+ */
+export function entityGraphLd() {
+  const strip = (node: Record<string, unknown>) => {
+    const { ["@context"]: _context, ...rest } = node;
+    return rest;
+  };
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      strip(organizationLd()),
+      strip(websiteLd()),
+      strip(localBusinessLd()),
+      strip(personLd()),
+    ],
+  };
+}
+
 export function websiteLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE.url}#website`,
+    "@id": WEBSITE_ID,
     url: SITE.url,
     name: SITE.name,
+    alternateName: "Panelex Panel Sandwich",
     inLanguage: "es-ES",
-    publisher: { "@id": `${SITE.url}#organization` },
+    publisher: { "@id": ORG_ID },
   };
 }
 
@@ -61,9 +122,10 @@ export function localBusinessLd(opts?: { extraAreaServed?: string[] }) {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${SITE.url}#local-business`,
+    "@id": LOCAL_BUSINESS_ID,
     name: SITE.legalName,
-    alternateName: SITE.name,
+    alternateName: [SITE.name, "Panelex Panel Sandwich"],
+    parentOrganization: { "@id": ORG_ID },
     description:
       "Fábrica de panel sándwich y chapa perfilada en Puebla de la Calzada (Badajoz). Más de 15 años fabricando, venta directa de fábrica, corte a medida y entrega en Extremadura, toda España y Portugal.",
     image: [
@@ -193,7 +255,7 @@ export function serviceLd(opts: {
     name: opts.name,
     description: opts.description,
     serviceType: "Fabricación, venta y corte a medida de panel sándwich",
-    provider: { "@id": `${SITE.url}#organization` },
+    provider: { "@id": ORG_ID },
     areaServed: { "@type": "AdministrativeArea", name: opts.areaName },
     url: `${SITE.url}${opts.path}`,
   };
@@ -236,7 +298,7 @@ export function productLd(product: PanelexProduct) {
     description: product.description,
     category: categoryLabel,
     brand: { "@type": "Brand", name: SITE.name },
-    manufacturer: { "@id": `${SITE.url}#organization` },
+    manufacturer: { "@id": ORG_ID },
     image: [`${SITE.url}/productos/${product.slug}/opengraph-image`],
     url: `${SITE.url}/productos/${product.slug}`,
     additionalProperty: [
@@ -266,14 +328,24 @@ export function blogPostingLd(post: BlogPost) {
     "@id": `${SITE.url}/sobre-nosotros/${post.slug}#article`,
     headline: post.title,
     description: post.metaDescription,
+    ...(post.quickAnswer ? { abstract: post.quickAnswer } : {}),
     image: [`${SITE.url}/opengraph-image`],
     inLanguage: "es-ES",
     datePublished: post.date,
     dateModified: post.dateModified ?? post.date,
     keywords: post.keywords.join(", "),
     articleSection: post.category,
-    author: { "@id": `${SITE.url}#organization` },
-    publisher: { "@id": `${SITE.url}#organization` },
+    // Autor-persona real (EEAT + atribución en IA). El nodo se define inline
+    // con el mismo @id del grafo para que resuelva también fuera de la home.
+    author: {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: SITE.contact.salesContact.name,
+      jobTitle: SITE.contact.salesContact.role,
+      worksFor: { "@id": ORG_ID },
+      url: `${SITE.url}/sobre-nosotros`,
+    },
+    publisher: { "@id": ORG_ID },
     mainEntityOfPage: `${SITE.url}/sobre-nosotros/${post.slug}`,
     url: `${SITE.url}/sobre-nosotros/${post.slug}`,
   };

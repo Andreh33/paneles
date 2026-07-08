@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 
 /**
  * Bloque editorial de la home pensado para posicionamiento orgánico:
@@ -33,6 +34,18 @@ const FAMILIES = [
   },
 ];
 
+/**
+ * Espesor / transmitancia / uso — datos del catálogo (misma referencia que la
+ * guía «Qué espesor de panel elegir»). Tabla de 3 columnas pensada para el
+ * featured snippet y la extracción por IA.
+ */
+const ESPESOR_ROWS: Array<[string, string, string]> = [
+  ["30 mm", "≈ 0,71", "Cobertizos y porches sin climatizar"],
+  ["40–50 mm", "≈ 0,55–0,43", "El estándar de nave agrícola e industrial"],
+  ["60–80 mm", "≈ 0,37–0,28", "Vivienda y edificios climatizados"],
+  ["100 mm", "≈ 0,22", "Cámaras e industria agroalimentaria"],
+];
+
 /** Posts destacados en la home (enlazado interno hacia el blog). */
 const FEATURED_POST_SLUGS = [
   "que-es-el-panel-sandwich",
@@ -59,6 +72,16 @@ export function SeoContent() {
             <br />
             Envíos a toda España y Portugal.
           </h2>
+
+          {/* Answer-first (GEO): respuesta directa bajo el H2 principal. */}
+          <QuickAnswer className="mt-8">
+            Panelex es una fábrica de panel sándwich en Puebla de la Calzada
+            (Badajoz) que vende directo, sin intermediarios: panel de cubierta y
+            fachada con núcleo de poliuretano de 30 a 100 mm, imitación teja
+            Fertelha y chapa perfilada, todo cortado a medida hasta 14 metros y
+            con envío a toda España y Portugal. Presupuesto cerrado por WhatsApp
+            el mismo día laborable.
+          </QuickAnswer>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -187,13 +210,33 @@ export function SeoContent() {
             <div className="mt-5 space-y-5 leading-relaxed text-[var(--color-text)]">
               <p>
                 Fabricamos paneles con núcleo de poliuretano en espesores de{" "}
-                <strong>30 a 100 mm</strong>. Como referencia rápida: 30 mm
-                para espacios sin climatizar, 40-50 mm para naves y almacenes
-                (el estándar del mercado), 60-80 mm para edificios climatizados
-                y vivienda, y 100 mm para industria agroalimentaria. Cada ficha
-                del catálogo publica la transmitancia térmica (U) de cada
-                espesor, en W/m²·K y kcal/m²·h·°C.
+                <strong>30 a 100 mm</strong>. Cada ficha del catálogo publica la
+                transmitancia térmica (U) de cada espesor, en W/m²·K y
+                kcal/m²·h·°C. Esta es la referencia rápida:
               </p>
+              <div className="overflow-x-auto rounded-2xl border border-[var(--color-border)]">
+                <table className="w-full min-w-[420px] border-collapse text-left text-sm">
+                  <caption className="border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left font-display text-sm font-semibold">
+                    Qué espesor de panel sándwich elegir (núcleo PUR)
+                  </caption>
+                  <thead>
+                    <tr className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+                      <th scope="col" className="px-4 py-2.5 font-semibold">Espesor</th>
+                      <th scope="col" className="px-4 py-2.5 font-semibold">U (W/m²·K)</th>
+                      <th scope="col" className="px-4 py-2.5 font-semibold">Uso recomendado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ESPESOR_ROWS.map((r) => (
+                      <tr key={r[0]} className="border-b border-[var(--color-border)] last:border-0">
+                        <th scope="row" className="px-4 py-2.5 font-semibold">{r[0]}</th>
+                        <td className="px-4 py-2.5">{r[1]}</td>
+                        <td className="px-4 py-2.5">{r[2]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <p>
                 El <strong>precio del panel sándwich por m²</strong> depende
                 del espesor del núcleo, del grosor de las chapas (0,3 a 0,5
@@ -234,10 +277,10 @@ export function SeoContent() {
               </h3>
             </div>
             <Link
-              href="/sobre-nosotros#blog"
+              href="/guias"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]"
             >
-              Ver todas las guías
+              Ver las {POSTS.length} guías por tema
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

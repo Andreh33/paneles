@@ -6,7 +6,16 @@ import { POSTS, getPostBySlug, getRelatedPosts, getPostFaqs } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
+import { PriceTable } from "@/components/seo/PriceTable";
 import { blogPostingLd, breadcrumbLd, faqLd } from "@/lib/jsonld";
+
+/** Posts que montan la tabla "desde €/m²" (solo renderiza si el flag
+ *  PRICE_TABLE_ENABLED de lib/pricing.ts está activo — OK del dueño). */
+const PRICE_TABLE_SLUGS = new Set([
+  "precio-panel-sandwich-m2",
+  "cuanto-cuesta-cubrir-una-nave-con-panel-sandwich",
+]);
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
@@ -63,8 +72,7 @@ export default async function BlogPostPage({ params }: RouteParams) {
           blogPostingLd(post),
           breadcrumbLd([
             { label: "Inicio", path: "/" },
-            { label: "Sobre nosotros", path: "/sobre-nosotros" },
-            { label: "Blog", path: "/sobre-nosotros#blog" },
+            { label: "Guías", path: "/guias" },
             { label: post.title, path: `/sobre-nosotros/${post.slug}` },
           ]),
           ...(faqs.length > 0 ? [faqLd(faqs)] : []),
@@ -75,11 +83,11 @@ export default async function BlogPostPage({ params }: RouteParams) {
       <section className="bg-[var(--color-bg-warm)] text-[var(--color-text-inverse)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-20">
           <Link
-            href="/sobre-nosotros#blog"
+            href="/guias"
             className="inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver al blog
+            Todas las guías
           </Link>
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-white/60">
             <span className="rounded-full bg-white/10 px-3 py-1 font-mono uppercase tracking-wider text-[var(--color-accent-soft)]">
@@ -93,13 +101,26 @@ export default async function BlogPostPage({ params }: RouteParams) {
           <h1 className="mt-5 font-display text-3xl font-semibold leading-tight md:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-white/70">{post.excerpt}</p>
+          {/* Firma de autor real (EEAT + atribución en IA): coincide con el
+              Person del JSON-LD (author del BlogPosting). */}
+          <p className="mt-4 text-sm text-white/60">
+            Por{" "}
+            <span className="font-semibold text-white/90">
+              {SITE.contact.salesContact.name}
+            </span>{" "}
+            · {SITE.contact.salesContact.role} de {SITE.name}
+          </p>
+          <p className="mt-5 max-w-2xl text-white/70">{post.excerpt}</p>
         </div>
       </section>
 
       {/* Cuerpo del artículo */}
       <article className="bg-white">
         <div className="mx-auto max-w-3xl px-4 py-16 md:px-8 md:py-20">
+          {/* Respuesta directa 40-60 palabras (answer-first, citable por IA) */}
+          {post.quickAnswer && (
+            <QuickAnswer className="mb-12">{post.quickAnswer}</QuickAnswer>
+          )}
           {post.sections.map((section) => (
             <section key={section.heading} className="mb-12 last:mb-0">
               <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
@@ -157,6 +178,9 @@ export default async function BlogPostPage({ params }: RouteParams) {
               </div>
             </section>
           ))}
+
+          {/* Tabla "desde €/m²" — inactiva hasta PRICE_TABLE_ENABLED=true */}
+          {PRICE_TABLE_SLUGS.has(post.slug) && <PriceTable className="mt-14" />}
 
           {/* Enlaces internos */}
           {post.internalLinks && post.internalLinks.length > 0 && (

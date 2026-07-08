@@ -10,7 +10,7 @@ import { SeoContent } from "@/components/sections/SeoContent";
 import { HomeFaq } from "@/components/sections/HomeFaq";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { localBusinessLd, organizationLd, websiteLd } from "@/lib/jsonld";
+import { entityGraphLd } from "@/lib/jsonld";
 
 /**
  * Home — composición de secciones (§4.1 del brief).
@@ -45,7 +45,9 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={[organizationLd(), websiteLd(), localBusinessLd()]} />
+      {/* Grafo único de entidad: Organization ↔ WebSite ↔ LocalBusiness ↔
+          Person enlazados por @id (consolidación para Google/Bing/LLMs). */}
+      <JsonLd data={entityGraphLd()} />
       <Hero />
       <CategoryShowcase />
       <WhyPanelex />

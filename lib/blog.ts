@@ -71,6 +71,12 @@ export interface BlogPost {
   metaDescription: string;
   /** Entradilla que se muestra en la card y al inicio del post */
   excerpt: string;
+  /**
+   * Respuesta directa de 40-60 palabras (formato answer-first para GEO/IA).
+   * Se muestra destacada al inicio del artículo y se emite como `abstract`
+   * en el BlogPosting JSON-LD: es el bloque que citan ChatGPT/Perplexity/AIO.
+   */
+  quickAnswer?: string;
   /** Fecha ISO de publicación (se usa en JSON-LD y <time>) */
   date: string;
   /** Fecha ISO de última actualización sustancial (JSON-LD dateModified) */
@@ -215,8 +221,10 @@ const BASE_POSTS: BlogPost[] = [
       "¿Cuánto cuesta el panel sándwich por metro cuadrado? Factores que determinan el precio: espesor, chapa, acabado y transporte. Consejos para ahorrar.",
     excerpt:
       "El precio del panel sándwich depende del espesor del núcleo, el grosor de la chapa, el acabado y el transporte. Te contamos cómo se forma el precio y cómo ahorrar.",
+    quickAnswer:
+      "El precio del panel sándwich por m² lo fijan cuatro factores: el espesor del núcleo (30–100 mm), la chapa de acero (0,3–0,5 mm por cara), el acabado (el imitación teja y la fijación oculta cuestan más que la cubierta estándar) y el transporte. Comprando directo a fábrica se elimina el margen de la distribución: con las medidas de tu cubierta damos precio cerrado el mismo día laborable.",
     date: "2026-05-11",
-    dateModified: "2026-07-06",
+    dateModified: "2026-07-08",
     category: "Compra y presupuesto",
     readingMinutes: 5,
     keywords: [
@@ -510,8 +518,10 @@ const BASE_POSTS: BlogPost[] = [
       "Cómo elegir el espesor del panel sándwich: 30, 40, 50, 80 o 100 mm. Transmitancia térmica, usos recomendados y errores habituales al dimensionar.",
     excerpt:
       "Del panel de 30 mm para un cobertizo al de 100 mm para una cámara: criterios claros para elegir espesor sin pagar de más ni quedarse corto.",
+    quickAnswer:
+      "Regla rápida de espesores de panel sándwich: 30 mm para cobertizos y porches sin climatizar, 40–50 mm el estándar de nave agrícola e industrial, 60–80 mm para vivienda y edificios climatizados, y 100 mm para cámaras e industria agroalimentaria. Duplicar el espesor divide la transmitancia casi a la mitad: de U ≈ 0,55 W/m²·K con 40 mm a ≈ 0,28 con 80 mm.",
     date: "2026-06-01",
-    dateModified: "2026-07-06",
+    dateModified: "2026-07-08",
     category: "Guías técnicas",
     readingMinutes: 5,
     keywords: [

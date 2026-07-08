@@ -12,6 +12,7 @@ import {
 import { SITE } from "@/lib/site";
 import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { breadcrumbLd, faqLd, localBusinessLd, serviceLd } from "@/lib/jsonld";
 import type { FaqItem } from "@/lib/jsonld";
 
@@ -201,6 +202,16 @@ export default function PanelSandwichExtremaduraPage() {
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-5xl">
               La fábrica está aquí. El precio y los plazos lo notan.
             </h2>
+
+            {/* Answer-first (GEO): respuesta directa bajo el H2 principal. */}
+            <QuickAnswer className="mt-8">
+              Panelex es la fábrica de panel sándwich de Extremadura: produce en
+              Puebla de la Calzada (Badajoz), a pie de la A-5, y vende directo
+              de fábrica panel de cubierta, fachada e imitación teja de 30 a
+              100 mm, cortado a medida hasta 14 metros, con entrega en toda la
+              región y porte cerrado. Presupuesto por WhatsApp el mismo día
+              laborable.
+            </QuickAnswer>
           </div>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
