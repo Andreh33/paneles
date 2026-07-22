@@ -36,7 +36,7 @@ Exigir:
 
 - [ ] **Step 2: Verificar RED**
 
-Run: `npm test -- lib/seo-opportunities.test.ts`  
+Run: `npm test -- lib/seo-opportunities.test.ts`
 Expected: FAIL por title, quickAnswer, fecha y lastmod.
 
 - [ ] **Step 3: Commit**
@@ -59,7 +59,7 @@ Añadir `lastModified?: Date` a la definición interna de rutas, asignar `new Da
 
 - [ ] **Step 3: Ejecutar prueba focalizada**
 
-Run: `npm test -- lib/seo-opportunities.test.ts`  
+Run: `npm test -- lib/seo-opportunities.test.ts`
 Expected: falla solo la guía.
 
 ### Task 3: Respuesta directa de medidas
@@ -81,7 +81,7 @@ Mantener catálogo y contacto, y añadir enlace contextual a `/sobre-nosotros/pr
 
 - [ ] **Step 4: Verificar GREEN**
 
-Run: `npm test`  
+Run: `npm test`
 Expected: 19 pruebas o más, 0 fallos.
 
 - [ ] **Step 5: Commit**

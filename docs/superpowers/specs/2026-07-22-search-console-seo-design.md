@@ -1,7 +1,7 @@
 # Expansión SEO no branded sin perder posiciones — diseño
 
-**Fecha:** 2026-07-22  
-**Sitio:** https://panelexpanelsandwich.com  
+**Fecha:** 2026-07-22
+**Sitio:** https://panelexpanelsandwich.com
 **Rama:** `codex/seo-2026-07-22-panelex`
 
 ## Situación observada
