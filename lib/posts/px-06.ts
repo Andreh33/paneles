@@ -243,11 +243,12 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "medidas-y-longitudes-del-panel-sandwich",
-    title: "Medidas del panel sándwich: ancho útil y longitudes de corte",
-    metaDescription: "Guía de medidas del panel sándwich: ancho útil de 1.000 mm, longitudes en múltiplos de 350 mm hasta 14 m y el límite real que pone el transporte.",
-    excerpt: "Antes de pedir, conviene conocer las medidas del panel sándwich: cuánto cubre de ancho cada lama, en qué longitudes se corta y hasta dónde se puede llegar. Te explicamos el ancho útil habitual, los saltos de 350 mm, los rangos por producto y cómo todo eso influye en el despiece de tu obra.",
+    title: "Medidas del panel sándwich: ancho útil y largo máximo",
+    metaDescription: "Ancho útil de 1.000 mm y largos de hasta 14 m. Consulta pasos de corte, medidas por producto y límites de transporte antes de pedir panel sándwich.",
+    excerpt: "Consulta el ancho útil, los largos máximos, los pasos de corte y el límite práctico que imponen el transporte y la manipulación antes de pedir panel a medida.",
+    quickAnswer: "El panel sándwich tiene un ancho útil habitual de 1.000 mm y se corta en largos de hasta 14 m, normalmente en pasos de 350 mm según el producto. El límite práctico puede ser menor: el transporte, la descarga y los medios de elevación de la obra determinan la longitud manejable.",
     date: "2025-10-21",
-    dateModified: "2026-07-06",
+    dateModified: "2026-07-22",
     category: "Guías técnicas",
     readingMinutes: 11,
     keywords: [
@@ -369,6 +370,7 @@ export const posts: BlogPost[] = [
       { label: "Fertelha terracota", href: "/productos/fertelha-terracota" },
       { label: "Panel de cubierta en gris", href: "/productos/panel-cubierta-gris" },
       { label: "Ver catálogo completo", href: "/productos" },
+      { label: "Precio del panel sándwich por m²", href: "/sobre-nosotros/precio-panel-sandwich-m2" },
       { label: "Habla con fábrica", href: "/contacto" }
     ]
   },

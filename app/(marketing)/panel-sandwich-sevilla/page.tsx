@@ -3,10 +3,10 @@ import { ZoneLanding, type ZoneLandingData } from "@/components/sections/ZoneLan
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Panel sándwich en Sevilla | Fábrica directa por la A-66 — Panelex",
+    absolute: "Panel sándwich en Sevilla directo de fábrica | Panelex",
   },
   description:
-    "Fábrica de panel sándwich a 200 km de Sevilla por la A-66: venta directa, corte a medida y porte ágil a la provincia para naves, agroindustria y vivienda.",
+    "Fábrica de panel sándwich en Badajoz con entrega ágil a Sevilla por la A-66. Venta directa, corte a medida y presupuesto para toda la provincia.",
   keywords: [
     "panel sándwich Sevilla",
     "paneles sándwich Sevilla",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/panel-sandwich-sevilla" },
   openGraph: {
-    title: "Panel sándwich en Sevilla — Fábrica directa por la A-66",
+    title: "Panel sándwich en Sevilla directo de fábrica | Panelex",
     description:
-      "Fabricamos panel sándwich y chapa perfilada en Badajoz, a 200 km de Sevilla por la A-66. Venta directa, corte a medida y porte ágil a toda la provincia.",
+      "Fábrica de panel sándwich en Badajoz con entrega ágil a Sevilla por la A-66. Venta directa, corte a medida y presupuesto para toda la provincia.",
     type: "website",
     locale: "es_ES",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],

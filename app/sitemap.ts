@@ -7,6 +7,7 @@ const STATIC_ROUTES: Array<{
   path: string;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority: number;
+  lastModified?: Date;
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
   { path: "/guias", changeFrequency: "weekly", priority: 0.8 },
@@ -17,7 +18,7 @@ const STATIC_ROUTES: Array<{
   { path: "/panel-sandwich-don-benito", changeFrequency: "monthly", priority: 0.8 },
   { path: "/panel-sandwich-plasencia", changeFrequency: "monthly", priority: 0.8 },
   { path: "/panel-sandwich-madrid", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/panel-sandwich-sevilla", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/panel-sandwich-sevilla", changeFrequency: "monthly", priority: 0.8, lastModified: new Date("2026-07-22") },
   { path: "/productos", changeFrequency: "monthly", priority: 0.9 },
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
   { path: "/sobre-nosotros", changeFrequency: "monthly", priority: 0.7 },
@@ -37,7 +38,7 @@ const LAST_UPDATE = new Date("2026-07-08");
 export default function sitemap(): MetadataRoute.Sitemap {
   const base: MetadataRoute.Sitemap = STATIC_ROUTES.map((r) => ({
     url: `${SITE.url}${r.path}`,
-    lastModified: LAST_UPDATE,
+    lastModified: r.lastModified ?? LAST_UPDATE,
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }));
