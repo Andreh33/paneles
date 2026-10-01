@@ -73,12 +73,12 @@ export default async function ProductosPage({
       {/* Listado */}
       <section className="bg-[var(--color-surface)]">
         <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
-          <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
             <Suspense fallback={<FiltersSkeleton />}>
               <ProductFilters availableEspesores={allEspesores} />
             </Suspense>
 
-            <div>
+            <div className="min-w-0">
               <div className="mb-6 flex items-end justify-between">
                 <p
                   className="text-sm text-[var(--color-muted)]"
@@ -109,9 +109,9 @@ export default async function ProductosPage({
       {/* Texto SEO: gamas y servicio */}
       <section className="bg-[var(--color-surface)]">
         <div className="mx-auto max-w-7xl px-4 pb-16 md:px-8 md:pb-20">
-          <div className="grid gap-12 lg:grid-cols-[260px_1fr]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[260px_minmax(0,1fr)]">
             <div aria-hidden className="hidden lg:block" />
-            <div className="max-w-3xl">
+            <div className="min-w-0 max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)]">
                 Venta directa de fábrica
               </p>

@@ -172,7 +172,7 @@ export function ProductConfigurator({ product }: Props) {
             type="button"
             aria-label="Reducir cantidad"
             onClick={() => setCantidad((c) => Math.max(1, c - 10))}
-            className="h-12 w-12 rounded-xl border border-[var(--color-border)] text-lg font-bold text-[var(--color-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+            className="h-12 w-12 shrink-0 rounded-xl border border-[var(--color-border)] text-lg font-bold text-[var(--color-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
           >
             −
           </button>
@@ -182,14 +182,14 @@ export function ProductConfigurator({ product }: Props) {
             step={1}
             value={cantidad}
             onChange={(e) => setCantidad(Math.max(1, Number(e.target.value) || 1))}
-            className="h-12 flex-1 rounded-xl border border-[var(--color-border)] bg-white px-4 text-center font-mono text-lg font-semibold focus:border-[var(--color-primary)] focus:outline-none"
+            className="h-12 w-0 min-w-0 flex-1 rounded-xl border border-[var(--color-border)] bg-white px-4 text-center font-mono text-lg font-semibold focus:border-[var(--color-primary)] focus:outline-none"
             aria-label={`Cantidad en ${unidadLabel}`}
           />
           <button
             type="button"
             aria-label="Aumentar cantidad"
             onClick={() => setCantidad((c) => c + 10)}
-            className="h-12 w-12 rounded-xl border border-[var(--color-border)] text-lg font-bold text-[var(--color-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+            className="h-12 w-12 shrink-0 rounded-xl border border-[var(--color-border)] text-lg font-bold text-[var(--color-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
           >
             +
           </button>
@@ -227,7 +227,7 @@ export function ProductConfigurator({ product }: Props) {
 
       {/* Resumen peso + alerta camión */}
       <div className="rounded-2xl bg-[var(--color-surface)] p-4">
-        <div className="flex items-baseline justify-between">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">
             Peso estimado
           </span>

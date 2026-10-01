@@ -119,9 +119,9 @@ export default async function ProductPage({ params }: RouteParams) {
       {/* Layout principal: 60/40 desktop */}
       <section className="bg-[var(--color-surface)]">
         <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14 lg:py-16">
-          <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-14">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-14">
             {/* Columna izquierda */}
-            <div className="space-y-10">
+            <div className="min-w-0 space-y-10">
               {/* Galería + selector de colores (si aplica) */}
               <ProductGallery product={product} />
 
@@ -135,7 +135,7 @@ export default async function ProductPage({ params }: RouteParams) {
             </div>
 
             {/* Columna derecha — sticky */}
-            <aside className="lg:sticky lg:top-24 lg:self-start">
+            <aside className="min-w-0 lg:sticky lg:top-24 lg:self-start">
               <div className="hidden lg:mb-6 lg:block">
                 <ProductHeading product={product} categoryLabel={categoryLabel} as="p" />
               </div>
@@ -237,4 +237,3 @@ function ProductHeading({
     </header>
   );
 }
-

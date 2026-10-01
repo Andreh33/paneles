@@ -312,11 +312,11 @@ function CartItemRow({
 
   return (
     <li className="flex gap-3 rounded-2xl border border-[var(--color-border)] p-3">
-      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-white">
+      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-white sm:h-20 sm:w-20">
         {product && <ProductImage product={product} sizes="80px" />}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2">
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-[var(--color-text)]">
@@ -336,7 +336,7 @@ function CartItemRow({
             type="button"
             onClick={onRemove}
             aria-label={`Eliminar ${item.productName}`}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-full text-[var(--color-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)]"
+            className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[var(--color-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)]"
           >
             <Trash2 className="h-3.5 w-3.5" />
           </button>
