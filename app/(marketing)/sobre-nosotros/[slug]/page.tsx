@@ -179,6 +179,23 @@ export default async function BlogPostPage({ params }: RouteParams) {
             </section>
           ))}
 
+          {post.sources && post.sources.length > 0 && (
+            <section className="mb-12">
+              <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+                Fuentes técnicas consultadas
+              </h2>
+              <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed text-[var(--color-text)]">
+                {post.sources.map((source) => (
+                  <li key={source.href}>
+                    <a href={source.href} className="underline hover:text-[var(--color-primary)]">
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Tabla "desde €/m²" — inactiva hasta PRICE_TABLE_ENABLED=true */}
           {PRICE_TABLE_SLUGS.has(post.slug) && <PriceTable className="mt-14" />}
 

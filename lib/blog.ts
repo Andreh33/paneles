@@ -41,6 +41,7 @@ import { posts as px28 } from "@/lib/posts/px-28";
 import { posts as px29 } from "@/lib/posts/px-29";
 import { posts as px30 } from "@/lib/posts/px-30";
 import { posts as px31 } from "@/lib/posts/px-31";
+import { posts as px32 } from "@/lib/posts/px-32";
 
 /**
  * Tabla de datos de una sección. Se renderiza como <table> semántica con
@@ -87,6 +88,8 @@ export interface BlogPost {
   sections: PostSection[];
   /** Enlaces internos hacia páginas de conversión (productos/proyectos/home). */
   internalLinks?: { label: string; href: string }[];
+  /** Fuentes primarias consultadas para este artículo. */
+  sources?: { label: string; href: string }[];
 }
 
 export interface BlogFaq {
@@ -952,6 +955,7 @@ export const POSTS: BlogPost[] = [
   ...px29,
   ...px30,
   ...px31,
+  ...px32,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
