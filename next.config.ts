@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
         destination: "https://panelexpanelsandwich.com/:path*",
         permanent: true,
       },
+      { source: "/sobre-nosotros/panel-sandwich-para-nave-industrial", destination: "/sobre-nosotros/panel-sandwich-nave-industrial", permanent: true },
       { source: "/sobre-nosotros/panel-sandwich-en-caceres", destination: "/panel-sandwich-caceres", permanent: true },
       { source: "/sobre-nosotros/panel-sandwich-en-merida", destination: "/panel-sandwich-merida", permanent: true },
       { source: "/sobre-nosotros/panel-sandwich-en-plasencia", destination: "/panel-sandwich-plasencia", permanent: true },
