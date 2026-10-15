@@ -37,7 +37,7 @@ import { posts as px24 } from "@/lib/posts/px-24";
 import { posts as px25 } from "@/lib/posts/px-25";
 import { posts as px26 } from "@/lib/posts/px-26";
 import { posts as px27 } from "@/lib/posts/px-27";
-import { posts as px28 } from "@/lib/posts/px-28";
+// Archived: px-28 (panel curvo) is retained on disk but is no longer offered.
 import { posts as px29 } from "@/lib/posts/px-29";
 import { posts as px30 } from "@/lib/posts/px-30";
 import { posts as px31 } from "@/lib/posts/px-31";
@@ -951,7 +951,7 @@ export const POSTS: BlogPost[] = [
   ...px25,
   ...px26,
   ...px27,
-  ...px28,
+  // Panel curvo withdrawn from public guides, related links and sitemap.
   ...px29,
   ...px30,
   ...px31,
