@@ -16,13 +16,21 @@ export function ClickTracker() {
       const link = target?.closest?.("a");
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
-      const path = window.location.pathname;
-      if (/wa\.me|api\.whatsapp\.com|wa\.link/i.test(href)) {
-        track("whatsapp_click", { path });
+      const article = document.querySelector("[data-analytics-article]")?.getAttribute("data-analytics-article");
+      const pathname = window.location.pathname;
+      const articlePage = article && /^[a-z0-9-]+$/.test(article) && pathname === `/sobre-nosotros/${article}`;
+      const path = articlePage ? pathname : ["/", "/contacto", "/productos", "/guias", "/sobre-nosotros"].includes(pathname) ? pathname : "/other-public-page";
+      const properties = { path, ...(articlePage ? { article_slug: article } : {}) };
+      if (articlePage && /^\/productos(?:\/[a-z0-9-]+)?$/.test(href)) {
+        track("article_catalog_click", properties);
+      } else if (articlePage && href === "/contacto") {
+        track("article_contact_click", properties);
+      } else if (/wa\.me|api\.whatsapp\.com|wa\.link/i.test(href)) {
+        track("whatsapp_click", properties);
       } else if (href.startsWith("tel:")) {
-        track("phone_click", { path });
+        track("phone_click", properties);
       } else if (href.startsWith("mailto:")) {
-        track("email_click", { path });
+        track("email_click", properties);
       }
     }
     document.addEventListener("click", onClick, { capture: true });
