@@ -8,6 +8,7 @@ import { WhatsAppGlyph } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { QuickAnswer } from "@/components/seo/QuickAnswer";
 import { PriceTable } from "@/components/seo/PriceTable";
+import { EditorialBody } from "@/components/seo/EditorialBody";
 import { blogPostingLd, breadcrumbLd, faqLd } from "@/lib/jsonld";
 
 /** Posts que montan la tabla "desde €/m²" (solo renderiza si el flag
@@ -106,9 +107,9 @@ export default async function BlogPostPage({ params }: RouteParams) {
           <p className="mt-4 text-sm text-white/60">
             Por{" "}
             <span className="font-semibold text-white/90">
-              {SITE.contact.salesContact.name}
+              {post.editorialAuthor === "organization" ? SITE.name : SITE.contact.salesContact.name}
             </span>{" "}
-            · {SITE.contact.salesContact.role} de {SITE.name}
+            {post.editorialAuthor !== "organization" && <>· {SITE.contact.salesContact.role} de {SITE.name}</>}
           </p>
           <p className="mt-5 max-w-2xl text-white/70">{post.excerpt}</p>
         </div>
@@ -121,7 +122,8 @@ export default async function BlogPostPage({ params }: RouteParams) {
           {post.quickAnswer && (
             <QuickAnswer className="mb-12">{post.quickAnswer}</QuickAnswer>
           )}
-          {post.sections.map((section) => (
+          {post.bodyMarkdown && <EditorialBody markdown={post.bodyMarkdown} />}
+          {!post.bodyMarkdown && post.sections.map((section) => (
             <section key={section.heading} className="mb-12 last:mb-0">
               <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
                 {section.heading}
@@ -227,9 +229,9 @@ export default async function BlogPostPage({ params }: RouteParams) {
               ¿Tienes una obra entre manos?
             </h2>
             <p className="mt-3 max-w-xl text-sm text-white/70">
-              Envíanos las medidas por WhatsApp y te preparamos un presupuesto
+              {post.editorialAuthor === "organization" ? "Envíanos las medidas y las necesidades de tu proyecto por WhatsApp. Te ayudamos a concretar el material y las condiciones del presupuesto." : <>Envíanos las medidas por WhatsApp y te preparamos un presupuesto
               cerrado, con corte a medida y transporte incluido, directo de
-              fábrica desde {SITE.address.city} ({SITE.address.province}).
+              fábrica desde {SITE.address.city} ({SITE.address.province}).</>}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a

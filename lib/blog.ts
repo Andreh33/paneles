@@ -1,3 +1,4 @@
+import { posts as campaignPosts } from "@/lib/posts/px-campaign-20261015";
 /**
  * PANELEX — Blog técnico (fuente única de verdad)
  *
@@ -86,6 +87,9 @@ export interface BlogPost {
   readingMinutes: number;
   keywords: string[];
   sections: PostSection[];
+  /** Complete reviewed editorial body; existing section-based posts remain supported. */
+  bodyMarkdown?: string;
+  editorialAuthor?: "organization";
   /** Enlaces internos hacia páginas de conversión (productos/proyectos/home). */
   internalLinks?: { label: string; href: string }[];
   /** Fuentes primarias consultadas para este artículo. */
@@ -923,6 +927,7 @@ const BASE_POSTS: BlogPost[] = [
 
 /** Listado completo: los 8 posts base + los lotes SEO añadidos en lib/posts/. */
 export const POSTS: BlogPost[] = [
+  ...campaignPosts,
   ...BASE_POSTS,
   ...px01,
   ...px02,

@@ -337,7 +337,12 @@ export function blogPostingLd(post: BlogPost) {
     articleSection: post.category,
     // Autor-persona real (EEAT + atribución en IA). El nodo se define inline
     // con el mismo @id del grafo para que resuelva también fuera de la home.
-    author: {
+    author: post.editorialAuthor === "organization" ? {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: SITE.name,
+      url: SITE.url,
+    } : {
       "@type": "Person",
       "@id": PERSON_ID,
       name: SITE.contact.salesContact.name,
