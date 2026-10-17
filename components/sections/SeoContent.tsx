@@ -174,7 +174,7 @@ export function SeoContent() {
         </div>
 
         {/* Aplicaciones y aislamiento — texto largo adicional */}
-        <div className="mt-16 grid gap-10 border-t border-[var(--color-border)] pt-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-16 grid grid-cols-1 gap-10 border-t border-[var(--color-border)] pt-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
               ¿Para qué obras se usa el panel sándwich?
