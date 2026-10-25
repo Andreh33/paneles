@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -38,7 +39,7 @@ export async function generateMetadata({
     title: post.title,
     description: post.metaDescription,
     keywords: post.keywords,
-    alternates: { canonical: `/sobre-nosotros/${post.slug}` },
+    alternates: getLocaleAlternates(`/sobre-nosotros/${post.slug}`),
     openGraph: {
       title: `${post.title} · Panelex`,
       description: post.metaDescription,

@@ -1,3 +1,5 @@
+import { SiteDocument } from "@/components/layout/SiteDocument";
+export { metadata } from "@/lib/site-metadata";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloating } from "@/components/layout/WhatsAppFloating";
@@ -10,7 +12,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <SiteDocument lang="es">
       <Header />
       <main id="main" className="min-h-[60dvh]">
         {children}
@@ -19,6 +21,6 @@ export default function MarketingLayout({
       <WhatsAppFloating />
       <CartDrawer />
       <CookieConsent />
-    </>
+    </SiteDocument>
   );
 }

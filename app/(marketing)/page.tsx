@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { Hero } from "@/components/sections/Hero";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "Fábrica de panel sándwich en Extremadura (Badajoz): cubierta, fachada, imitación teja y chapa perfilada. Venta directa, corte a medida y envío a toda España.",
-  alternates: { canonical: "/" },
+  alternates: getLocaleAlternates("/"),
 };
 
 const FEATURED_SLUGS = [

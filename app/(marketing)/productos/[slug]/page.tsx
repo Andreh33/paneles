@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -39,7 +40,7 @@ export async function generateMetadata({
       description: product.description,
       type: "website",
     },
-    alternates: { canonical: `/productos/${product.slug}` },
+    alternates: getLocaleAlternates(`/productos/${product.slug}`),
   };
 }
 

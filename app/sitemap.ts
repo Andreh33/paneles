@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { POSTS } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
+import { portugalPaths, PT_PUBLICATION_DATE } from "@/lib/portugal";
+import { getLocaleAlternates } from "@/lib/locale-paths";
 
 const STATIC_ROUTES: Array<{
   path: string;
@@ -65,5 +67,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // `generateSitemaps` de Next produce /sitemap/[id].xml SIN índice raíz, lo
   // que obligaría a reenviar cada parte en GSC/Bing a mano. Se mantiene un
   // sitemap único con lastmod honesto por URL (posts) y estable (páginas).
-  return [...base, ...products, ...posts];
+  const portuguese: MetadataRoute.Sitemap = portugalPaths().map(path => ({
+    url: `${SITE.url}${path}`,
+    lastModified: new Date(PT_PUBLICATION_DATE),
+    changeFrequency: "monthly",
+    priority: path === "/pt" ? 0.9 : 0.6,
+  }));
+  return [...base, ...products, ...posts, ...portuguese].map(entry => {
+    const { languages } = getLocaleAlternates(new URL(entry.url).pathname);
+    return languages ? { ...entry, alternates: { languages } } : entry;
+  });
 }

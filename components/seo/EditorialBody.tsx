@@ -64,13 +64,13 @@ export function editorialBlocks(markdown: string): EditorialBlock[] {
   flush(); return blocks;
 }
 
-export function EditorialBody({ markdown }: { markdown: string }) {
+export function EditorialBody({ markdown, locale = "es" }: { markdown: string; locale?: "es" | "pt-PT" }) {
   const blocks = editorialBlocks(markdown);
   const headings = blocks.filter((b): b is Extract<EditorialBlock, {type:"heading"}> => b.type === "heading" && b.level === 2);
   return <>
     <details className="mb-10 rounded-2xl border border-[var(--color-border)] p-5">
-      <summary className="cursor-pointer font-semibold">Contenido de esta guía</summary>
-      <nav aria-label="Contenido de la guía"><ol className="mt-4 list-decimal space-y-2 pl-5">
+      <summary className="cursor-pointer font-semibold">{locale === "pt-PT" ? "Neste guia" : "Contenido de esta guía"}</summary>
+      <nav aria-label={locale === "pt-PT" ? "Índice do guia" : "Contenido de la guía"}><ol className="mt-4 list-decimal space-y-2 pl-5">
         {headings.map(h => <li key={h.id}><a className="underline underline-offset-4" href={`#${h.id}`}>{h.text}</a></li>)}
       </ol></nav>
     </details>

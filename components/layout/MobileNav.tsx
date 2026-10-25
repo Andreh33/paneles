@@ -41,7 +41,7 @@ export function MobileNav({ open, onClose, pathname }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label="Menú de navegación"
-      className="fixed inset-0 z-50 flex flex-col bg-[var(--color-bg-warm)] text-white lg:hidden"
+      className="fixed inset-0 z-50 flex flex-col bg-[var(--color-bg-warm)] text-white xl:hidden"
     >
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-5">
         <Logo variant="light" />

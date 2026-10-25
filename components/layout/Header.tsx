@@ -8,6 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { useCartDrawer, useCartStore } from "@/lib/cart-store";
 import { MobileNav } from "./MobileNav";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const pathname = usePathname();
@@ -54,7 +55,7 @@ export function Header() {
 
           <nav
             aria-label="Principal"
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden items-center gap-1 xl:flex"
           >
             {NAV_LINKS.map((l) => {
               const active = pathname === l.href || pathname.startsWith(l.href + "/");
@@ -80,6 +81,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <CartButton count={cartCount} hasMounted={mounted} />
 
             <a
@@ -98,7 +100,7 @@ export function Header() {
               aria-label="Abrir menú"
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
-              className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:bg-white/10 lg:hidden"
+              className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:bg-white/10 xl:hidden"
             >
               <Menu className="h-5 w-5" />
             </button>

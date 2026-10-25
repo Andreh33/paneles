@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   title: "Catálogo de panel sándwich: cubierta, fachada y teja",
   description:
     "Catálogo de panel sándwich de cubierta, fachada e imitación teja, policarbonato y remates. Espesores de 30 a 100 mm, corte a medida y precio directo de fábrica.",
-  alternates: { canonical: "/productos" },
+  alternates: getLocaleAlternates("/productos"),
 };
 
 type SearchParams = Promise<{

@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { SITE } from "@/lib/site";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "Habla con Panelex: WhatsApp, teléfono, email o formulario. Fabricamos panel sándwich y chapa perfilada en Puebla de la Calzada (Badajoz).",
-  alternates: { canonical: "/contacto" },
+  alternates: getLocaleAlternates("/contacto"),
 };
 
 export default function ContactoPage() {

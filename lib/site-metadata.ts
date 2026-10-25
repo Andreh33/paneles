@@ -1,26 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { ClickTracker } from "@/components/ClickTracker";
-import "./globals.css";
-
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans-loaded",
-  display: "swap",
-});
-
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display-loaded",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono-loaded",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://panelexpanelsandwich.com"),
@@ -69,19 +47,3 @@ export const metadata: Metadata = {
     },
   },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="es" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
-      <body>
-        {children}
-        <ClickTracker />
-        <Analytics />
-      </body>
-    </html>
-  );
-}

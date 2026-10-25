@@ -1,3 +1,4 @@
+import { getLocaleAlternates } from "@/lib/locale-paths";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, MapPin, Phone } from "lucide-react";
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     "precio panel sándwich",
     "espesor panel sándwich",
   ],
-  alternates: { canonical: "/guias" },
+  alternates: getLocaleAlternates("/guias"),
   openGraph: {
     title: "Guías de panel sándwich, escritas desde fábrica — Panelex",
     description:
